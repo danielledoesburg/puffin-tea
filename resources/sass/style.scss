@@ -1,0 +1,28 @@
+
+@import 'config';
+@import 'carousel';
+@import 'underline';
+@import'navbar';
+@import 'footer';
+@import 'bestsellers';
+@import 'animated-background';
+@import 'itemscarousel';
+
+body{
+    font-family: $main-font;
+    background-color:$background-color;
+}
+
+.container-fluid {
+    background-color:$background-color;
+  
+
+}
+.bg-light{
+    background-color: $background-color !important;
+}
+h1{
+    text-align: center;
+    margin:60px;
+    font-weight: bolder;
+}
