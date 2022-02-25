@@ -20,6 +20,9 @@ return new class extends Migration
             $table->unsignedInteger('order_sequence');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreignId('created_by')->nullable()->constrained();
+            $table->foreignId('updated_by')->nullable()->constrained();
+            $table->foreignId('deleted_by')->nullable()->constrained();
         });
     }
 
