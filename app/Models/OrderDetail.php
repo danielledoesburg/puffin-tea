@@ -13,4 +13,8 @@ class OrderDetail extends Model
         'id',
     ];
     
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

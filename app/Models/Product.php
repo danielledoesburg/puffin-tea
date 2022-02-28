@@ -18,6 +18,28 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function onSale()
+    {
+        return $this->hasMany(OnSale::class);
+    }
+
+    public function vat()
+    {
+        return $this->belongsTo(Vat::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
+    }
+
+
+    
 }
 
 
