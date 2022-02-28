@@ -2,11 +2,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         
         <div class="container-fluid">
             <a class="navbar-brand" href="x">
-                <img id="logo" src="assets/images/puffin-tea-logo.png">
+                <img id="logo" src="https://i.ibb.co/jDN8ddD/puffin-tea-logo.png">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -44,7 +46,7 @@
         <div class="carousel-inner">
           <div class="carousel-item active">
             
-            <img src="assets/images/macha.jpg" class="d-block w-100" alt="...">
+            <img src="https://i.ibb.co/NCXZSfq/macha.jpg"  class="d-block w-100" alt="...">
             <div class="absolute-div">
               <div class="carousel-caption">
                   <h3>Lorem ipsum, dolor sit amet consectetur...</h3>
@@ -52,7 +54,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="assets/images/kettle.jpg" class="d-block w-100" alt="...">
+            <img src="https://i.ibb.co/WyF7fb1/kettle.jpg" class="d-block w-100" alt="...">
             <div class="absolute-div">
               <div class="carousel-caption kettle-background">
                   <h3 class="kettle-background">Lorem ipsum, dolor sit amet consectetur adipisicing elit...</h3>
@@ -60,7 +62,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img src="assets/images/field.jpg" class="d-block w-100" alt="...">
+            <img src="https://i.ibb.co/0KMTdfp/field.jpg" class="d-block w-100" alt="...">
             <div class="absolute-div">
               <div class="carousel-caption ">
                   <h3>Lorem ipsum, dolor sit amet</h3>
@@ -85,48 +87,44 @@
     </div>
     <div class="grid-wrapper">
       <div class="grid-object">
-        <img class= "resize-image" src="assets/images/tea-example.jpg">
+        <img class= "resize-image" src="https://i.ibb.co/nwJxTmz/tea-example.jpg">
         <p>bhjbsadhashdgjhasd</p>
         </div>
         <div class="grid-object">
-          <img class= "resize-image" src="assets/images/tea-example.jpg">
+          <img class= "resize-image" src="https://i.ibb.co/nwJxTmz/tea-example.jpg">
           <p>bhjbsadhashdgjhasd</p>
         </div>
         <div class="grid-object">
-          <img class= "resize-image" src="assets/images/tea-example.jpg">
+          <img class= "resize-image" src="https://i.ibb.co/nwJxTmz/tea-example.jpg">
           <p>bhjbsadhashdgjhasd</p>
         </div>
     </div>
 
     <h1>Sale</h1>
 
-  <div class="flex-wrap">
 
-    </div>
-    <div class="grid-wrapper">
-      <div class="grid-object">
-        <img class= "resize-image" src="assets/images/tea-example.jpg">
-        <p>bhjbsadhashdgjhasd</p>
-        </div>
-        <div class="grid-object">
-          <img class= "resize-image" src="assets/images/tea-example.jpg">
-          <p>bhjbsadhashdgjhasd</p>
-        </div>
-        <div class="grid-object">
-          <img class= "resize-image" src="assets/images/tea-example.jpg">
-          <p>bhjbsadhashdgjhasd</p>
+   <div class="to-center">
+        <div class="responsive">
+            <div> <img class= "small-image" src="https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg"></div>
+            <div> <img class= "small-image" src="https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg"></div>
+            <div> <img class= "small-image" src="https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg"></div>
+            <div> <img class= "small-image" src="https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg"></div>
+            <div> <img class= "small-image" src="https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg"></div>
+            <div> <img class= "small-image" src="https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg"></div>
         </div>
     </div>
-    <div class="your-class">
-      <div>your content</div>
-      <div>your content</div>
-      <div>your content</div>
-    </div>
-
-    
-
+   
 
     <footer>
+
+    <div class="newsletter">
+        <p>sign in in our newsletter </p>
+        
+        <form class="form">
+            <p>e-mail:</p> <input>
+        </form>
+        
+    </div>
         <p>puffin tea 2022</p>
     </footer>
 

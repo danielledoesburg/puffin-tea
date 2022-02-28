@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+require('./slick');
+require('./multiple-items-carousel');
 
 window.Vue = require('vue').default;
 
