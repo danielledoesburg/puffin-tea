@@ -21,12 +21,8 @@ return new class extends Migration
             $table->string('phonenr')->nullable();
             $table->string('password');
             $table->foreignId('role_id')->constrained();
-            // $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignId('created_by')->nullable()->constrained();
-            $table->foreignId('updated_by')->nullable()->constrained();
-            $table->foreignId('deleted_by')->nullable()->constrained();
         });
     }
 

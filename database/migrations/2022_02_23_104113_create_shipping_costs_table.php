@@ -20,9 +20,9 @@ return new class extends Migration
             $table->date('date_from');
             $table->date('date_till')->nullable();
             $table->timestamps();
-            $table->foreignId('created_by')->nullable()->constrained();
-            $table->foreignId('updated_by')->nullable()->constrained();
-            $table->foreignId('deleted_by')->nullable()->constrained();
+            $table->foreignId('created_by')->nullable()->constrained('users');
+            $table->foreignId('updated_by')->nullable()->constrained('users');
+            $table->foreignId('deleted_by')->nullable()->constrained('users');
         });
     }
 

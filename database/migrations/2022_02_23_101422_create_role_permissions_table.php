@@ -19,9 +19,7 @@ return new class extends Migration
             $table->foreignId('permission_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreignId('created_by')->nullable()->constrained();
-            $table->foreignId('updated_by')->nullable()->constrained();
-            $table->foreignId('deleted_by')->nullable()->constrained();
+
         });
     }
 

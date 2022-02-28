@@ -9,7 +9,12 @@ class AddressType extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 
-        'name'
+    protected $guarded = [
+        'id',
     ];
+
+    public function addresses() 
+    {
+        return $this->hasMany(Address::class);
+    }
 }
