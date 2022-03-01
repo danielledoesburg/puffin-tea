@@ -75,7 +75,7 @@ class ProductsTableSeeder extends Seeder
 
             if ($array['image_filenames'])
             {  
-                foreach($array['image_filenames'] as $key => $filename)
+                foreach ($array['image_filenames'] as $key => $filename)
                 ProductImage::create([
                     'filename' => $filename,
                     'product_id' => $product->id,

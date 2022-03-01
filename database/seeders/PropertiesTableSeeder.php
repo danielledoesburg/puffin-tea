@@ -22,7 +22,7 @@ class PropertiesTableSeeder extends Seeder
 
         $data = ['relaxing', 'digestion', 'airways', 'energy'];
 
-        foreach($data as $key => $value) 
+        foreach ($data as $key => $value) 
         {
             ModelsProperty::create([
                 'name' => $value,

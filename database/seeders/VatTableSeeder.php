@@ -31,7 +31,7 @@ class VatTableSeeder extends Seeder
             ],
         ];
 
-        foreach($data as $array) 
+        foreach ($data as $array) 
         {
             Vat::create([
                 'name' => $array['name'],

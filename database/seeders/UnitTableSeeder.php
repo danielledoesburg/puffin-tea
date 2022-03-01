@@ -22,7 +22,7 @@ class UnitTableSeeder extends Seeder
 
         $data = ['grams', 'kg', 'tea bags', 'piece'];
 
-        foreach($data as $value) 
+        foreach ($data as $value) 
         {
             Unit::create([
                 'name' => $value,

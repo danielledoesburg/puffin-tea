@@ -30,23 +30,22 @@ class RolePermissionsTableSeeder extends Seeder
                 'show_message', 'update_message', 'delete_message',
                 'show_order', 'update_order', 'delete_order', ];
 
-        foreach($permissionData as $name) {
+        foreach ($permissionData as $name) 
+        {
             Permission::create([
                 'name' => $name
             ]);
         }
 
-        Role::create([
-            'name' => 'super-admin'
-        ])->permissions()->attach(Permission::all());
+        Role::create(['name' => 'super-admin'])
+            ->permissions()
+            ->attach(Permission::all());
 
-        Role::create([
-            'name' => 'admin'
-        ])->permissions()->attach(Permission::where('name', 'not like', '%user')->get());
+        Role::create(['name' => 'admin'])
+            ->permissions()
+            ->attach(Permission::where('name', 'not like', '%user')->get());
 
-        Role::create([
-            'name' => 'user'
-        ]);
+        Role::create(['name' => 'user']);
 
     }
 }

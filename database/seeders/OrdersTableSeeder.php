@@ -23,7 +23,6 @@ class OrdersTableSeeder extends Seeder
 
         for ($i = 1; $i <= 20; $i++)
         {
-
             $user = $users->random();
             
             $deliveryAddress = $user->addresses->filter(function($item){return $item->address_type_id === 1;})->first();
@@ -51,7 +50,7 @@ class OrdersTableSeeder extends Seeder
              $random = rand(1,5);
 
              for ($i2 = 1; $i2 <= $random; $i2++) 
-            {
+             {
                 $product = Product::all()->random();
 
                 OrderDetail::create([
@@ -66,6 +65,5 @@ class OrdersTableSeeder extends Seeder
                 ]);
             }
         }
-
     }
 }
