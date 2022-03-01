@@ -27,7 +27,7 @@ return new class extends Migration
                 $table->foreignId('deleted_by')->nullable()->constrained('users');
             });
     
-            Schema::table('role_permissions', function (Blueprint $table) {
+            Schema::table('permission_role', function (Blueprint $table) {
                 $table->foreignId('created_by')->nullable()->constrained('users');
                 $table->foreignId('updated_by')->nullable()->constrained('users');
                 $table->foreignId('deleted_by')->nullable()->constrained('users');

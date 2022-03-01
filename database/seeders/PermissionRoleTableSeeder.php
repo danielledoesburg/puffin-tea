@@ -8,7 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RolePermissionsTableSeeder extends Seeder
+class PermissionRoleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,7 +20,7 @@ class RolePermissionsTableSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Permission::truncate();
         Role::truncate();
-        DB::table('role_permissions')->truncate();
+        DB::table('permission_role')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $permissionData = [

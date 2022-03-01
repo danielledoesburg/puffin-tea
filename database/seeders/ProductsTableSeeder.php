@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\OnSale;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Property;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,7 @@ class ProductsTableSeeder extends Seeder
         Product::truncate();
         ProductImage::truncate();
         OnSale::truncate();
+        DB::table('product_property')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $data = [
@@ -63,6 +65,8 @@ class ProductsTableSeeder extends Seeder
                 'unit_amount' => $array['unit_amount'],
                 'unit_id' => $array['unit_id'],
             ]);
+
+            $product->properties()->attach(Property::all()->random(2));
 
             if ($array['on_sale'] !== false) 
             {
