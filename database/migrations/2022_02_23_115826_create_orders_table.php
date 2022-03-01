@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('ordernr');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('shipping_costs_id')->constrained();
             $table->unsignedDecimal('shipping_costs');
             $table->decimal('total');
             $table->foreignId('user_id')->constrained();
