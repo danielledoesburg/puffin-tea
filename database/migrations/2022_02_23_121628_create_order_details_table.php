@@ -19,8 +19,9 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->string('product');
             $table->unsignedInteger('quantity');
-            $table->string('unit');
             $table->unsignedInteger('unit_amount');
+            $table->foreignId('unit_id')->constrained();
+            $table->string('unit');
             $table->unsignedDecimal('price');
             $table->timestamps();
             $table->softDeletes();

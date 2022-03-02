@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->foreignId('category_id')->constrained();
-            $table->enum('type', ['Loose leaf', 'Tea bags']);
+            $table->enum('type', ['Loose leaf', 'Tea bags', 'Inapplicable']);
             $table->unsignedDecimal('price');
             $table->foreignId('vat_id')->constrained('vat');
             $table->unsignedInteger('unit_amount');

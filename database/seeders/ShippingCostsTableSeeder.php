@@ -41,7 +41,7 @@ class ShippingCostsTableSeeder extends Seeder
             ]
         ];
 
-        foreach($data as $array)
+        foreach ($data as $array)
         {
             ShippingCost::create([
                 'shipping_costs' => $array['shipping_costs'],

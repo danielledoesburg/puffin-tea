@@ -22,7 +22,7 @@ class AddressTypesTableSeeder extends Seeder
 
         $data = ['shipping address', 'billing address'];
 
-        foreach($data as $name) {
+        foreach ($data as $name) {
             AddressType::create([
                 'name' => $name
             ]);

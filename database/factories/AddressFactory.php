@@ -17,10 +17,9 @@ class AddressFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => rand(1,10),
             'address_type_id' => rand(1,2),
-            'address' => $this->faker->address(),
-            'zipcode' => $this->faker->zipcode(),
+            'address' => $this->faker->streetName() . ' ' . rand(1,250),
+            'zipcode' => $this->faker->postcode(),
             'city' => $this->faker->city(),
         ];
     }

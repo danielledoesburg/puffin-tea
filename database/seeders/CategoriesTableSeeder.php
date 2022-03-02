@@ -63,7 +63,7 @@ class CategoriesTableSeeder extends Seeder
             ]
         ];
 
-        foreach($data as $key => $array) 
+        foreach ($data as $key => $array) 
         {
             Category::create([
                 'name' => $array['name'],
