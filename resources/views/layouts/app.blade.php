@@ -32,7 +32,9 @@
 <body>
     <div id="app">
         <main class="py-4">
+            @yield('navbar')
             @yield('content')
+            @yield('footer')
         </main>
     </div>
 </body>
