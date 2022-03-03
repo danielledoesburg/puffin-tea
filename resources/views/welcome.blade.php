@@ -50,22 +50,7 @@
     <h1>Best Sellers</h1>
 
     <div class="flex-wrap">
-
-    </div>
-    <div class="grid-wrapper">
-      <div class="grid-object">
-        <img class= "resize-image" src="images/koropepermint1.jpg">
-        <p>PRICE&TITLE</p>
-        </div>
-        <div class="grid-object">
-          <img class= "resize-image" src="images/orteajasmine1.jpg">
-          <p>PRICE&TITLE</p>
-        </div>
-        <div class="grid-object">
-          <img class= "resize-image" src="images/teaspoon.jpg">
-          <p>PRICE&TITLE</p>
-        </div>
-    </div>
+    <example-component></example-component>
 
     <h1>Sale</h1>
 
