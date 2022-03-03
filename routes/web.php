@@ -27,7 +27,7 @@ Route::get('/products', function () {
 
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
-
+Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 Route::middleware('auth')->prefix('admin')->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
     Route::resource('product', App\Http\Controllers\ProductController::class)->names('product');

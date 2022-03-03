@@ -5424,6 +5424,9 @@ __webpack_require__.r(__webpack_exports__);
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    axios = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./slick */ "./resources/js/slick.js");
@@ -5450,7 +5453,17 @@ Vue.component('shopping-card', (__webpack_require__(/*! ./components/ShoppingCar
  */
 
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  data: {
+    products: []
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('products/show').then(function (response) {
+      return _this.products = response.data;
+    });
+  }
 });
 
 /***/ }),
@@ -5534,7 +5547,6 @@ $(document).ready(function () {
     ]
   });
 });
-$(element).slick();
 
 /***/ }),
 
