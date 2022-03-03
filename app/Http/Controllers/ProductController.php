@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Database\Seeders\ProductsTableSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -55,10 +56,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+   
+    public function show($id=1)
+        {
+            return Product::all();
+        }
+   
 
     /**
      * Show the form for editing the specified resource.

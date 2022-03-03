@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         
         <div class="container-fluid">
-            <a class="navbar-brand" href="x">
+            <a class="navbar-brand" href="/">
                 <img id="logo" src="https://i.ibb.co/jDN8ddD/puffin-tea-logo.png">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <div class= "example spacing">
-                        <a class="nav-link hover hover-1 first-link" aria-current="page" href="#">All Teas</a>
+                        <a class="nav-link hover hover-1 first-link" aria-current="page" href="/products">All Teas</a>
                     </div>
                     <div class= "example spacing">
                         <a class="nav-link hover hover-1" href="#">Help Center</a>
@@ -22,7 +22,7 @@
         </div>
         <div class= " navbar-brand display-in-row">
             <div class= "example spacing link-right">
-                <a class="nav-link hover hover-1" href="#">Log in</a>
+                <a class="nav-link hover hover-1" href="/login">Log in</a>
             </div>
             <?xml version="1.0" encoding="UTF-8" standalone="no"?> 
             <svg id= "basket-size" class="link-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
@@ -32,4 +32,7 @@
             </svg>
         </div>
     </nav>
+    <div class=cart>
+        <h3>Cart</h3>
+    </div>
     @endsection

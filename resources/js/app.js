@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: axios } = require('axios');
+
 require('./bootstrap');
 require('./slick');
 require('./multiple-items-carousel');
@@ -32,4 +34,12 @@ Vue.component('shopping-card', require('./components/ShoppingCard.vue').default)
 
 const app = new Vue({
     el: '#app',
-});
+    data:{
+        products:[],
+    },
+
+   mounted(){
+       axios.get('products/show').then(response => this.products = response.data)
+   }
+}
+);
