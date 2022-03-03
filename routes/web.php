@@ -21,6 +21,10 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/products', function () {
+    return view('products');
+});
+
 
 Route::middleware('auth')->prefix('admin')->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');

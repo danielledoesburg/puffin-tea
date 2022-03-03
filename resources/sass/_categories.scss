@@ -1,0 +1,86 @@
+hr{
+    height: 1px;
+    background-color: black;
+    border: none;
+    opacity: 100%;
+    margin-top: 0px;
+}
+.position-categories{
+    display: flex;
+    h4{
+        margin-left:30px;
+        font-size: 18px;
+        padding-top: 50px;
+        padding-bottom:20px;
+        font-weight: bolder;
+    }
+    ul{
+        width: 200px;
+        padding-top: 20px;
+        margin-left:20px;
+        line-height: 2.5;
+        font-size: 12px;
+        list-style: none;
+        background-color: white;
+        padding-bottom:20px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    hr{
+        margin-left:20px;
+        height: 1px;
+        background-color: black;
+        border: none;
+        opacity: 100%;
+        margin-top:0;
+    }
+
+}
+.form-check-input{
+    margin-top:7px;
+}
+.products-image{
+    height: 300px;
+    transition: all .2s ease-in-out;
+}
+.products-image:hover{
+    transform: scale(1.02);
+    box-shadow: rgba(211, 174, 174, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.right-side{
+    width:100%;
+    h5{
+        text-align: center;
+        font-weight: bolder;
+        margin-top:30px;
+    }
+    
+}
+.products-grid{
+    width: 100%;
+    display: grid;
+    grid-gap:30px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 250px));
+    justify-content: center;
+    padding:50px;
+    border-top-color: black;
+}
+.form-check-input{
+    background-color: $primary-one;
+    border: none;
+    
+}
+.form-check-input:checked {
+    background-color:$primary-3;
+    border-color: $primary-3;
+}
+.form-check-input:hover{
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.form-check-input[type=checkbox]{
+    border-radius:0;
+}
+.form-check-input:focus{
+    outline: 0 !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
