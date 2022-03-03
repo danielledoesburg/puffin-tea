@@ -36,7 +36,7 @@ class ProductsTableSeeder extends Seeder
                 'vat_id' => 2,
                 'unit_amount' => 500,
                 'unit_id' => 1,
-                'on_sale' => false,
+                'on_sale' => 12.50,
                 'image_filenames'=> ['biocamille1.jpg', 'biocamille2.jpg', 'biocamille3'],
             ],
             [
@@ -84,7 +84,7 @@ class ProductsTableSeeder extends Seeder
                 'vat_id' => 2,
                 'unit_amount' => 500,
                 'unit_id' => 1,
-                'on_sale' => false,
+                'on_sale' => 14.00,
                 'image_filenames'=> ['koropepermint1.jpg','koropepermint2.jpg', 'koropepermint3.jpg'],
             ],
             [
@@ -108,7 +108,7 @@ class ProductsTableSeeder extends Seeder
                 'vat_id' => 2,
                 'unit_amount' => 10,
                 'unit_id' => 3,
-                'on_sale' => false,
+                'on_sale' => 5.50,
                 'image_filenames'=> ['queenberryfruit1.jpg','qeenberryfruit2.jpg'],
             ],
             [
@@ -276,7 +276,7 @@ class ProductsTableSeeder extends Seeder
                 'vat_id' => 2,
                 'unit_amount' => 75,
                 'unit_id' => 1,
-                'on_sale' => false,
+                'on_sale' => 4.95,
                 'image_filenames'=> ['jadetips1.jpg','jadetips2.jpg'],
             ]
         ];
