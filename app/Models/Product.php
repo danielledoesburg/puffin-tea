@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
@@ -43,6 +44,10 @@ class Product extends Model
         return $this->belongsToMany(Property::class)->withTimestamps();
     }
 
+    public function orderDetails()
+    {
+        return $this->hasMany(OrderDetail::class)->withTimestamps();
+    }
 }
 
 

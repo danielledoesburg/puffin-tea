@@ -22,6 +22,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+
 Route::middleware('auth')->prefix('admin')->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
     Route::resource('product', App\Http\Controllers\ProductController::class)->names('product');
