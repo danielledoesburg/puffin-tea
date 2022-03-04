@@ -61,7 +61,7 @@ class OrdersTableSeeder extends Seeder
                     'unit_id' => $product->unit_id,
                     'unit' => $product->unit->name,
                     'unit_amount' => $product->unit_amount,
-                    'price' => $product->onSale->first()->price ?? $product->price
+                    'price' => $product->onSale->price ?? $product->price
                 ]);
             }
         }

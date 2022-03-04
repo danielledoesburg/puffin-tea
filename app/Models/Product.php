@@ -14,6 +14,8 @@ class Product extends Model
         'id',
     ];
 
+    protected $with = ['mainImage', 'onSale'];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -21,7 +23,14 @@ class Product extends Model
 
     public function onSale()
     {
-        return $this->hasMany(OnSale::class);
+        return $this->hasOne(OnSale::class)->ofMany([
+            'date_from' => 'max',
+            'created_at' => 'max'
+        ], function ($query) {
+            $query
+                ->where('date_from', '<=', date('Y-m-d'))
+                ->where('date_till', '>=', date('Y-m-d'));
+        });
     }
 
     public function vat()
@@ -32,6 +41,11 @@ class Product extends Model
     public function images()
     {
         return $this->hasMany(ProductImage::class);
+    }
+
+    public function mainImage()
+    {
+        return $this->hasOne(ProductImage::class)->ofMany('order_sequence', 'min');
     }
 
     public function unit()
