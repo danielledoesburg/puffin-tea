@@ -25,6 +25,10 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('shopping-card', require('./components/ShoppingCard.vue').default);
+Vue.component('bestsellers', require('./components/BestSellers.vue').default);
+Vue.component('sale', require('./components/Sale.vue').default);
+Vue.component('header-carousel', require('./components/HeaderCarousel.vue').default);
+Vue.component('products', require('./components/Products.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

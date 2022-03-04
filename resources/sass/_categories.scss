@@ -40,6 +40,8 @@ hr{
 }
 .products-image{
     height: 300px;
+    width:240px;
+    object-fit: cover;
     transition: all .2s ease-in-out;
 }
 .products-image:hover{
