@@ -32,7 +32,10 @@
             </svg>
         </div>
     </nav>
-    <div class=cart>
+    <div class="position-right-flex">
+    <div class="cart">
         <h3>Cart</h3>
+        <hr>
+    </div>
     </div>
     @endsection

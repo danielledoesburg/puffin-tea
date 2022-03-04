@@ -109,52 +109,10 @@
         </ul>
     </div>
     <div class="right-side">
-    <h5>Products</h5>
-    <div class="products-grid">
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img  class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-        <div>
-            <img class="products-image" src="images/biocamille3.jpg">
-            <p>dhsfghdsgfhjsdg</p>
-        </div>
-
-
-
-    </div>
+        <h5>Products</h5>
+        <products 
+            :products="products">
+        </products>
     </div>
 </div>
 

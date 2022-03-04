@@ -58,9 +58,9 @@ class ProductController extends Controller
      */
    
     public function show($id=1)
-        {
-            return Product::all();
-        }
+    {
+        return Product::with(['images', 'vat'])->get();
+    }
    
 
     /**
