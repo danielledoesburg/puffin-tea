@@ -5514,16 +5514,138 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      imagePath: 'images/'
+      imagePath: 'images/',
+      filteredItems: []
     };
   },
   props: {
     products: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    filterArray: function filterArray(value) {
+      return this.products.filter(function (product) {
+        return product.category_id == value;
+      });
     }
   }
 });
@@ -42477,23 +42599,693 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "products-grid" },
-    _vm._l(_vm.products, function (product) {
-      return _c("div", [
-        _c("img", {
-          staticClass: "products-image",
-          attrs: { src: _vm.imagePath + product.images[0].filename },
-        }),
+  return _c("div", { staticClass: "position-categories" }, [
+    _c("div", { staticClass: "categories" }, [
+      _c("h4", [_vm._v("Categories")]),
+      _vm._v(" "),
+      _c("ul", [
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(1),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(1)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(1),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Green Tea \n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(product.name))]),
-      ])
-    }),
-    0
-  )
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(2),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(2)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(2),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Black tea\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(3),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(3)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(3),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            White Tea\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(4),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(4)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(4),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Oolong\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(5),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(5)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(5),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                        Pu Erh\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(6),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(6)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(6),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Matcha\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(7),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(7)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(7),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Rooibos\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(8),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(8)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(8),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                        Herbal\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(9),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(9)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(9),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                        Gifts\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filteredItems,
+                  expression: "filteredItems",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+              domProps: {
+                value: _vm.filterArray(10),
+                checked: Array.isArray(_vm.filteredItems)
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(10)) > -1
+                  : _vm.filteredItems,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.filteredItems,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.filterArray(10),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filteredItems = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filteredItems = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Accesories\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _vm._m(0),
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "right-side" }, [
+      _c("h5", [_vm._v("Products")]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "products-grid" },
+        _vm._l(_vm.products, function (product) {
+          return _c("div", { staticClass: "products-card" }, [
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-plus-circle-fill",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "30",
+                  height: "30",
+                  fill: "currentColor",
+                  viewBox: "0 0 16 16",
+                },
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z",
+                  },
+                }),
+              ]
+            ),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "products-image",
+              attrs: { src: _vm.imagePath + product.images[0].filename },
+            }),
+            _vm._v(" "),
+            _c("p", { staticClass: "price" }, [
+              _vm._v(_vm._s(product.price) + " €"),
+            ]),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(product.name))]),
+          ])
+        }),
+        0
+      ),
+    ]),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "checkbox",
+              value: "",
+              id: "flexCheckIndeterminate",
+            },
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "flexCheckIndeterminate" },
+            },
+            [
+              _vm._v(
+                "\n                            Leaf\n                        "
+              ),
+            ]
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: {
+              type: "checkbox",
+              value: "",
+              id: "flexCheckIndeterminate",
+            },
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "flexCheckIndeterminate" },
+            },
+            [
+              _vm._v(
+                "\n                            Bags\n                        "
+              ),
+            ]
+          ),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
