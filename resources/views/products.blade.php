@@ -5,7 +5,7 @@
 <hr>
 
         <products 
-            :products="products">
+            :products="{{ $products }}">
         </products>
 
 
