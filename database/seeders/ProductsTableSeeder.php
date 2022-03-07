@@ -109,7 +109,7 @@ class ProductsTableSeeder extends Seeder
                 'unit_amount' => 10,
                 'unit_id' => 3,
                 'on_sale' => 5.50,
-                'image_filenames'=> ['queenberryfruit1.jpg','qeenberryfruit2.jpg'],
+                'image_filenames'=> ['qeenberryfruit1.jpg','qeenberryfruit2.jpg'],
             ],
             [
                 'name' => 'Or Tea - Dragon Pearl Jasmine (green tea)',
@@ -133,7 +133,7 @@ class ProductsTableSeeder extends Seeder
                 'unit_amount' => 10,
                 'unit_id' => 3,
                 'on_sale' => false,
-                'image_filenames'=> ['orteajasmine1.jpg','orteajasmine2.jpg'],
+                'image_filenames'=> ['orteabeauty1.jpg','orteabeauty2.jpg'],
             ],
             [
                 'name' => 'Tea leaf tumbler',
@@ -181,10 +181,10 @@ class ProductsTableSeeder extends Seeder
                 'unit_amount' => 1,
                 'unit_id' => 4,
                 'on_sale' => false,
-                'image_filenames'=> ['giftset.jpg','giftset2.jpg'],
+                'image_filenames'=> ['giftset1.jpg','giftset2.jpg'],
             ],
             [
-                'name' => 'Katsumi Lovely Night(rooibos) ',
+                'name' => 'Katsumi Lovely Night (rooibos) ',
                 'description' => "Night time teas are making a comeback! Whether you're hosting guests overnight or a Netflix evening with friends, cozy up your evenings with a touch of Lovely Night Fever thanks to our irresistible organic herbal tea",
                 'category_id' => 7,
                 'type' => 1,
