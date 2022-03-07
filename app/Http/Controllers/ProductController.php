@@ -17,15 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::all()->first()->category->name;
-        // dd($products);
-        
-        // $category = Category::findOrFail(1);
-        // dd($category->products);
-// dd(Product::findMany($this->bestSellerIds(3)));
         return view('products', [
             'products' => Product::all(),
-            // 'bestSellers' => Product::findMany($this->bestSellerIds(10)),
         ]);
 
     }
@@ -96,23 +89,5 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    protected function bestSellerIds($amount = 10)
-    {
-        $ids = DB::table('products')
-                ->select('products.id')
-                ->join('order_details', function($join) { 
-                    $join->on ('order_details.product_id', '=', 'products.id')
-                        ->where('order_details.created_at', '>', DB::raw('DATE_SUB(NOW(), INTERVAL 3 MONTH)'));
-                })
-                ->whereNull('products.deleted_at')
-                ->groupBy('products.id')
-                ->orderBy(DB::raw('sum(order_details.quantity)'), 'desc')
-                ->take($amount)
-                ->get()
-                ->pluck('id');
-
-        return $ids;
     }
 }
