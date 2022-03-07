@@ -24,7 +24,8 @@ class ProductController extends Controller
         // dd($category->products);
 // dd(Product::findMany($this->bestSellerIds(3)));
         return view('products', [
-            'bestSellers' => Product::findMany($this->bestSellerIds(10)),
+            'products' => Product::all(),
+            // 'bestSellers' => Product::findMany($this->bestSellerIds(10)),
         ]);
 
     }

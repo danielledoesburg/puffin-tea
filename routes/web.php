@@ -21,16 +21,26 @@ Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/products', function () {
-    return view('products');
-});
 
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
-Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+Route::get('products/{product:slug}',[App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+
+
+// Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+// Route::prefix('products')->group(function() {
+//     Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
+//     Route::resource('product', App\Http\Controllers\ProductController::class)->names('products.product');
+    
+// });
+
+
+
+
+
 Route::middleware('auth')->prefix('admin')->group(function() {
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
-    Route::resource('product', App\Http\Controllers\ProductController::class)->names('product');
+    Route::resource('products', App\Http\Controllers\ProductController::class)->names('product');
     
 });
 
