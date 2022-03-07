@@ -29,7 +29,10 @@ class Product extends Model
         ], function ($query) {
             $query
                 ->where('date_from', '<=', date('Y-m-d'))
-                ->where('date_till', '>=', date('Y-m-d'));
+                ->where(function ($query) {
+                    $query->whereNull('date_till')
+                        ->orWhere('date_till', '>=', date('Y-m-d'));
+                });
         });
     }
 
