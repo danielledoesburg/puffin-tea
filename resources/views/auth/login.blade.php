@@ -3,11 +3,12 @@
 @section('content')
 <div class="login-page">
   <div class="form-login">
-    <form class="login-form">
-      <input type="text" class="form-control form-control-lg" placeholder="username"/>
-      <input type="password"  placeholder="password"/>
-      <button>login</button>
-      <p class="message">Not registered? <a href="#">Create an account</a></p>
+    <form class="login-form" method="POST" action="login">
+    @csrf
+      <input type="text" class="form-control form-control-lg" name="email" placeholder="email"/>
+      <input type="password" name="password" placeholder="password"/>
+      <button type="submit">login</button>
+      <p class="message">Not registered? <a href="register">Create an account</a></p>
     </form>
   </div>
 </div>

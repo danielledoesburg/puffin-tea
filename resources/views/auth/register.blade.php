@@ -24,7 +24,7 @@
                                                     <p>{{$message}}</p>
                                                 @enderror
                                                 <input 
-                                                    name="first_tname"
+                                                    name="first_name"
                                                     type="text" 
                                                     id="first_name" 
                                                     value="{{ old('first_name') }}"
@@ -84,17 +84,17 @@
                                     <h3 class="fw-normal mb-5">Delivery and Contact Details</h3>
                                     <div class="mb-4 pb-2">
                                         <div class="form-outline form-white">
-                                            @error('adress')
+                                            @error('address')
                                                 <p>{{$message}}</p>
                                             @enderror
                                             <input 
-                                                name="adress"
+                                                name="address"
                                                 type="text" 
-                                                id="adress" 
-                                                value="{{ old('adress') }}"
+                                                id="address" 
+                                                value="{{ old('address') }}"
                                                 class="form-control form-control-lg"
                                                 required />
-                                            <label class="form-label" for="adress">Street + Nr</label>
+                                            <label class="form-label" for="address">Street + Nr</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -133,14 +133,14 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-4 pb-2">
                                             <div class="form-outline">
-                                                @error('city')
+                                                @error('email')
                                                     <p>{{$message}}</p>
                                                 @enderror
                                                 <input
                                                     name="email"
                                                     type="email" 
                                                     id="email" 
-                                                    value="{{ old('city') }}"
+                                                    value="{{ old('email') }}"
                                                     class="form-control form-control-lg"
                                                     required/>
                                                 <label class="form-label" for="email">E-mail</label>
@@ -148,7 +148,7 @@
                                         </div>
                                         <div class="col-md-6 mb-4 pb-2">
                                             <div class="form-outline">
-                                                @error('city')
+                                                @error('phonenr')
                                                     <p>{{$message}}</p>
                                                 @enderror
                                                 <input

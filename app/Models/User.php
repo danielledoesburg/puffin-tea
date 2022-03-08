@@ -43,9 +43,22 @@ class User extends Authenticatable
         return $this->hasOne(NewsletterSubscription::class);
     }
 
-    public function addresses() 
+    public function shippingAddress() 
     {
-        return $this->hasMany(Address::class);
+        return $this->hasOne(Address::class)->ofMany([
+            'created_at' => 'max'
+        ], function ($query) {
+            $query->where('address_type_id', 1);
+        });
+    }
+
+    public function billingAddress() 
+    {
+        return $this->hasOne(Address::class)->ofMany([
+            'created_at' => 'max'
+        ], function ($query) {
+            $query->where('address_type_id', 2);
+        });
     }
 
     public function role()
