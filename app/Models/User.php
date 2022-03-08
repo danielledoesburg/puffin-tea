@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,18 +13,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'first_name',
-        'first_name',
-        'email',
-        'phonenr',
-        'password',
-        'role_id',
+    protected $guarded = [
+        'id',
     ];
 
     /**
@@ -39,11 +30,13 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast.
      *
+     * @param  integer  $value
      * @var array<string, string>
      */
     // protected $casts = [
     //     'email_verified_at' => 'datetime',
     // ];
+
 
     public function newsletterSubscription() 
     {
