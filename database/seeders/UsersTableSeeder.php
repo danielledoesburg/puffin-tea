@@ -18,14 +18,19 @@ class UsersTableSeeder extends Seeder
         ->create()
         ->each(function($user){
             
-            \App\Models\Address::factory(1)->create(['user_id' => $user->id, 'address_type_id' => 1]);
+            $address = \App\Models\Address::factory()->create(['user_id' => $user->id, 'address_type_id' => 1]);
 
-            if (rand(0,1)) \App\Models\Address::factory(1)->create(
-                [
+            if (rand(0,1)) { 
+                \App\Models\Address::factory(1)->create([
                     'user_id' => $user->id, 
                     'address_type_id' => 2
-                ]
-            );
+                ]);
+             } else 
+             {
+                 $address2 = $address->replicate();
+                 $address2->address_type_id = 2;
+                 $address2->save();
+             };
             
             if (rand(0,1)) \App\Models\NewsletterSubscription::create(
                 [
@@ -41,8 +46,6 @@ class UsersTableSeeder extends Seeder
                     'user_id' => $user->id, 
                 ]
             );
-
-
         });
     }
 }
