@@ -4,7 +4,12 @@
 @include('navbar')
 @section('content')
 
-
+    @if (session()->has('success'))
+    <div>
+        <p>{{session()->get('success')}}</p>
+    </div>
+    @endif
+    
     <header-carousel></header-carousel>
     <div id="break"></div>
     <bestsellers
