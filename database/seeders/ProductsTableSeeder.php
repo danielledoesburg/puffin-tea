@@ -310,7 +310,7 @@ class ProductsTableSeeder extends Seeder
                 OnSale::create([
                     'product_id' => $product->id,
                     'price' => $array['on_sale'],
-                    'date_from' => date('Y-m-d', strtotime(now() . rand(-10, 10) . 'day')),
+                    'date_from' => date('Y-m-d', strtotime(now() . rand(-10, 1) . 'day')),
                 ]);
             }
 

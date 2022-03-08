@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,7 +54,10 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'min:1', 'max:255'],
             'last_name' => ['required', 'string', 'min:1', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'], //note to self password_confirmation field required for this to work
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address' => ['required', 'string', 'min:5'],
+            'zipcode' => ['required', 'string', 'min:4'],
+            'city' => ['required', 'string', 'min:2'],
         ]);
     }
 
@@ -65,11 +69,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        User::create([
+        $user = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
+            'email' => $data['phonenr'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $shippingAddress = Address::create([
+            'user_id' => $user->id,
+            'address_type_id' => 1, 
+            'address' => $data['address'],
+            'zipcode' => $data['zipcode'],
+            'city' => $data['city'],
+        ]);
+
+        $billingAddress = $shippingAddress->replicate();
+        $billingAddress->address_type_id = 2;
+        $billingAddress->save();
+
+        return $user;
     }
 }
