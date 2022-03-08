@@ -13,9 +13,58 @@ body{
 }
 h1{
     text-align: center;
-    margin:60px;
-    font-weight: bolder
+    padding-bottom:30px;
+    font-weight: bolder;
 }
 .py-4{
     padding:0 !important;
+}
+.font-size-big{
+    font-size: 28px !important;
+    margin-bottom:50px !important;
+    margin-top:25px !important;
+}
+.no-padding{
+    padding:0 !important;
+}
+.custom-shape-divider-top-1646675233 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1646675233 svg {
+    position: relative;
+    display: block;
+    width: calc(118% + 1.3px);
+    height: 234px;
+}
+
+.shape-fill {
+    fill: #B2A4E2;
+}
+
+.custom-shape-divider-top-1646675534 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1646675534 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 132px;
+}
+.shape-fill1 {
+    fill: #F7F0EA;
+}
+#break{
+    height:50px;
 }

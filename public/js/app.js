@@ -5382,7 +5382,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      imagePath: 'images/'
+    };
+  },
   props: {
     products: {
       type: Array,
@@ -5678,13 +5686,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
+  data: function data() {
+    return {
+      imagePath: 'images/'
+    };
+  },
+  props: {
+    products: {
+      type: Array,
+      required: true
+    }
   }
 });
 
@@ -42333,43 +42345,51 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "background-bestsellers" } }, [
+    _c("div", { staticClass: "custom-shape-divider-top-1646675955" }, [
+      _c(
+        "svg",
+        {
+          attrs: {
+            "data-name": "Layer 1",
+            xmlns: "http://www.w3.org/2000/svg",
+            viewBox: "0 0 1200 120",
+            preserveAspectRatio: "none",
+          },
+        },
+        [
+          _c("path", {
+            staticClass: "shape-fill1",
+            attrs: {
+              d: "M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z",
+            },
+          }),
+        ]
+      ),
+    ]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Best Sellers")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "to-center" }, [
+      _c(
+        "div",
+        { staticClass: "responsive" },
+        _vm._l(_vm.products, function (product) {
+          return _c("div", { staticClass: "product-in-carousel" }, [
+            _c("img", {
+              staticClass: "small-image products-image",
+              attrs: { src: _vm.imagePath + product.main_image.filename },
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v(_vm._s(product.name))]),
+          ])
+        }),
+        0
+      ),
+    ]),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "grid-wrapper" }, [
-      _c("div", { staticClass: "grid-object" }, [
-        _c("img", {
-          staticClass: "resize-image",
-          attrs: { src: "images/giftset1.jpg" },
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v("bhjbsadhashdgjhasd")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "grid-object" }, [
-        _c("img", {
-          staticClass: "resize-image",
-          attrs: { src: "images/orteabeauty1.jpg" },
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v("bhjbsadhashdgjhasd")]),
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "grid-object" }, [
-        _c("img", {
-          staticClass: "resize-image",
-          attrs: { src: "/images/goodandproperoolong1.jpg" },
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v("bhjbsadhashdgjhasd")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43211,7 +43231,7 @@ var render = function () {
             _vm._v(" "),
             _c("img", {
               staticClass: "products-image",
-              attrs: { src: _vm.imagePath + product.images[0].filename },
+              attrs: { src: _vm.imagePath + product.main_image.filename },
             }),
             _vm._v(" "),
             _c("p", { staticClass: "price" }, [
@@ -43308,78 +43328,35 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "grid-wrapper" },
+    _vm._l(_vm.products, function (product) {
+      return _c("div", { staticClass: "grid-object" }, [
+        _c("img", {
+          staticClass: "resize-image",
+          attrs: { src: _vm.imagePath + product.main_image.filename },
+        }),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "description-padding" } }, [
+          _c("p", [_vm._v(_vm._s(product.name))]),
+          _vm._v(" "),
+          _c("div", { staticClass: "to-center" }, [
+            _c("p", { staticClass: "old-price" }, [
+              _vm._v(_vm._s(product.price)),
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "new-price" }, [
+              _vm._v(_vm._s(product.on_sale.price) + " \t€"),
+            ]),
+          ]),
+        ]),
+      ])
+    }),
+    0
+  )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "to-center" }, [
-      _c("div", { staticClass: "responsive" }, [
-        _c("div", [
-          _c("img", {
-            staticClass: "small-image",
-            attrs: {
-              src: "https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg",
-            },
-          }),
-          _vm._v(" "),
-          _c("p", [_vm._v("PRICETITLE")]),
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("img", {
-            staticClass: "small-image",
-            attrs: {
-              src: "https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg",
-            },
-          }),
-          _vm._v(" "),
-          _c("p", [_vm._v("PRICETITLE")]),
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("img", {
-            staticClass: "small-image",
-            attrs: {
-              src: "https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg",
-            },
-          }),
-          _vm._v(" "),
-          _c("p", [_vm._v("PRICETITLE")]),
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("img", {
-            staticClass: "small-image",
-            attrs: {
-              src: "https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg",
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("img", {
-            staticClass: "small-image",
-            attrs: {
-              src: "https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg",
-            },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("img", {
-            staticClass: "small-image",
-            attrs: {
-              src: "https://i.ibb.co/6NT2jxd/pexels-olenka-sergienko-3323682.jpg",
-            },
-          }),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
