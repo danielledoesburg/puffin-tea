@@ -18,6 +18,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Route::get('register', [App\Http\Controllers\Testing\RegisterController::class, 'create']);
+// Route::post('register', [App\Http\Controllers\Testing\RegisterController::class, 'store']);
+
+
+
+
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

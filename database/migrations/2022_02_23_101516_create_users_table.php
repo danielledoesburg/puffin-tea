@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phonenr')->nullable();
             $table->string('password');
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id')->default(3)->constrained();
             $table->timestamps();
             $table->softDeletes();
         });
