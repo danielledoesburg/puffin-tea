@@ -13,18 +13,25 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::controller(\App\Http\Controllers\HomeController::class)->group(function () {
+    Route::get('/home', 'index')->name('home');
+    Route::get('/', 'index');
+});
 
+// Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Auth::routes();
+
+Route::resource('account', App\Http\Controllers\AccountController::class)->middleware('auth');
+// Route::get('/account', [App\Http\Controllers\AccountController::class, 'index'])->middleware('auth')->name('account');
+// Route::get('/account/edit', [App\Http\Controllers\AccountController::class, 'index'])->middleware('auth')->name('account');
 
 // Route::get('register', [App\Http\Controllers\Testing\RegisterController::class, 'create']);
 // Route::post('register', [App\Http\Controllers\Testing\RegisterController::class, 'store']);
 
 
-
-
-Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
