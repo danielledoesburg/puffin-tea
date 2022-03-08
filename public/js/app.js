@@ -5513,6 +5513,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5637,10 +5659,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mounted: function mounted() {},
   data: function data() {
     return {
       imagePath: 'images/',
-      filteredItems: []
+      filteredItems: [],
+      unpackedFilteredItems: []
     };
   },
   props: {
@@ -5651,9 +5675,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     filterArray: function filterArray(value) {
-      return this.products.filter(function (product) {
+      var _Array$prototype;
+
+      var unpackedArray = this.products.filter(function (product) {
         return product.category_id == value;
       });
+      this.unpackedFilteredItems = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, _toConsumableArray(this.filteredItems));
+      return unpackedArray;
     }
   }
 });
@@ -42638,9 +42666,9 @@ var render = function () {
               staticClass: "form-check-input",
               attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
               domProps: {
-                value: _vm.filterArray(1),
+                value: _vm.filterArray(1).concat(),
                 checked: Array.isArray(_vm.filteredItems)
-                  ? _vm._i(_vm.filteredItems, _vm.filterArray(1)) > -1
+                  ? _vm._i(_vm.filteredItems, _vm.filterArray(1).concat()) > -1
                   : _vm.filteredItems,
               },
               on: {
@@ -42649,7 +42677,7 @@ var render = function () {
                     $$el = $event.target,
                     $$c = $$el.checked ? true : false
                   if (Array.isArray($$a)) {
-                    var $$v = _vm.filterArray(1),
+                    var $$v = _vm.filterArray(1).concat(),
                       $$i = _vm._i($$a, $$v)
                     if ($$el.checked) {
                       $$i < 0 && (_vm.filteredItems = $$a.concat([$$v]))
@@ -43203,46 +43231,87 @@ var render = function () {
     _c("div", { staticClass: "right-side" }, [
       _c("h5", [_vm._v("Products")]),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "products-grid" },
-        _vm._l(_vm.products, function (product) {
-          return _c("div", { staticClass: "products-card" }, [
-            _c(
-              "svg",
-              {
-                staticClass: "bi bi-plus-circle-fill",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "30",
-                  height: "30",
-                  fill: "currentColor",
-                  viewBox: "0 0 16 16",
-                },
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z",
+      _vm.filteredItems.length < 1
+        ? _c(
+            "div",
+            { staticClass: "products-grid" },
+            _vm._l(_vm.products, function (product) {
+              return _c("div", { staticClass: "products-card" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-plus-circle-fill",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "30",
+                      height: "30",
+                      fill: "currentColor",
+                      viewBox: "0 0 16 16",
+                    },
                   },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "products-image",
+                  attrs: { src: _vm.imagePath + product.main_image.filename },
                 }),
-              ]
-            ),
-            _vm._v(" "),
-            _c("img", {
-              staticClass: "products-image",
-              attrs: { src: _vm.imagePath + product.main_image.filename },
+                _vm._v(" "),
+                _c("p", { staticClass: "price" }, [
+                  _vm._v(_vm._s(product.price) + " €"),
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(product.name))]),
+              ])
             }),
-            _vm._v(" "),
-            _c("p", { staticClass: "price" }, [
-              _vm._v(_vm._s(product.price) + " €"),
-            ]),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(product.name))]),
-          ])
-        }),
-        0
-      ),
+            0
+          )
+        : _c(
+            "div",
+            { staticClass: "products-grid" },
+            _vm._l(_vm.unpackedFilteredItems, function (item) {
+              return _c("div", { staticClass: "products-card" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-plus-circle-fill",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "30",
+                      height: "30",
+                      fill: "currentColor",
+                      viewBox: "0 0 16 16",
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "products-image",
+                  attrs: { src: _vm.imagePath + item.main_image.filename },
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "price" }, [
+                  _vm._v(_vm._s(item.price) + " €"),
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(item.name))]),
+              ])
+            }),
+            0
+          ),
     ]),
   ])
 }

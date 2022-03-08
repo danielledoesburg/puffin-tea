@@ -4,8 +4,11 @@
 
 
 #basket-size{
-    width:30px;
-    
+    width:30px; 
+    z-index: 9999;
+}
+#basket-size:hover{
+    color:$primary-3;
 }
 
 .spacing{
@@ -80,4 +83,9 @@
         font-size: 14px !important;
     }
     
+}
+.position-circle{
+    position:absolute;
+    right:30px;
+    bottom:-16px;
 }
