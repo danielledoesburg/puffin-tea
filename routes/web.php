@@ -14,28 +14,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::controller(\App\Http\Controllers\HomeController::class)->group(function () {
-    Route::get('/home', 'index')->name('home');
-    Route::get('/', 'index');
+    Route::get('/home', 'index');
+    Route::get('/', 'index')->name('home');
 });
-
-// Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 
 Auth::routes();
 
 Route::resource('account', App\Http\Controllers\AccountController::class)->middleware('auth');
-// Route::get('/account', [App\Http\Controllers\AccountController::class, 'index'])->middleware('auth')->name('account');
-// Route::get('/account/edit', [App\Http\Controllers\AccountController::class, 'index'])->middleware('auth')->name('account');
-
-// Route::get('register', [App\Http\Controllers\Testing\RegisterController::class, 'create']);
-// Route::post('register', [App\Http\Controllers\Testing\RegisterController::class, 'store']);
-
-
-
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
-Route::get('products/{product:slug}',[App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+
+
+
+// Route::middleware('auth')->prefix('admin')->group(function() {
+//     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
+//     Route::resource('products', App\Http\Controllers\ProductController::class)->names('product');
+    
+// });
+
+
+// Route::fallback(function () {
+//     //
+// });
 
 
 // Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
@@ -44,14 +44,3 @@ Route::get('products/{product:slug}',[App\Http\Controllers\ProductController::cl
 //     Route::resource('product', App\Http\Controllers\ProductController::class)->names('products.product');
     
 // });
-
-
-
-
-
-Route::middleware('auth')->prefix('admin')->group(function() {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('admin');
-    Route::resource('products', App\Http\Controllers\ProductController::class)->names('product');
-    
-});
-
