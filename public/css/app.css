@@ -11934,8 +11934,6 @@ hr {
 }
 
 .bi {
-  z-index: 9999 !important;
-  position: absolute;
   margin: 15px;
   color: #ffc100;
   transition: all 0.2s ease-in-out;
@@ -12188,15 +12186,12 @@ h4, .h4 {
 .column {
   float: left;
   width: 120px;
-}
-.column img {
-  margin-left: 20px;
+  padding: 0 img;
+  padding-margin-left: 35px;
 }
 
-.row {
-  margin-left: 15px;
-  display: flex;
-  width: 18rem;
+#row-width {
+  width: 300px;
 }
 
 .column {
@@ -12211,7 +12206,6 @@ h4, .h4 {
 }
 #cartitems-margin-right p {
   margin: 2px;
-  text-align: center;
 }
 
 h6, .h6 {
@@ -12222,6 +12216,19 @@ h6, .h6 {
 .check-out {
   margin-bottom: 10px;
   font-weight: bolder;
+}
+
+.toggleCart {
+  display: none;
+}
+
+#change-the-position {
+  position: absolute;
+  z-index: 9999;
+}
+
+#display-basket-description {
+  padding-left: 30px;
 }
 
 body {

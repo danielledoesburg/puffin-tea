@@ -5717,8 +5717,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      imagePath: 'images/'
+      imagePath: 'images/',
+      onSaleShorten: []
     };
+  },
+  mounted: function mounted() {
+    this.onSaleShorten = this.products.slice(0, 3);
   },
   props: {
     products: {
@@ -5801,15 +5805,29 @@ Vue.component('products', (__webpack_require__(/*! ./components/Products.vue */ 
 var app = new Vue({
   el: '#app',
   data: {
-    products: []
+    products: [],
+    isActive: false,
+    productsForCart: JSON.parse(sessionStorage.getItem('numberincart'))
   },
-  mounted: function mounted() {
+  created: function created() {
     var _this = this;
 
     axios.get('products/show').then(function (response) {
-      return _this.products = response.data;
+      _this.products = response.data;
+      var numberincart = [];
+
+      for (var i = 0; i < _this.products.length; i++) {
+        _this.products[i].quantity = 0;
+        numberInCart.length = _this.products.length + 1;
+        numberInCart[i] = {
+          quantity: 0,
+          id: i
+        };
+        sessionStorage.setItem('numberincart', JSON.stringify(numberincart));
+      }
     });
-  }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -43246,6 +43264,7 @@ var render = function () {
                       width: "30",
                       height: "30",
                       fill: "currentColor",
+                      id: "change-the-position",
                       viewBox: "0 0 16 16",
                     },
                   },
@@ -43400,7 +43419,7 @@ var render = function () {
   return _c(
     "div",
     { staticClass: "grid-wrapper" },
-    _vm._l(_vm.products, function (product) {
+    _vm._l(_vm.onSaleShorten, function (product) {
       return _c("div", { staticClass: "grid-object" }, [
         _c("img", {
           staticClass: "resize-image",
