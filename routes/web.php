@@ -23,7 +23,7 @@ Auth::routes();
 Route::resource('account', App\Http\Controllers\AccountController::class)->middleware('auth');
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
-
+Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 
 
 // Route::middleware('auth')->prefix('admin')->group(function() {
@@ -38,7 +38,7 @@ Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])
 // });
 
 
-// Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+
 // Route::prefix('products')->group(function() {
 //     Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 //     Route::resource('product', App\Http\Controllers\ProductController::class)->names('products.product');

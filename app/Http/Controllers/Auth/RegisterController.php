@@ -48,7 +48,7 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request) //could propably be done better? function copied from RegistersUsers trait and changed to flash data
-    {dd($request->all());
+    {
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
@@ -112,7 +112,7 @@ class RegisterController extends Controller
         $billingAddress->save();
 
         if (isset($data['newsletter']) || $data['newsletter'] === true)
-        {
+        { 
             (new NewsletterSubscriptionController)->create($data['email'], $user->id);
         } else 
         {

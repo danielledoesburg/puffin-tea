@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsletterSubscription;
+use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 class NewsletterSubscriptionController extends Controller
 {
+    use SoftDeletes;
+
     /**
      * Display a listing of the resource.
      *
@@ -24,11 +28,13 @@ class NewsletterSubscriptionController extends Controller
      */
     public function create($email, $userId = null)
     {
+        if (!$userId) $userId = User::where('email', $email)->first()->id;
+        
         if ($userId)
         {
             NewsletterSubscription::updateOrCreate(
                 ['email' => $email],
-                ['id' => $userId]
+                ['user_id' => $userId]
             );
         } else
         {
@@ -77,11 +83,12 @@ class NewsletterSubscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateWithUserId($email, $userId)
+    public function updateUserId($email, $userId)
     {
         if ($record = $this->existingSubscription($email))
         {
-            $record
+            $record->user_id=$userId;
+            $record->save();
         }
     }
 

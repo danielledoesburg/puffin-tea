@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class OnSale extends Model
 {
-    use HasFactory;
-
     protected $table = 'on_sale';
 
     protected $guarded = [
