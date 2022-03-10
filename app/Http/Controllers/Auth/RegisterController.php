@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\NewsletterSubscriptionController;
 use App\Models\Address;
+use App\Models\NewsletterSubscription;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -46,7 +48,7 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request) //could propably be done better? function copied from RegistersUsers trait and changed to flash data
-    {
+    {dd($request->all());
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
@@ -108,6 +110,14 @@ class RegisterController extends Controller
         $billingAddress = $shippingAddress->replicate();
         $billingAddress->address_type_id = 2;
         $billingAddress->save();
+
+        if (isset($data['newsletter']) || $data['newsletter'] === true)
+        {
+            (new NewsletterSubscriptionController)->create($data['email'], $user->id);
+        } else 
+        {
+            (new NewsletterSubscriptionController)->updateWithUserId($data['email'], $user->id);
+        }
 
         return $user;
     }

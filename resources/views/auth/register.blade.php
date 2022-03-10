@@ -169,7 +169,7 @@
                                             name="newsletter"
                                             class="form-check-input me-3"
                                             type="checkbox"
-                                            value="confirmed"
+                                            value="true"
                                             id="newsletter"
                                             />
                                         <label class="form-check-label text-white" for="newsletter">
