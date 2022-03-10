@@ -1,6 +1,6 @@
 <template>
 <div class="grid-wrapper">
-    <div v-for="product in products" class="grid-object">
+    <div v-for="product in onSaleShorten" class="grid-object">
         <img class= "resize-image" :src="imagePath + product.main_image.filename">
         <div id="description-padding">
             <p>{{product.name}}</p>
@@ -15,10 +15,15 @@
 
 <script>
     export default {
+
       data(){
         return{
           imagePath:'images/',
+          onSaleShorten:[],
         }
+      },
+      mounted(){
+        this.onSaleShorten = this.products.slice(0,3)
       },
       props:{
         products:{
@@ -26,5 +31,6 @@
           required:true,
         }
     }
+
     }
 </script>

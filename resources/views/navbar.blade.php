@@ -23,30 +23,26 @@
         <div class= "example spacing link-right">
             <a class="nav-link hover hover-1" href="/login">Log in</a>
         </div>
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi  link-right position-circle" viewBox="0 0 16 16">
-        <circle cx="8" cy="8" r="8"/>
-        </svg>
-        <svg id= "basket-size" class="link-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-            <g id="Layer_9" data-name="Layer 9">
-                <path d="M59.4,53.82,53.51,24.37a6,6,0,0,0-5.88-4.83H45V16a13,13,0,0,0-26,0v3.54H16.37a6,6,0,0,0-5.88,4.83L4.6,53.82A6,6,0,0,0,10.48,61h43a6,6,0,0,0,5.88-7.18ZM21,16a11,11,0,0,1,22,0v3.54H21ZM56.61,57.54A4,4,0,0,1,53.52,59h-43a4,4,0,0,1-3.92-4.78l5.89-29.46a4,4,0,0,1,3.92-3.22H19v5.71a1,1,0,0,0,2,0V21.54H43v5.71a1,1,0,0,0,2,0V21.54h2.63a4,4,0,0,1,3.92,3.22l5.89,29.46A4,4,0,0,1,56.61,57.54Z"/>
-            </g>
-        </svg>
+        <div class="link-right" @click="isActive=!isActive">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-handbag link-right position-the-bag" viewBox="0 0 16 16">
+  <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z"/>
+</svg>
+        </div>
     </div>
 </nav>
 <div class="position-right-flex">
-    <div class="cart">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+    <div class="cart" :class="{toggleCart:!isActive}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-circle" id="change-the-position" @click="isActive=!isActive" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
         </svg>
         <h3>Cart</h3>
         <hr>
-        <div class="row">
+        <div class="row" id="row-width">
             <div class="column">
                 <img class=tinypic src="/images/orteajasmine1.jpg">
             </div>
-            <div class="column">
+            <div class="column" id="display-basket-description">
                 <div id="cartitems-margin-right">
                     <p>fgjsdgfjhgsdjfhg</p>
                     <p>Price</p>

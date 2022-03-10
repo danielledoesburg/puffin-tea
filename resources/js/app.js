@@ -40,10 +40,27 @@ const app = new Vue({
     el: '#app',
     data:{
         products:[],
+        isActive: false,
+        productsForCart: JSON.parse(sessionStorage.getItem('numberincart'))
     },
 
+   created(){
+       axios.get('products/show').then(response => {this.products = response.data
+        let numberincart = []
+        for(let i=0; i<this.products.length; i++){
+            this.products[i].quantity = 0
+            numberInCart.length = this.products.length + 1
+            numberInCart[i]={
+                quantity: 0,
+                id: i
+            }
+        sessionStorage.setItem('numberincart', JSON.stringify(numberincart))
+        }})
+      
+   },
    mounted(){
-       axios.get('products/show').then(response => this.products = response.data)
-   }
-}
+
+    }
+    
+   },
 );

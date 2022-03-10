@@ -81,15 +81,16 @@
   .column {
     float: left;
     width: 120px;
+    padding:0
+    
      img{
-         margin-left:20px;
+         margin-left:35px;
      }
   }
   
-  .row {
-    margin-left:15px;
-    display: flex;
-    width: 18rem
+  #row-width{
+    width:300px;
+
   }
   
   .column {
@@ -101,7 +102,7 @@
     margin-top:20px;
       p{
           margin:2px;
-          text-align:center;
+         
       }
     padding-bottom: 15px;
   }
@@ -113,4 +114,14 @@
  .check-out{
      margin-bottom:10px;
      font-weight:bolder;
+ }
+ .toggleCart{
+    display:none;
+ }
+ #change-the-position{
+   position:absolute;
+   z-index:9999;
+ }
+ #display-basket-description{
+   padding-left:30px;
  }
