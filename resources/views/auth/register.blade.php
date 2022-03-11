@@ -156,8 +156,7 @@
                                                     type="text" 
                                                     id="phonenr" 
                                                     value="{{ old('phonenr') }}"
-                                                    class="form-control form-control-lg"                                                    
-                                                    required />
+                                                    class="form-control form-control-lg" />
                                                 <label class="form-label" for="phonenr">Phone number</label>
                                             </div>
                                         </div>

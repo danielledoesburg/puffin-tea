@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\NewsletterSubscriptionController;
 use App\Models\Address;
-use App\Models\NewsletterSubscription;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -111,12 +110,12 @@ class RegisterController extends Controller
         $billingAddress->address_type_id = 2;
         $billingAddress->save();
 
-        if (isset($data['newsletter']) || $data['newsletter'] === true)
+        if (isset($data['newsletter']) && $data['newsletter'] === true)
         { 
             (new NewsletterSubscriptionController)->create($data['email'], $user->id);
         } else 
         {
-            (new NewsletterSubscriptionController)->updateWithUserId($data['email'], $user->id);
+            (new NewsletterSubscriptionController)->updateUserId($data['email'], $user->id);
         }
 
         return $user;

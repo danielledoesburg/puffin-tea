@@ -3,9 +3,13 @@
 <div class="newsletter ">
     <p>Sign up to our newsletter! </p>
     
-    <form class="form">
-       Your e-mail: <input class="form-width">
+    <form class="form" action="/newsletter" method="POST">
+        @csrf
+       Your e-mail: <input class="form-width" type="text" name="newsletter_email">
     </form>
+    @error('newsletter_email')
+        <p>{{$message}}</p>
+    @enderror
 </div>
     <p><img class="footer-image" src="https://i.ibb.co/vwGH5pk/footer-02.png"></p>
 </footer>
