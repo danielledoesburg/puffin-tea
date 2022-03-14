@@ -25,9 +25,8 @@ class OrdersTableSeeder extends Seeder
         {
             $user = $users->random();
             
-            $deliveryAddress = $user->addresses->filter(function($item){return $item->address_type_id === 1;})->first();
-            $invoiceAddress = $user->addresses->filter(function($item){return $item->address_type_id === 2;})->first();
-            if (!$invoiceAddress) $invoiceAddress = $deliveryAddress;
+            $deliveryAddress = $user->shippingAddress;
+            $invoiceAddress = $user->billingAddress;
             
             $order = Order::create([
                 'ordernr' => time() . $user->id,

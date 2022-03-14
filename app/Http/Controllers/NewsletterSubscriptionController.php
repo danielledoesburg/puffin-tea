@@ -3,19 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\NewsletterSubscription;
+use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class NewsletterSubscriptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    use SoftDeletes;
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,11 +20,13 @@ class NewsletterSubscriptionController extends Controller
      */
     public function create($email, $userId = null)
     {
+        if (!$userId) $userId = User::where('email', $email)->first()->id ?? null;
+        
         if ($userId)
         {
             NewsletterSubscription::updateOrCreate(
                 ['email' => $email],
-                ['id' => $userId]
+                ['user_id' => $userId]
             );
         } else
         {
@@ -38,27 +36,32 @@ class NewsletterSubscriptionController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
-     * Display the specified resource.
+     * Get a validator for an incoming registration request.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function show($id)
+    protected function validator(array $data)
     {
-        //
+         $messages = array(
+            'newsletter_email.unique' => "You're already subscribed!",
+        );
+    
+        return Validator::make($data, [
+            'newsletter_email' => ['required', 'string', 'email', 'max:255', 'unique:newsletter_subscriptions'],
+        ], $messages);
     }
+
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $this->create($request->email);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -71,19 +74,22 @@ class NewsletterSubscriptionController extends Controller
         //
     }
 
+
     /**
      * Update the specified resource in storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateWithUserId($email, $userId)
+    public function updateUserId($email, $userId)
     {
         if ($record = $this->existingSubscription($email))
         {
-            $record
+            $record->user_id=$userId;
+            $record->save();
         }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -91,10 +97,11 @@ class NewsletterSubscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($email)
     {
-        //
+        NewsletterSubscription::where('email', $email)->delete();
     }
+
 
     public function existingSubscription($email)
     {

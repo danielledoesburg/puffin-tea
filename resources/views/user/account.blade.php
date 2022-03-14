@@ -1,6 +1,3 @@
-<p>test: {{ Auth::user()->first_name }}</p>
-
-
 <h4>information</h4>
 
 <ul>
@@ -21,3 +18,6 @@
     @csrf
     <button type="submit">Log out</button>
 </form>
+
+<a class="button" href="/account/edit">Edit</a>
+<a class="button" href="/account/password">Edit</a>
