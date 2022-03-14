@@ -43,8 +43,6 @@ Route::post('newsletter', [App\Http\Controllers\NewsletterSubscriptionController
 //     //
 // });
 
-
-
 // Route::prefix('products')->group(function() {
 //     Route::get('/', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 //     Route::resource('product', App\Http\Controllers\ProductController::class)->names('products.product');
