@@ -7,9 +7,20 @@
     @csrf
       <input type="text" class="form-control form-control-lg" name="email" placeholder="email"/>
       <input type="password" name="password" placeholder="password"/>
+      <div class="row mb-3">
+          <div class="col-md-6">
+              <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                  <label class="form-check-label" for="remember">
+                      {{ __('Remember Me') }}
+                  </label>
+              </div>
+          </div>
+      </div>
       <button type="submit">login</button>
+      </form>
       <p class="message">Not registered? <a href="register">Create an account</a></p>
-    </form>
   </div>
 </div>
 @endsection

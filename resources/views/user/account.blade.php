@@ -4,6 +4,11 @@
     <li>name: {{ $user->first_name }} {{ $user->last_name }}</li>
     <li>email: {{ $user->email }}</li>
     <li>phone number: {{ $user->phonenr }}</li>
+    <li>subscribed to newsletter: 
+        @if ($user->newsletterSubscription()->exists()) Yes
+        @else No
+        @endif
+    </li>
 </ul>
 
 <h4>shipping address</h4>
@@ -20,4 +25,4 @@
 </form>
 
 <a class="button" href="/account/edit">Edit</a>
-<a class="button" href="/account/password">Edit</a>
+<a class="button" href="/account/password">Edit password</a>

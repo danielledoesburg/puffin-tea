@@ -1,4 +1,5 @@
 <form action="/account" method="POST">
+    @method('put')
     @csrf
     <h3 class="fw-normal mb-5">General Infomation</h3>
 
@@ -128,7 +129,8 @@
     <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Save</button>
 </form>
 
-<form action="account{{Auth::user()->id}}" method="DELETE">
+<form action="/account" method="POST">
+@method('delete')
 @csrf
 <button type="submit">Delete account</button>
 </form>
