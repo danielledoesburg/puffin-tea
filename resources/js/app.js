@@ -10,6 +10,7 @@ require('./bootstrap');
 require('./slick');
 require('./multiple-items-carousel');
 
+
 window.Vue = require('vue').default;
 
 /**
@@ -29,6 +30,7 @@ Vue.component('bestsellers', require('./components/BestSellers.vue').default);
 Vue.component('sale', require('./components/Sale.vue').default);
 Vue.component('header-carousel', require('./components/HeaderCarousel.vue').default);
 Vue.component('products', require('./components/Products.vue').default);
+Vue.component('navbar-and-cart', require('./components/NavbarAndCart.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -38,29 +40,92 @@ Vue.component('products', require('./components/Products.vue').default);
 
 const app = new Vue({
     el: '#app',
+   
+
     data:{
         products:[],
-        isActive: false,
-        productsForCart: JSON.parse(sessionStorage.getItem('numberincart'))
+        cart:JSON.parse(sessionStorage.getItem('cart')),
+        products_for_cart: JSON.parse(sessionStorage.getItem('numberincart')),
+        cart_no_repetition: JSON.parse(sessionStorage.getItem("uniqueProducts")),
+    },
+    mounted(){    
+        let bob= [];
+        if (JSON.parse(sessionStorage.getItem("cart")) == null) {
+        sessionStorage.setItem("cart", JSON.stringify(bob))
+        }
+        if(JSON.parse(sessionStorage.getItem("uniqueProducts"))==null){
+        sessionStorage.setItem("uniqueProducts", JSON.stringify(bob))
+        }
+
     },
 
-   created(){
-       axios.get('products/show').then(response => {this.products = response.data
-        let numberincart = []
-        for(let i=0; i<this.products.length; i++){
-            this.products[i].quantity = 0
-            numberInCart.length = this.products.length + 1
-            numberInCart[i]={
-                quantity: 0,
-                id: i
+    created(){
+        axios.get('products/show').then(response => {
+            this.products = response.data
+            //here i should put an if statement if session stotage is empty
+            let numberincart = []
+            for(let i=0; i<this.products.length; i++){
+                this.products[i].quantity = 0
+                numberincart.length = this.products.length + 1
+                numberincart[i]={
+                    quantity: 0,
+                    id: i
+                }
+            sessionStorage.setItem('numberincart', JSON.stringify(numberincart))
             }
-        sessionStorage.setItem('numberincart', JSON.stringify(numberincart))
-        }})
+        })
       
    },
-   mounted(){
 
-    }
-    
-   },
+    methods: {
+        updateCart(id){
+            id = parseInt(id)
+            this.cart.push(id)
+            this.products_for_cart[id].quantity = this.products_for_cart[id].quantity + 1
+            sessionStorage.setItem('cart', JSON.stringify(this.cart))
+            sessionStorage.setItem('numberincart', JSON.stringify(this.products_for_cart))
+            let unique= {}
+            this.cart.forEach(function(i){
+                if(!unique[i]){
+                    unique[i]= true;
+                }
+            })
+            this.cart_no_repetition = Object.keys(unique);
+            sessionStorage.setItem("uniqueProducts",JSON.stringify(this.cart_no_repetition))
+        },
+
+  
+        plusToCart(id){
+            let addedProduct  = this.cart_no_repetition.slice(id,id+1)
+            let addedProductNumber = parseInt(addedProduct[0])
+            this.cart.push(addedProductNumber)
+            this.products_for_cart[addedProductNumber].quantity = this.products_for_cart[addedProductNumber].quantity +1
+            sessionStorage.setItem("cart", JSON.stringify(this.cart))
+            sessionStorage.setItem("numberincart", JSON.stringify(this.products_for_cart))
+        },
+
+        deleteFromCart(item){
+            let itemNum = parseInt(item)
+            const index = this.cart.indexOf(itemNum);
+            if (index > -1){
+                this.cart.splice(index, 1);
+            }
+            sessionStorage.setItem("cart", JSON.stringify(this.cart))
+          },
+                
+        decrement(id){
+            if (this.products_for_cart[id].quantity > 0){
+                this.products_for_cart[id].quantity= this.products_for_cart[id].quantity - 1
+            }
+            else {
+                this.products_for_cart[id].quantity=0
+            }
+            sessionStorage.setItem("numberincart",JSON.stringify(this.products_for_cart))
+        },
+        
+
+
+
+   }
+}
 );

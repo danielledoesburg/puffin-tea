@@ -12092,6 +12092,7 @@ h4, .h4 {
 }
 
 .cart {
+  z-index: 9999;
   background: white;
   margin-top: 2px;
   width: 20rem;
@@ -12120,7 +12121,8 @@ h4, .h4 {
 
 .tinypic {
   height: 100px;
-  width: 80px;
+  margin-top: 10px;
+  width: 95px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -12186,8 +12188,10 @@ h4, .h4 {
 .column {
   float: left;
   width: 120px;
-  padding: 0 img;
-  padding-margin-left: 35px;
+  padding: 0;
+}
+.column img {
+  margin-left: 45px;
 }
 
 #row-width {
@@ -12199,7 +12203,7 @@ h4, .h4 {
 }
 
 #cartitems-margin-right {
-  margin-right: 30px;
+  margin-right: 20px;
   font-size: 12px;
   margin-top: 20px;
   padding-bottom: 15px;
@@ -12224,11 +12228,11 @@ h6, .h6 {
 
 #change-the-position {
   position: absolute;
-  z-index: 9999;
+  z-index: 1;
 }
 
 #display-basket-description {
-  padding-left: 30px;
+  padding-left: -10px;
 }
 
 body {

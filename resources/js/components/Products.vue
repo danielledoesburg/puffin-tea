@@ -108,9 +108,17 @@
             <h5>Products</h5>
             <div v-if= "filteredItems.length < 1" class="products-grid">
                 <div class="products-card" v-for="product in products">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" id="change-the-position" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                    </svg>
+                
+                        <svg v-on:click="addToCart(product.id)"
+                            xmlns="http://www.w3.org/2000/svg" 
+                            width="30" height="30" 
+                            fill="currentColor" 
+                            id="change-the-position" 
+                            class="bi bi-plus-circle-fill" 
+                            viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                        </svg>
+                    
                 <img class="products-image" :src="imagePath + product.main_image.filename">
                 <p class="price">{{product.price}} &euro;</p>
                 <p>{{ product.name }}</p>
@@ -118,11 +126,16 @@
             </div>
             <div v-else class="products-grid">
                 <div class="products-card" v-for="item in unpackedFilteredItems">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    <svg v-on:click="addToCart(item.id)"
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="30" height="30" fill="currentColor" 
+                        id="change-the-position"
+                        class="bi bi-plus-circle-fill" 
+                        viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                     </svg>
                 <img class="products-image" :src="imagePath + item.main_image.filename">
-                <p class="price">{{item.price}} &euro;</p>
+                <p class="price">{{ item.price }} &euro;</p>
                 <p>{{ item.name }}</p>
                 </div>
             </div>
@@ -153,6 +166,10 @@
                 },
             },
        methods:{
+                addToCart(id) {
+                this.$emit('add-to-cart',id)
+            },
+
             filterArray(value){ 
                let unpackedArray= this.products.filter(product =>{
                     return product.category_id==value
@@ -162,7 +179,9 @@
  
             return unpackedArray  
 
-            }
+            },
+
+
         }
     }
 </script>

@@ -5,7 +5,9 @@
 <hr>
 
         <products 
-            :products="{{ $products }}">
+            @add-to-cart="updateCart"
+            :products="{{ $products }}"
+            >
         </products>
 
 

@@ -1,4 +1,5 @@
 .cart{
+    z-index:9999;
     background: white; 
     margin-top: 2px;
     width: 20rem;
@@ -25,7 +26,8 @@
 }
 .tinypic{
     height:100px;
-    width:80px;
+    margin-top:10px;
+    width:95px;
     object-fit: cover;
 }
   .quantity {
@@ -78,13 +80,13 @@
   .quantity__plus:visited {
     color: #fff;
   }
-  .column {
+  .column{
     float: left;
     width: 120px;
-    padding:0
+    padding:0;
     
      img{
-         margin-left:35px;
+         margin-left:45px;
      }
   }
   
@@ -97,7 +99,7 @@
     flex: 50%;
   }
   #cartitems-margin-right{
-    margin-right:30px;
+    margin-right:20px;
     font-size: 12px;
     margin-top:20px;
       p{
@@ -120,8 +122,8 @@
  }
  #change-the-position{
    position:absolute;
-   z-index:9999;
+   z-index:1;
  }
  #display-basket-description{
-   padding-left:30px;
+   padding-left:-10px;
  }
