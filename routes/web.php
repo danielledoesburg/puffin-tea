@@ -25,12 +25,17 @@ Route::get('account/edit', [App\Http\Controllers\UserController::class, 'edit'])
 Route::put('account', [App\Http\Controllers\UserController::class, 'update'])->name('account.update')->middleware('auth');
 Route::get('account/password', [App\Http\Controllers\UserController::class, 'password'])->name('account.password')->middleware('auth');
 Route::patch('account/password', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('account.password.update')->middleware('auth');
-Route::delete('account', [App\Http\Controllers\UserController::class, 'destroy'])->name('account.delete')->middleware('auth');
+Route::delete('account', [App\Http\Controllers\UserController::class, 'destroy'])->name('account.destroy')->middleware('auth');
 
 Route::post('newsletter', [App\Http\Controllers\NewsletterSubscriptionController::class, 'register'])->name('newsletter.register');
 
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->name('products');
 Route::get('products/show', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show'); //temporary route for vue axios calls
+
+Route::fallback(function () {
+    return view('errors.404');
+});
+
 
 
 // Route::middleware('auth')->prefix('admin')->group(function() {
@@ -38,12 +43,6 @@ Route::get('products/show', [App\Http\Controllers\ProductController::class, 'sho
 //     Route::resource('products', App\Http\Controllers\ProductController::class)->names('product');
     
 // });
-
-
-// Route::fallback(function () {
-//     //
-// });
-
 
 
 // Route::prefix('products')->group(function() {
