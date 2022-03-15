@@ -50,16 +50,23 @@ class NewsletterSubscriptionController extends Controller
         );
     
         return Validator::make($data, [
-            'newsletter_email' => ['required', 'string', 'email', 'max:255', 'unique:newsletter_subscriptions'],
+            'newsletter_email' => ['required', 'string', 'email', 'max:255', 'unique:newsletter_subscriptions,email'],
         ], $messages);
     }
 
-
+    /**
+     * register for newsletter.
+     *
+     * @param  Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
-        $this->create($request->email);
+        $this->create($request->newsletter_email);
+
+        return redirect()->back()->with('newsletter_email', "You're signed up!");
     }
 
 

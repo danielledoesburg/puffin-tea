@@ -2,18 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
+use App\Models\NewsletterSubscription;
 use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class AccountController extends Controller
+class UserController extends Controller
 {
-    protected function getUser() 
+    protected function getUser($withAddress = true) 
     {
-        return User::with('shippingAddress', 'billingAddress')->find(Auth::id());
+        if ($withAddress) {
+            return User::with('shippingAddress', 'billingAddress')->find(Auth::id());
+        }
+
+        return Auth::user();
     }
 
     /**
@@ -46,26 +53,26 @@ class AccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function editPassword()
+    public function password()
     {
-        return view('user.edit_password', [
-            'user' => $this->getUser()
+        return view('user.password', [
+            'user' => $this->getUser(false)
         ]);
     }
 
 
     /**
-     * Get a validator for an incoming update request.
+     * Get a validator for an incoming account update request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data, User $user)
+    protected function userValidator(array $data, User $user)
     {
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'min:1', 'max:255'],
             'last_name' => ['required', 'string', 'min:1', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)->whereNull('deleted_at')],
             'shipping_address' => ['required', 'string', 'min:5'],
             'shipping_zipcode' => ['required', 'string', 'min:4'],
             'shipping_city' => ['required', 'string', 'min:2'],
@@ -77,7 +84,7 @@ class AccountController extends Controller
 
 
     /**
-     * Update the specified resource in storage.
+     * Update the logged in user in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -86,7 +93,7 @@ class AccountController extends Controller
     { 
         $user = $this->getUser();
 
-        $this->validator($request->all(), $user)->validate();
+        $this->userValidator($request->all(), $user)->validate();
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -112,17 +119,65 @@ class AccountController extends Controller
            }
        }
 
-        return redirect('account')->with('success', 'changes have been saved!');   
+        return redirect('account')->with('success', 'Your changes have been saved.');   
+    }
+
+
+    /**
+     * Get a validator for an incoming password update request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function passwordValidator(array $data)
+    {
+        return Validator::make($data, [
+            'old_password' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+
+    /**
+     * Update the logged in user password in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePassword(Request $request)
+    {
+        $this->passwordValidator($request->all())->validate();
+
+        $user = User::find(Auth::user()->id);
+
+        if (! Hash::check($request->old_password, $user->password)) {
+            return redirect()->back()->withErrors(['old_password' => 'Wrong password']);
+        }
+
+        $user->update(['password'=> Hash::make($request->password)]);
+
+        return redirect('account')->with('success', 'Your password has been saved.');
+            
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the logged in user from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        $user = $this->getUser();
+
+        Address::whereIn('id', array($user->billingAddress->id, $user->shippingAddress->id))->delete();
+
+        if ($user->newsletterSubscription()->exists()) {
+            NewsletterSubscription::where('id',$user->id)->update(['user_id' => 1]);
+        }
+
+        $user->update(['email' => $user->email.'_deleted_'.time()]);
+        $user->delete();
+
+        return redirect('home')->with('success', 'Your account has been deleted.');   
     }
 }

@@ -13,6 +13,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -74,7 +75,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'first_name' => ['required', 'string', 'min:1', 'max:255'],
             'last_name' => ['required', 'string', 'min:1', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->whereNull('deleted_at')],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'address' => ['required', 'string', 'min:5'],
             'zipcode' => ['required', 'string', 'min:4'],
@@ -110,8 +111,8 @@ class RegisterController extends Controller
         $billingAddress->address_type_id = 2;
         $billingAddress->save();
 
-        if (isset($data['newsletter']) && $data['newsletter'] === true)
-        { 
+        if (isset($data['newsletter']) && $data['newsletter'] === 'true')
+        {
             (new NewsletterSubscriptionController)->create($data['email'], $user->id);
         } else 
         {
