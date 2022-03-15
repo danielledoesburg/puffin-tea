@@ -21,7 +21,10 @@
     </div>
     <div class= " navbar-brand display-in-row">
         <div class= "example spacing link-right">
-            <a class="nav-link hover hover-1" href="/login">Log in</a>
+            <a class="nav-link hover hover-1" href="/login">Log in</a><a href="/login"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg></a>
         </div>
         <div class="link-right" @click="isActive=!isActive">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-handbag link-right position-the-bag" viewBox="0 0 16 16">
@@ -66,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <h6>Total price: {{arraySum}} &#8364;</h6>
+        <h6 >Total price: {{arraySum}} &#8364;</h6>
         <hr>
         <div class="example spacing to-center no-padding check-out">
             <p class="hover hover-1 first-link ">check out</p>
@@ -88,20 +91,18 @@
     props:{
         products:{
             type:Array,
-            required:true
+            
         },
         cart_no_repetition:{
             type:Array,
-            required:true
+            
         },
         cart:{
             type:Array,
-            required:true,
+            
         },
         products_for_cart:{
             type:Array,
-            required:true
-
         }
     },
     methods:{
@@ -114,21 +115,24 @@
         decrement(id) {
             this.$emit('cart-minus',id)
         },
-        // deleteFromCartNoRep(id){
-        //     if (this.products_for_cart[this.cart_no_repetition[id]].quantity < 1){
-        //     this.cart_no_repetition.splice(id, 1)}
-        //     sessionStorage.setItem("uniqueProducts",JSON.stringify(this.cart_no_repetition))
-        // },
+        deleteFromCartNoRep(id){
+            if (this.products_for_cart[this.cart_no_repetition[id]].quantity < 1){
+            this.cart_no_repetition.splice(id, 1)}
+            sessionStorage.setItem("uniqueProducts",JSON.stringify(this.cart_no_repetition))
+        },
     },
 
     computed:{
         arraySum(){
+            if(this.cart !=null){
             let total = 0;
             let newString = this.cart.map (i => this.products[i -1].price)        
             for(let j = 0; j<newString.length; j++){
                 total = total + parseFloat(newString[j])
             }
-            return total.toFixed(2)
+            return total.toFixed(2)}
+            else{
+                return 0}
     },
           
     }
