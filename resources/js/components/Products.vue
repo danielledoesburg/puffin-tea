@@ -88,7 +88,7 @@
             <ul>
                 <li>        
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="bagsOrLeafs">
                         <label class="form-check-label" for="flexCheckIndeterminate">
                             Leaf
                         </label>
@@ -96,7 +96,7 @@
                 </li>
                 <li>        
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="bagsOrLeafs">
                         <label class="form-check-label" for="flexCheckIndeterminate">
                             Bags
                         </label>
@@ -153,9 +153,9 @@
         data(){
             return{
                 imagePath:'images/',
-
                 filteredItems:[],
                 unpackedFilteredItems:[],
+                
             }
         },
         props:{

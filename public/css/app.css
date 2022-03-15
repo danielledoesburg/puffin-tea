@@ -12235,6 +12235,42 @@ h6, .h6 {
   padding-left: -10px;
 }
 
+.form-login {
+  width: 400px;
+  background-color: #b2a4e2;
+  padding: 40px;
+  margin-top: 8vh;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.form-login p {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+}
+
+#full-page {
+  height: 67vh;
+}
+
+#button-to-the-right {
+  display: flex;
+  justify-content: right;
+}
+
+.message {
+  padding-bottom: 10px;
+  font-size: 12px;
+  text-align: right;
+}
+.message a {
+  color: white;
+}
+
 body {
   font-family: montserrat-alternates, sans-serif;
   background-color: #F7F0EA;
@@ -12310,4 +12346,40 @@ h1, .h1 {
 
 #break {
   height: 50px;
+}
+
+.user-cart {
+  background-color: #ffc100;
+  margin-top: 150px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.purple-btn {
+  background-color: #b2a4e2;
+}
+
+.flex-to-center {
+  display: flex;
+  justify-content: center;
+}
+
+.form-outline p {
+  text-align: center;
+}
+.form-outline h5, .form-outline .h5 {
+  text-align: center;
+}
+.form-outline ul li {
+  text-align: center;
+  list-style: none;
+}
+
+.user-image {
+  width: 200px;
+  height: auto;
+  margin-top: -150px;
+}
+
+#delete-user-account {
+  text-align: right;
 }

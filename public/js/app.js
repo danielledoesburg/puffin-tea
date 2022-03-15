@@ -5591,6 +5591,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5600,20 +5603,16 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     products: {
-      type: Array,
-      required: true
+      type: Array
     },
     cart_no_repetition: {
-      type: Array,
-      required: true
+      type: Array
     },
     cart: {
-      type: Array,
-      required: true
+      type: Array
     },
     products_for_cart: {
-      type: Array,
-      required: true
+      type: Array
     }
   },
   methods: {
@@ -5638,16 +5637,20 @@ __webpack_require__.r(__webpack_exports__);
     arraySum: function arraySum() {
       var _this = this;
 
-      var total = 0;
-      var newString = this.cart.map(function (i) {
-        return _this.products[i - 1].price;
-      });
+      if (this.cart != null) {
+        var total = 0;
+        var newString = this.cart.map(function (i) {
+          return _this.products[i - 1].price;
+        });
 
-      for (var j = 0; j < newString.length; j++) {
-        total = total + parseFloat(newString[j]);
+        for (var j = 0; j < newString.length; j++) {
+          total = total + parseFloat(newString[j]);
+        }
+
+        return total.toFixed(2);
+      } else {
+        return 0;
       }
-
-      return total.toFixed(2);
     }
   }
 });
@@ -42970,7 +42973,43 @@ var render = function () {
         _vm._m(0),
         _vm._v(" "),
         _c("div", { staticClass: " navbar-brand display-in-row" }, [
-          _vm._m(1),
+          _c("div", { staticClass: "example spacing link-right" }, [
+            _c(
+              "a",
+              {
+                staticClass: "nav-link hover hover-1",
+                attrs: { href: "/login" },
+              },
+              [_vm._v("Log in")]
+            ),
+            _c("a", { attrs: { href: "/login" } }, [
+              _c(
+                "svg",
+                {
+                  staticClass: "bi bi-person-circle",
+                  attrs: {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "30",
+                    height: "30",
+                    fill: "currentColor",
+                    viewBox: "0 0 16 16",
+                  },
+                },
+                [
+                  _c("path", {
+                    attrs: { d: "M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" },
+                  }),
+                  _vm._v(" "),
+                  _c("path", {
+                    attrs: {
+                      "fill-rule": "evenodd",
+                      d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z",
+                    },
+                  }),
+                ]
+              ),
+            ]),
+          ]),
           _vm._v(" "),
           _c(
             "div",
@@ -43129,7 +43168,7 @@ var render = function () {
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _vm._m(2),
+          _vm._m(1),
         ],
         2
       ),
@@ -43195,18 +43234,6 @@ var staticRenderFns = [
             ]),
           ]),
         ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "example spacing link-right" }, [
-      _c(
-        "a",
-        { staticClass: "nav-link hover hover-1", attrs: { href: "/login" } },
-        [_vm._v("Log in")]
       ),
     ])
   },
@@ -43825,7 +43852,127 @@ var render = function () {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("ul", [
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bagsOrLeafs,
+                  expression: "bagsOrLeafs",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: {
+                type: "checkbox",
+                value: "",
+                id: "flexCheckIndeterminate",
+              },
+              domProps: {
+                checked: Array.isArray(_vm.bagsOrLeafs)
+                  ? _vm._i(_vm.bagsOrLeafs, "") > -1
+                  : _vm.bagsOrLeafs,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.bagsOrLeafs,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.bagsOrLeafs = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.bagsOrLeafs = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.bagsOrLeafs = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Leaf\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bagsOrLeafs,
+                  expression: "bagsOrLeafs",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: {
+                type: "checkbox",
+                value: "",
+                id: "flexCheckIndeterminate",
+              },
+              domProps: {
+                checked: Array.isArray(_vm.bagsOrLeafs)
+                  ? _vm._i(_vm.bagsOrLeafs, "") > -1
+                  : _vm.bagsOrLeafs,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.bagsOrLeafs,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.bagsOrLeafs = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.bagsOrLeafs = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.bagsOrLeafs = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [
+                _vm._v(
+                  "\n                            Bags\n                        "
+                ),
+              ]
+            ),
+          ]),
+        ]),
+      ]),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "right-side" }, [
@@ -43927,66 +44074,7 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: {
-              type: "checkbox",
-              value: "",
-              id: "flexCheckIndeterminate",
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckIndeterminate" },
-            },
-            [
-              _vm._v(
-                "\n                            Leaf\n                        "
-              ),
-            ]
-          ),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: {
-              type: "checkbox",
-              value: "",
-              id: "flexCheckIndeterminate",
-            },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckIndeterminate" },
-            },
-            [
-              _vm._v(
-                "\n                            Bags\n                        "
-              ),
-            ]
-          ),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

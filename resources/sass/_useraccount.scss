@@ -1,0 +1,36 @@
+.user-cart{
+    background-color: $primary-one;
+    margin-top:150px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.purple-btn{
+    background-color: $primary-2;
+    
+}
+.flex-to-center{
+    display: flex;
+    justify-content: center;
+}
+.form-outline{
+    p{
+        text-align:center;
+    }
+    h5{
+        text-align: center;
+    }
+    ul{ 
+        li{
+            text-align:center;
+            list-style: none;
+        }
+        
+    }
+}
+.user-image{
+    width:200px;
+    height: auto;
+    margin-top:-150px;
+}
+#delete-user-account{
+    text-align:right;
+}
