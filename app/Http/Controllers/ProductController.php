@@ -23,7 +23,6 @@ class ProductController extends Controller
             'categories' => Category::all(),
             'properties' => Property::all()
         ]);
-
     }
 
     /**
@@ -50,11 +49,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
    
-    public function show($id=1)
+    public function show()
     {
         return Product::with(['images', 'vat'])->get();
     }
