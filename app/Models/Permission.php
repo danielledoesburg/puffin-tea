@@ -14,6 +14,8 @@ class Permission extends Model
         'name',
     ];
 
+    protected $hidden = ['created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'];
+
     public function roles()
     {
         return $this->belongsToMany(Role::class)->withTimestamps();

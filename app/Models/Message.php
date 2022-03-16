@@ -14,6 +14,8 @@ class Message extends Model
         'id',
     ];
 
+    protected $hidden = ['created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
