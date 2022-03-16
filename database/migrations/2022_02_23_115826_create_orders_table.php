@@ -26,10 +26,10 @@ return new class extends Migration
             $table->string('delivery_address');
             $table->string('delivery_zipcode');
             $table->string('delivery_city');
-            $table->foreignId('invoice_address_id')->constrained('addresses');
-            $table->string('invoice_address');
-            $table->string('invoice_zipcode');
-            $table->string('invoice_city');
+            $table->foreignId('billing_address_id')->constrained('addresses');
+            $table->string('billing_address');
+            $table->string('billing_zipcode');
+            $table->string('billing_city');
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('created_by')->nullable()->constrained('users');
