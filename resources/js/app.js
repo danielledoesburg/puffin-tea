@@ -47,6 +47,7 @@ const app = new Vue({
         cart:JSON.parse(sessionStorage.getItem('cart')),
         products_for_cart: JSON.parse(sessionStorage.getItem('numberincart')),
         cart_no_repetition: JSON.parse(sessionStorage.getItem("uniqueProducts")),
+        isActive: false,
     },
     mounted(){    
         let bob= [];
