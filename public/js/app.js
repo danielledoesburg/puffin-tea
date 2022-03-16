@@ -5832,7 +5832,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     return {
       imagePath: 'images/',
       filteredItems: [],
-      unpackedFilteredItems: []
+      unpackedFilteredItems: [],
+      bagsOrLeafs: []
     };
   },
   props: {
@@ -5980,7 +5981,8 @@ var app = new Vue({
     products: [],
     cart: JSON.parse(sessionStorage.getItem('cart')),
     products_for_cart: JSON.parse(sessionStorage.getItem('numberincart')),
-    cart_no_repetition: JSON.parse(sessionStorage.getItem("uniqueProducts"))
+    cart_no_repetition: JSON.parse(sessionStorage.getItem("uniqueProducts")),
+    isActive: false
   },
   mounted: function mounted() {
     var bob = [];
@@ -43852,127 +43854,7 @@ var render = function () {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _c("ul", [
-        _c("li", [
-          _c("div", { staticClass: "form-check" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.bagsOrLeafs,
-                  expression: "bagsOrLeafs",
-                },
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "checkbox",
-                value: "",
-                id: "flexCheckIndeterminate",
-              },
-              domProps: {
-                checked: Array.isArray(_vm.bagsOrLeafs)
-                  ? _vm._i(_vm.bagsOrLeafs, "") > -1
-                  : _vm.bagsOrLeafs,
-              },
-              on: {
-                change: function ($event) {
-                  var $$a = _vm.bagsOrLeafs,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.bagsOrLeafs = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.bagsOrLeafs = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.bagsOrLeafs = $$c
-                  }
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "flexCheckIndeterminate" },
-              },
-              [
-                _vm._v(
-                  "\n                            Leaf\n                        "
-                ),
-              ]
-            ),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _c("div", { staticClass: "form-check" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.bagsOrLeafs,
-                  expression: "bagsOrLeafs",
-                },
-              ],
-              staticClass: "form-check-input",
-              attrs: {
-                type: "checkbox",
-                value: "",
-                id: "flexCheckIndeterminate",
-              },
-              domProps: {
-                checked: Array.isArray(_vm.bagsOrLeafs)
-                  ? _vm._i(_vm.bagsOrLeafs, "") > -1
-                  : _vm.bagsOrLeafs,
-              },
-              on: {
-                change: function ($event) {
-                  var $$a = _vm.bagsOrLeafs,
-                    $$el = $event.target,
-                    $$c = $$el.checked ? true : false
-                  if (Array.isArray($$a)) {
-                    var $$v = "",
-                      $$i = _vm._i($$a, $$v)
-                    if ($$el.checked) {
-                      $$i < 0 && (_vm.bagsOrLeafs = $$a.concat([$$v]))
-                    } else {
-                      $$i > -1 &&
-                        (_vm.bagsOrLeafs = $$a
-                          .slice(0, $$i)
-                          .concat($$a.slice($$i + 1)))
-                    }
-                  } else {
-                    _vm.bagsOrLeafs = $$c
-                  }
-                },
-              },
-            }),
-            _vm._v(" "),
-            _c(
-              "label",
-              {
-                staticClass: "form-check-label",
-                attrs: { for: "flexCheckIndeterminate" },
-              },
-              [
-                _vm._v(
-                  "\n                            Bags\n                        "
-                ),
-              ]
-            ),
-          ]),
-        ]),
-      ]),
+      _vm._m(0),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "right-side" }, [
@@ -44074,7 +43956,58 @@ var render = function () {
     ]),
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "flexCheckIndeterminate" },
+            },
+            [
+              _vm._v(
+                "\n                            Leaf\n                        "
+              ),
+            ]
+          ),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("div", { staticClass: "form-check" }, [
+          _c("input", {
+            staticClass: "form-check-input",
+            attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
+          }),
+          _vm._v(" "),
+          _c(
+            "label",
+            {
+              staticClass: "form-check-label",
+              attrs: { for: "flexCheckIndeterminate" },
+            },
+            [
+              _vm._v(
+                "\n                            Bags\n                        "
+              ),
+            ]
+          ),
+        ]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 

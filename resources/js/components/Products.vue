@@ -88,7 +88,7 @@
             <ul>
                 <li>        
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="bagsOrLeafs">
+                        <input class="form-check-input" type="checkbox"  id="flexCheckIndeterminate" >
                         <label class="form-check-label" for="flexCheckIndeterminate">
                             Leaf
                         </label>
@@ -96,7 +96,7 @@
                 </li>
                 <li>        
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate" v-model="bagsOrLeafs">
+                        <input class="form-check-input" type="checkbox"  id="flexCheckIndeterminate" >
                         <label class="form-check-label" for="flexCheckIndeterminate">
                             Bags
                         </label>
@@ -146,7 +146,7 @@
 
 <script>
     export default {
-        mounted(){ 
+        mounted(){  
 
         }, 
 
@@ -155,6 +155,7 @@
                 imagePath:'images/',
                 filteredItems:[],
                 unpackedFilteredItems:[],
+                bagsOrLeafs:[],
                 
             }
         },
@@ -178,10 +179,9 @@
             this.unpackedFilteredItems = Array.prototype.concat(...this.filteredItems);
  
             return unpackedArray  
-
             },
 
-
-        }
+        
+       }
     }
 </script>
