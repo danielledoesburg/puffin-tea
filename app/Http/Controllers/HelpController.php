@@ -52,20 +52,20 @@ class HelpController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $user = User::where('email', '=', 'daan@gmail.com')->get();
-        dd($user);
+        $user = User::where('email', $request->email)->first();
+    
         $message = Message::create([
             'name' => $request->name,
             'email' => $request->email,
             'message' => $request->message_text,
-            'user_id' => $user ? $user->id : null
+            'user_id' => $user->id ?? null
         ]);
 
         if (Auth::user()->email === $request->email) {
             $message->update(['user_id'=> Auth::id()]);
         }
 
-        return redirect()->back()->with('success', 'your message has been send. We will get back to you as soon as we can');
+        return redirect()->back()->with('success', 'your message has been sent. We will get back to you as soon as we can');
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -26,14 +27,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('welcome', [
-            'bestsellers' => Product::findMany($this->bestSellerIds(10)),
-            'saleProducts' => Product::has('onSale')->get()
+            'bestsellers' => Product::findMany($this->bestSellerIds()),
+            'saleProducts' => Product::has('onSale')->get()->random(3)
         ]);
     }    
 
-    protected function bestSellerIds($amount = 10)
+    protected function bestSellerIds()
     {
-        $ids = DB::table('products')
+        return Cache::remember('bestSellerIds', 86400, function () {
+            return  DB::table('products')
                 ->select('products.id')
                 ->join('order_details', function($join) { 
                     $join->on ('order_details.product_id', '=', 'products.id')
@@ -42,10 +44,10 @@ class HomeController extends Controller
                 ->whereNull('products.deleted_at')
                 ->groupBy('products.id')
                 ->orderBy(DB::raw('sum(order_details.quantity)'), 'desc')
-                ->take($amount)
+                ->take(10)
                 ->get()
                 ->pluck('id');
+        });    
 
-        return $ids;
     }
 }
