@@ -21,7 +21,7 @@ class FaqFactory extends Factory
     {
         return [
             'question' => $this->faker->sentence(),
-            'answer' => $this->faker->text(),
+            'answer' => $this->faker->paragraph(10),
             'order_sequence' => self::$orderSequence++
         ];
     }

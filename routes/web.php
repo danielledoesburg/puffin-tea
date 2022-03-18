@@ -34,6 +34,10 @@ Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']
 Route::get('/products/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 // Route::get('/products/get', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show'); //temporary route for vue axios calls
 
+Route::get('/help',[App\Http\Controllers\HelpController::class, 'index'])->name('help');
+Route::post('/help',[App\Http\Controllers\HelpController::class, 'store'])->name('help.store');
+
+
 Route::fallback(function () {
     return view('errors.404');
 });

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Faq;
+use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
-class OrderController extends Controller
+class HelpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('user.orders', [
-            'orders' => Order::where('user_id', Auth::user()->id)->with('orderDetails')->get()->sortByDesc('created_at')
+        return view('help', [
+            'faq' => Faq::all()->sortBy('order_sequence')
         ]);
     }
 
@@ -30,15 +32,42 @@ class OrderController extends Controller
         //
     }
 
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'min:1', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'message' => ['required', 'string', 'min:10'] 
+        ]);
+    }
+
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created message in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $this->validator($request->all())->validate();
+
+
+        if (Auth::user()->email === $request->email) {
+            $userId = Auth::id();
+        }
+
+        $message = Message::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'message' => $request->message,
+            'user_id' => $userId ?? null
+        ]);
+
+        if (Auth::user()->email === $request->email) {
+            $message->update(['user_id'=> Auth::id()]);
+        }
+
+        return redirect()->back()->with('success', 'your message has been send. We will get back to you as soon as we can');
     }
 
     /**

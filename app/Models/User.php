@@ -39,6 +39,11 @@ class User extends Authenticatable
     // ];
 
 
+    public function getNameAttribute()
+    {
+           return $this->first_name . ' ' . $this->last_name;
+    }
+
     public function newsletterSubscription() 
     {
         return $this->hasOne(NewsletterSubscription::class);
