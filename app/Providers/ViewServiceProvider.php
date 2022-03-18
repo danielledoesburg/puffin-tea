@@ -26,9 +26,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     { 
-        View::composer('*', function($view){
-            $view->with('loggedIn', Auth::check());
-        });
+        //
     }
 
 }

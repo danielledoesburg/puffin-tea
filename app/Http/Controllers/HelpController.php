@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Faq;
 use App\Models\Message;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -37,7 +38,7 @@ class HelpController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'min:1', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'message' => ['required', 'string', 'min:10'] 
+            'message_text' => ['required', 'string', 'min:10'] 
         ]);
     }
 
@@ -51,16 +52,13 @@ class HelpController extends Controller
     {
         $this->validator($request->all())->validate();
 
-
-        if (Auth::user()->email === $request->email) {
-            $userId = Auth::id();
-        }
-
+        $user = User::where('email', '=', 'daan@gmail.com')->get();
+        dd($user);
         $message = Message::create([
             'name' => $request->name,
             'email' => $request->email,
-            'message' => $request->message,
-            'user_id' => $userId ?? null
+            'message' => $request->message_text,
+            'user_id' => $user ? $user->id : null
         ]);
 
         if (Auth::user()->email === $request->email) {
