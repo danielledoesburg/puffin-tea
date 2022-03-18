@@ -14,10 +14,16 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        if ($request->ajax()) {
+            return Product::with(['images'])->get();
+        }
+
         return view('products', [
             'products' => Product::all(),
             'categories' => Category::all(),
@@ -49,12 +55,15 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  string  $slug
      * @return \Illuminate\Http\Response
      */
    
-    public function show()
-    {
-        return Product::with(['images', 'vat'])->get();
+    public function show($slug)
+    {        
+        return view('product_details', [
+            'product' => Product::where('slug', $slug)->with('images', 'unit', 'vat', 'properties')->firstOrFail()
+        ]);
     }
    
 

@@ -8,7 +8,7 @@
         :products="products"
         :cart="cart"
         :cart_no_repetition="cart_no_repetition"
-        :products_for_cart="products_for_cart">
-        
+        :products_for_cart="products_for_cart"
+        :loggedIn="{{ json_encode(Auth::user()) }}">
     </navbar-and-cart>
 @endsection

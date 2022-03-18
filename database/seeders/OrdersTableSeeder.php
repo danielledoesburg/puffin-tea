@@ -26,7 +26,7 @@ class OrdersTableSeeder extends Seeder
             $user = $users->random();
             
             $deliveryAddress = $user->shippingAddress;
-            $invoiceAddress = $user->billingAddress;
+            $billingAddress = $user->billingAddress;
             
             $order = Order::create([
                 'ordernr' => time() . $user->id,
@@ -40,10 +40,10 @@ class OrdersTableSeeder extends Seeder
                 'delivery_address' => $deliveryAddress->address,
                 'delivery_zipcode' => $deliveryAddress->zipcode,
                 'delivery_city' => $deliveryAddress->city,
-                'invoice_address_id' => $invoiceAddress->id,
-                'invoice_address' => $invoiceAddress->address,
-                'invoice_zipcode' => $invoiceAddress->zipcode,
-                'invoice_city' => $invoiceAddress->city,
+                'billing_address_id' => $billingAddress->id,
+                'billing_address' => $billingAddress->address,
+                'billing_zipcode' => $billingAddress->zipcode,
+                'billing_city' => $billingAddress->city,
              ]);
              
              $random = rand(1,5);
