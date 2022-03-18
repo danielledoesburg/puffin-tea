@@ -5826,14 +5826,45 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {},
   data: function data() {
     return {
-      imagePath: 'images/',
+      imagePath: '/images/',
       filteredItems: [],
       unpackedFilteredItems: [],
-      bagsOrLeafs: []
+      bags: [],
+      leafs: [],
+      bagsActive: false,
+      leafsActive: false
     };
   },
   props: {
@@ -5854,6 +5885,42 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
       this.unpackedFilteredItems = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, _toConsumableArray(this.filteredItems));
       return unpackedArray;
+    },
+    bagsAmount: function bagsAmount() {
+      if (this.unpackedFilteredItems.length < 1) {
+        var unpackedArray = this.products.filter(function (product) {
+          return product.type == "Tea bags";
+        });
+        this.bags = unpackedArray;
+      }
+
+      if (this.unpackedFilteredItems.length > 0) {
+        var _unpackedArray = this.unpackedFilteredItems.filter(function (product) {
+          return product.type == "Tea bags";
+        });
+
+        this.bags = _unpackedArray;
+      }
+
+      this.bagsActive = !this.bagsActive;
+    },
+    leafAmount: function leafAmount() {
+      if (this.unpackedFilteredItems.length < 1) {
+        var unpackedArray = this.products.filter(function (product) {
+          return product.type == "Loose leaf";
+        });
+        this.leafs = unpackedArray;
+      }
+
+      if (this.unpackedFilteredItems.length > 0) {
+        var _unpackedArray2 = this.unpackedFilteredItems.filter(function (product) {
+          return product.type == "Loose leaf";
+        });
+
+        this.leafs = _unpackedArray2;
+      }
+
+      this.leafsActive = !this.leafsActive;
     }
   }
 });
@@ -5982,7 +6049,7 @@ var app = new Vue({
     cart: JSON.parse(sessionStorage.getItem('cart')),
     products_for_cart: JSON.parse(sessionStorage.getItem('numberincart')),
     cart_no_repetition: JSON.parse(sessionStorage.getItem("uniqueProducts")),
-    isActive: false
+    isActive: true
   },
   mounted: function mounted() {
     var bob = [];
@@ -5999,18 +6066,20 @@ var app = new Vue({
     var _this = this;
 
     axios.get('products/show').then(function (response) {
-      _this.products = response.data; //here i should put an if statement if session stotage is empty
+      _this.products = response.data;
 
-      var numberincart = [];
+      if (JSON.parse(sessionStorage.getItem("numberincart")) == null) {
+        var numberincart = [];
 
-      for (var i = 0; i < _this.products.length; i++) {
-        _this.products[i].quantity = 0;
-        numberincart.length = _this.products.length + 1;
-        numberincart[i] = {
-          quantity: 0,
-          id: i
-        };
-        sessionStorage.setItem('numberincart', JSON.stringify(numberincart));
+        for (var i = 0; i < _this.products.length; i++) {
+          _this.products[i].quantity = 0;
+          numberincart.length = _this.products.length + 1;
+          numberincart[i] = {
+            quantity: 0,
+            id: i
+          };
+          sessionStorage.setItem('numberincart', JSON.stringify(numberincart));
+        }
       }
     });
   },
@@ -43331,7 +43400,7 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n                            Green Tea \n                        "
+                  "\n                        Green Tea \n                    "
                 ),
               ]
             ),
@@ -43388,7 +43457,7 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n                            Black tea\n                        "
+                  "\n                        Black tea\n                    "
                 ),
               ]
             ),
@@ -43445,7 +43514,7 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n                            White Tea\n                        "
+                  "\n                        White Tea\n                    "
                 ),
               ]
             ),
@@ -43500,11 +43569,7 @@ var render = function () {
                 staticClass: "form-check-label",
                 attrs: { for: "flexCheckIndeterminate" },
               },
-              [
-                _vm._v(
-                  "\n                            Oolong\n                        "
-                ),
-              ]
+              [_vm._v("\n                        Oolong\n                    ")]
             ),
           ]),
         ]),
@@ -43557,11 +43622,7 @@ var render = function () {
                 staticClass: "form-check-label",
                 attrs: { for: "flexCheckIndeterminate" },
               },
-              [
-                _vm._v(
-                  "\n                        Pu Erh\n                        "
-                ),
-              ]
+              [_vm._v("\n                    Pu Erh\n                    ")]
             ),
           ]),
         ]),
@@ -43614,11 +43675,7 @@ var render = function () {
                 staticClass: "form-check-label",
                 attrs: { for: "flexCheckIndeterminate" },
               },
-              [
-                _vm._v(
-                  "\n                            Matcha\n                        "
-                ),
-              ]
+              [_vm._v("\n                        Matcha\n                    ")]
             ),
           ]),
         ]),
@@ -43673,7 +43730,7 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n                            Rooibos\n                        "
+                  "\n                        Rooibos\n                    "
                 ),
               ]
             ),
@@ -43728,11 +43785,7 @@ var render = function () {
                 staticClass: "form-check-label",
                 attrs: { for: "flexCheckIndeterminate" },
               },
-              [
-                _vm._v(
-                  "\n                        Herbal\n                        "
-                ),
-              ]
+              [_vm._v("\n                    Herbal\n                    ")]
             ),
           ]),
         ]),
@@ -43785,11 +43838,7 @@ var render = function () {
                 staticClass: "form-check-label",
                 attrs: { for: "flexCheckIndeterminate" },
               },
-              [
-                _vm._v(
-                  "\n                        Gifts\n                        "
-                ),
-              ]
+              [_vm._v("\n                    Gifts\n                    ")]
             ),
           ]),
         ]),
@@ -43844,7 +43893,7 @@ var render = function () {
               },
               [
                 _vm._v(
-                  "\n                            Accesories\n                        "
+                  "\n                        Accesories\n                    "
                 ),
               ]
             ),
@@ -43854,13 +43903,129 @@ var render = function () {
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
-      _vm._m(0),
+      _c("ul", [
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.leafs,
+                  expression: "leafs",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: {
+                type: "checkbox",
+                id: "flexCheckIndeterminate",
+                disabled: _vm.bagsActive === true,
+              },
+              domProps: {
+                value: _vm.leafAmount(),
+                checked: Array.isArray(_vm.leafs)
+                  ? _vm._i(_vm.leafs, _vm.leafAmount()) > -1
+                  : _vm.leafs,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.leafs,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.leafAmount(),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.leafs = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.leafs = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.leafs = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [_vm._v("\n                        Leaf\n                    ")]
+            ),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("div", { staticClass: "form-check" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.bags,
+                  expression: "bags",
+                },
+              ],
+              staticClass: "form-check-input",
+              attrs: {
+                type: "checkbox",
+                id: "flexCheckIndeterminate",
+                disabled: _vm.leafsActive === true,
+              },
+              domProps: {
+                value: _vm.bagsAmount(),
+                checked: Array.isArray(_vm.bags)
+                  ? _vm._i(_vm.bags, _vm.bagsAmount()) > -1
+                  : _vm.bags,
+              },
+              on: {
+                change: function ($event) {
+                  var $$a = _vm.bags,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = _vm.bagsAmount(),
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.bags = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.bags = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.bags = $$c
+                  }
+                },
+              },
+            }),
+            _vm._v(" "),
+            _c(
+              "label",
+              {
+                staticClass: "form-check-label",
+                attrs: { for: "flexCheckIndeterminate" },
+              },
+              [_vm._v("\n                        Bags\n                    ")]
+            ),
+          ]),
+        ]),
+      ]),
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "right-side" }, [
       _c("h5", [_vm._v("Products")]),
       _vm._v(" "),
-      _vm.filteredItems.length < 1
+      _vm.filteredItems.length < 1 &&
+      _vm.bagsActive === !true &&
+      _vm.leafsActive === !true
         ? _c(
             "div",
             { staticClass: "products-grid" },
@@ -43907,7 +44072,12 @@ var render = function () {
             }),
             0
           )
-        : _c(
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.filteredItems.length > 0 &&
+      _vm.bagsActive === !true &&
+      _vm.leafsActive === !true
+        ? _c(
             "div",
             { staticClass: "products-grid" },
             _vm._l(_vm.unpackedFilteredItems, function (item) {
@@ -43952,62 +44122,110 @@ var render = function () {
               ])
             }),
             0
-          ),
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.bagsActive === true
+        ? _c(
+            "div",
+            { staticClass: "products-grid" },
+            _vm._l(_vm.bags, function (item) {
+              return _c("div", { staticClass: "products-card" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-plus-circle-fill",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "30",
+                      height: "30",
+                      fill: "currentColor",
+                      id: "change-the-position",
+                      viewBox: "0 0 16 16",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.addToCart(item.id)
+                      },
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "products-image",
+                  attrs: { src: _vm.imagePath + item.main_image.filename },
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "price" }, [
+                  _vm._v(_vm._s(item.price) + " €"),
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(item.name))]),
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.leafsActive === true
+        ? _c(
+            "div",
+            { staticClass: "products-grid" },
+            _vm._l(_vm.leafs, function (item) {
+              return _c("div", { staticClass: "products-card" }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "bi bi-plus-circle-fill",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      width: "30",
+                      height: "30",
+                      fill: "currentColor",
+                      id: "change-the-position",
+                      viewBox: "0 0 16 16",
+                    },
+                    on: {
+                      click: function ($event) {
+                        return _vm.addToCart(item.id)
+                      },
+                    },
+                  },
+                  [
+                    _c("path", {
+                      attrs: {
+                        d: "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z",
+                      },
+                    }),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("img", {
+                  staticClass: "products-image",
+                  attrs: { src: _vm.imagePath + item.main_image.filename },
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "price" }, [
+                  _vm._v(_vm._s(item.price) + " €"),
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(item.name))]),
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
     ]),
   ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckIndeterminate" },
-            },
-            [
-              _vm._v(
-                "\n                            Leaf\n                        "
-              ),
-            ]
-          ),
-        ]),
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _c("div", { staticClass: "form-check" }, [
-          _c("input", {
-            staticClass: "form-check-input",
-            attrs: { type: "checkbox", id: "flexCheckIndeterminate" },
-          }),
-          _vm._v(" "),
-          _c(
-            "label",
-            {
-              staticClass: "form-check-label",
-              attrs: { for: "flexCheckIndeterminate" },
-            },
-            [
-              _vm._v(
-                "\n                            Bags\n                        "
-              ),
-            ]
-          ),
-        ]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

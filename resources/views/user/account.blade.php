@@ -1,31 +1,39 @@
 @extends('layouts.app')
 @include('navbar')
 @section('content')
-<div class="delete-modal-box">
+<div class="delete-modal-box" :class ="{displaymodalbox: isActive}" >
 <div class="box-area">
 <p>Are you sure that you want to delete your account?</p>
+<div class= "flex-to-center">
 <form action="/account" method="POST">
 @method('delete')
 @csrf
-<button type="submit">Delete account</button>
-<button>Cancel</button>
+<button class="btn btn-light btn-lg btn-modal " type="submit">Delete account</button>
 </form>
+<button class="btn btn-light btn-lg btn-modal " v-on:click="isActive=!isActive">Cancel</button>
+</div>
 </div>
 </div>
                  <div class="flex-to-center">
-                            <div class="col-lg-6">
+                            <div class="col-lg-6"  id="move-the-footer">
                                 <div class="p-5 user-cart">
-                                <div class ="flex-to-left">
-                                    <div class="example spacing edit-padding">
-                                    <a class="button edit-btn hover hover-1" href="/account/edit">Edit</a> 
-                                    </div>
-                                    <div class="example spacing">
-                                    <a class="button edit-btn hover hover-1" href="/account/password">Edit password</a>
-                                    </div>
-                                </div>
-                                    <div class= "flex-to-center">
+                                <div class= "flex-to-center">
                                         <img class="user-image" src="images/userimage.png">
                                     </div>
+                                <div class ="flex-to-left">
+                                    <div class="example spacing edit-padding">
+                                    <a class="button edit-btn hover hover-1 smaler-font" href="/account/edit">edit</a> 
+                                    </div>
+                                    <div class="example spacing">
+                                    <a class="button edit-btn hover hover-1 smaler-font" href="/account/password">edit password</a>
+                                    </div>
+                                    <div class="example spacing">
+                                    <a class="button edit-btn hover hover-1 smaler-font" href="/account/orders">orders</a>
+                                    </div>
+                                </div>
+
+                                   
+                                    
 
                                     <div class="row">
                                         <div class="col-md-6 mb-4 pb-2">
@@ -66,11 +74,11 @@
                                                 <button class="btn btn-light btn-lg purple-btn" type="submit">Log out</button>
                                             </form>
                                             </div>
-                                            <a href="/account/orders">ORDERS</a>
+                    
                                         </div>
                                     </div>
                                     </div>
-                                    <p>Delete Account</p>
+                                    <p id="delete-account" v-on:click="isActive=!isActive">Delete Account</p>
 
                                 </div>
                         </div>

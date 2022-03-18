@@ -32,6 +32,7 @@ Vue.component('header-carousel', require('./components/HeaderCarousel.vue').defa
 Vue.component('products', require('./components/Products.vue').default);
 Vue.component('navbar-and-cart', require('./components/NavbarAndCart.vue').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -47,7 +48,7 @@ const app = new Vue({
         cart:JSON.parse(sessionStorage.getItem('cart')),
         products_for_cart: JSON.parse(sessionStorage.getItem('numberincart')),
         cart_no_repetition: JSON.parse(sessionStorage.getItem("uniqueProducts")),
-        isActive: false,
+        isActive: true,
     },
     mounted(){    
         let bob= [];
@@ -63,7 +64,7 @@ const app = new Vue({
     created(){
         axios.get('products/show').then(response => {
             this.products = response.data
-            //here i should put an if statement if session stotage is empty
+            if(JSON.parse(sessionStorage.getItem("numberincart"))== null){
             let numberincart = []
             for(let i=0; i<this.products.length; i++){
                 this.products[i].quantity = 0
@@ -73,7 +74,7 @@ const app = new Vue({
                     id: i
                 }
             sessionStorage.setItem('numberincart', JSON.stringify(numberincart))
-            }
+            }}
         })
       
    },

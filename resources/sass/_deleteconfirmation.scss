@@ -9,6 +9,9 @@
     background-color: rgba(0,0,0,0.5);
     display:flex;
     justify-content: center;
+   
+}
+.displaymodalbox{
     display: none;
 }
 .box-area{
@@ -17,4 +20,11 @@
     height: fit-content;
     padding:50px;
     margin-top:30vh;
+}
+.btn-modal{
+    margin-right:20px;
+    margin-left:20px;
+}
+.btn-modal:hover{
+    background-color: $primary-2 ;
 }
