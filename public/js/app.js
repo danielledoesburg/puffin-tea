@@ -5594,6 +5594,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5613,6 +5614,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     products_for_cart: {
       type: Array
+    },
+    logged_in: {
+      type: Object
     }
   },
   methods: {
@@ -43045,40 +43049,44 @@ var render = function () {
         _vm._v(" "),
         _c("div", { staticClass: " navbar-brand display-in-row" }, [
           _c("div", { staticClass: "example spacing link-right" }, [
-            _c(
-              "a",
-              {
-                staticClass: "nav-link hover hover-1",
-                attrs: { href: "/login" },
-              },
-              [_vm._v("Log in")]
-            ),
-            _c("a", { attrs: { href: "/login" } }, [
-              _c(
-                "svg",
-                {
-                  staticClass: "bi bi-person-circle",
-                  attrs: {
-                    xmlns: "http://www.w3.org/2000/svg",
-                    width: "30",
-                    height: "30",
-                    fill: "currentColor",
-                    viewBox: "0 0 16 16",
+            _vm.logged_in === false
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "nav-link hover hover-1",
+                    attrs: { href: "/login" },
                   },
-                },
-                [
-                  _c("path", {
-                    attrs: { d: "M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" },
-                  }),
-                  _vm._v(" "),
-                  _c("path", {
-                    attrs: {
-                      "fill-rule": "evenodd",
-                      d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z",
+                  [_vm._v("Log in")]
+                )
+              : _vm._e(),
+            _c("a", { attrs: { href: "/login" } }, [
+              _vm.logged_in === true
+                ? _c(
+                    "svg",
+                    {
+                      staticClass: "bi bi-person-circle",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "30",
+                        height: "30",
+                        fill: "currentColor",
+                        viewBox: "0 0 16 16",
+                      },
                     },
-                  }),
-                ]
-              ),
+                    [
+                      _c("path", {
+                        attrs: { d: "M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" },
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z",
+                        },
+                      }),
+                    ]
+                  )
+                : _vm._e(),
             ]),
           ]),
           _vm._v(" "),

@@ -18,7 +18,7 @@
                             <div class="col-lg-6"  id="move-the-footer">
                                 <div class="p-5 user-cart">
                                 <div class= "flex-to-center">
-                                        <img class="user-image" src="images/userimage.png">
+                                        <img class="user-image" src="/images/userimage.png">
                                     </div>
                                 <div class ="flex-to-left">
                                     <div class="example spacing edit-padding">

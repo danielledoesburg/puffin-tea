@@ -9,6 +9,6 @@
         :cart="cart"
         :cart_no_repetition="cart_no_repetition"
         :products_for_cart="products_for_cart"
-        :loggedIn="{{ json_encode(Auth::user()) }}">
+        :logged_in="{{ json_encode(auth()->check()) }}">
     </navbar-and-cart>
 @endsection
