@@ -12379,6 +12379,7 @@ h1, .h1 {
   width: 200px;
   height: auto;
   margin-top: -150px;
+  z-index: 0;
 }
 
 #delete-user-account {
@@ -12394,6 +12395,8 @@ h1, .h1 {
 .flex-to-left {
   display: flex;
   justify-content: left;
+  margin-top: -60px;
+  margin-bottom: 50px;
 }
 
 .edit-padding {
@@ -12404,6 +12407,28 @@ h1, .h1 {
   color: black;
 }
 
+#delete-account {
+  text-align: right;
+}
+
+#delete-account:hover {
+  cursor: pointer;
+}
+
+.smaler-font {
+  font-size: 14px !important;
+}
+
+#move-the-footer {
+  margin-bottom: 6vh;
+}
+
+@media only screen and (max-width: 1714px) {
+  .flex-to-left {
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
 .delete-modal-box {
   position: fixed;
   z-index: 1000;
@@ -12415,6 +12440,9 @@ h1, .h1 {
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
+}
+
+.displaymodalbox {
   display: none;
 }
 
@@ -12426,4 +12454,13 @@ h1, .h1 {
   height: fit-content;
   padding: 50px;
   margin-top: 30vh;
+}
+
+.btn-modal {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.btn-modal:hover {
+  background-color: #b2a4e2;
 }

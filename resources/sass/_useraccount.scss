@@ -31,6 +31,7 @@
     width:200px;
     height: auto;
     margin-top:-150px;
+    z-index: 0;
 }
 #delete-user-account{
     text-align:right;
@@ -44,6 +45,8 @@
 .flex-to-left{
     display: flex;
     justify-content:left;
+    margin-top:-60px;
+    margin-bottom:50px;
 }
 .edit-padding{
     margin-left:-50px;
@@ -51,4 +54,24 @@
 .edit-btn:hover{
     color:black;
 }
+#delete-account{
+    text-align: right;
+}
+#delete-account:hover{
+    cursor:pointer;
+}
 
+.smaler-font{
+    font-size: 14px !important;
+}
+#move-the-footer{
+    margin-bottom: 6vh;
+}
+
+@media only screen and (max-width: 1714px) {
+.flex-to-left{
+    justify-content: center;
+    margin-top:20px;
+
+}
+}
