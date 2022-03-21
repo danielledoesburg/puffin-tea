@@ -4,7 +4,11 @@
 <div id="full-page">
     <div class="login-page">
     <div class="form-login">
-        <p>Login</p>
+        @if (session()->has('message'))
+            <p>{{session()->get('message')}}</p>
+        @else
+            <p>Login</p>
+        @endif
         <form class="login-form" method="POST" action="login">
         @csrf
         <input type="text" class="form-control form-control-lg" name="email" placeholder=""/>
