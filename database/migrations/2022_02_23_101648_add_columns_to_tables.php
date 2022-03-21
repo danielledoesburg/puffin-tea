@@ -67,7 +67,7 @@ return new class extends Migration
             $table->dropColumn('deleted_by');
         });;
 
-        Schema::table('role_permissions', function($table) {
+        Schema::table('permission_role', function($table) {
             $table->dropForeign(['created_by']);
             $table->dropColumn('created_by');
             $table->dropForeign(['updated_by']);

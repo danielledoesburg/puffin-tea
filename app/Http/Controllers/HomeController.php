@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome', [
+        return view('home', [
             'bestsellers' => Product::findMany($this->bestSellerIds()),
             'saleProducts' => Product::has('onSale')->get()->random(3)
         ]);
