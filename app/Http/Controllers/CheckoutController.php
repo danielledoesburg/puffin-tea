@@ -17,6 +17,19 @@ class CheckoutController extends Controller
         return view('checkout');
     }
 
+
+    /**
+     * Display the checkout page.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function calculate(Request $request)
+    {
+        dd($request);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
