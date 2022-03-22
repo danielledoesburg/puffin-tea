@@ -12471,12 +12471,114 @@ h1, .h1 {
 
 .accordion-button li {
   list-style: none;
+  margin-right: 20px;
 }
 
 .boldorder {
   font-weight: bolder;
 }
 
+.accordion-button:not(.collapsed) {
+  background-color: white;
+  color: black;
+}
+
+.accordion-button:focus {
+  border-color: none;
+  box-shadow: none;
+}
+
+.accordion {
+  position: relative;
+  min-height: 68vh;
+}
+
 .accordion-body li {
   list-style: none;
+}
+
+#change-password {
+  margin-top: 100px;
+  position: relative;
+  min-height: 58vh;
+  display: flex;
+  justify-content: center;
+}
+#change-password form {
+  background-color: #ffc100;
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+#change-password form h4, #change-password form .h4 {
+  font-weight: bolder;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.width-accordion-button {
+  max-width: 1000px !important;
+}
+.width-accordion-button h2 .accordion-button:not(.collapsed), .width-accordion-button .h2 .accordion-button:not(.collapsed) {
+  background-color: #ffc100;
+  box-shadow: none;
+}
+.width-accordion-button h2 .accordion-button, .width-accordion-button .h2 .accordion-button {
+  background-color: #ffc100;
+}
+
+#fav-faq {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.accordion-flex {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  margin-top: 50px;
+}
+
+#accordion-margin {
+  margin-bottom: 20px;
+}
+
+.help-form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px !important;
+}
+.help-form h2, .help-form .h2 {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.help-form form {
+  background-color: #b2a4e2;
+  padding: 30px;
+  margin-bottom: 50px;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.name-help {
+  max-width: 300px;
+}
+
+.email-help {
+  max-width: 300px;
+}
+
+.flex-to-right {
+  display: flex;
+  justify-content: right;
+}
+
+#button-sumbit-help {
+  margin-top: 15px;
 }

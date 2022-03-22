@@ -5604,6 +5604,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: {
     products: {
+      required: true,
       type: Array
     },
     cart_no_repetition: {
@@ -5616,7 +5617,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     },
     logged_in: {
-      type: Object
+      type: Boolean
     }
   },
   methods: {
@@ -6056,31 +6057,31 @@ var app = new Vue({
     isActive: true
   },
   mounted: function mounted() {
-    var bob = [];
+    var emptyArray = [];
 
     if (JSON.parse(sessionStorage.getItem("cart")) == null) {
-      sessionStorage.setItem("cart", JSON.stringify(bob));
+      sessionStorage.setItem("cart", JSON.stringify(emptyArray));
     }
 
     if (JSON.parse(sessionStorage.getItem("uniqueProducts")) == null) {
-      sessionStorage.setItem("uniqueProducts", JSON.stringify(bob));
+      sessionStorage.setItem("uniqueProducts", JSON.stringify(emptyArray));
     }
   },
   created: function created() {
     var _this = this;
 
-    axios.get('products/show').then(function (response) {
+    axios.get('/products').then(function (response) {
       _this.products = response.data;
 
       if (JSON.parse(sessionStorage.getItem("numberincart")) == null) {
         var numberincart = [];
 
-        for (var i = 0; i < _this.products.length; i++) {
+        for (var i = 0; i <= _this.products.length; i++) {
           _this.products[i].quantity = 0;
           numberincart.length = _this.products.length + 1;
-          numberincart[i] = {
+          numberincart[i + 1] = {
             quantity: 0,
-            id: i
+            id: i + 1
           };
           sessionStorage.setItem('numberincart', JSON.stringify(numberincart));
         }
