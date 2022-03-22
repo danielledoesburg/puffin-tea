@@ -1,7 +1,11 @@
+@extends('layouts.app')
+@include('navbar')
+@section('content')
+<div id="change-password">
 <form action="/account/password" method="POST" >
     @method('patch')
     @csrf
-    <h3 class="fw-normal mb-5">General Infomation</h3>
+    <h4 class="">Edit Password</h4>
 
     <div>
         <input 
@@ -34,5 +38,8 @@
         <label class="form-label" for="password_confirmation">Confirm password</label>
     </div>
                                    
-    <button type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Save</button>
+    <button type="submit" class="btn btn-light btn-lg purple-btn" data-mdb-ripple-color="dark">Save</button>
 </form>
+</div>
+@endsection
+@include('footer')

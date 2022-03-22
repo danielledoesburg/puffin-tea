@@ -91,6 +91,7 @@
     },
     props:{
         products:{
+            required:true,
             type:Array,
             
         },
@@ -106,7 +107,7 @@
             type:Array,
         },
         logged_in:{
-            type:Object
+            type:Boolean,
         }
     },
     methods:{

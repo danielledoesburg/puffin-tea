@@ -51,27 +51,27 @@ const app = new Vue({
         isActive: true,
     },
     mounted(){    
-        let bob= [];
+        let emptyArray= [];
         if (JSON.parse(sessionStorage.getItem("cart")) == null) {
-        sessionStorage.setItem("cart", JSON.stringify(bob))
+        sessionStorage.setItem("cart", JSON.stringify(emptyArray))
         }
         if(JSON.parse(sessionStorage.getItem("uniqueProducts"))==null){
-        sessionStorage.setItem("uniqueProducts", JSON.stringify(bob))
+        sessionStorage.setItem("uniqueProducts", JSON.stringify(emptyArray))
         }
 
     },
 
     created(){
-        axios.get('products/show').then(response => {
+        axios.get('/products').then(response => {
             this.products = response.data
             if(JSON.parse(sessionStorage.getItem("numberincart"))== null){
             let numberincart = []
-            for(let i=0; i<this.products.length; i++){
+            for(let i=0; i<=this.products.length; i++){
                 this.products[i].quantity = 0
                 numberincart.length = this.products.length + 1
-                numberincart[i]={
+                numberincart[i + 1]={
                     quantity: 0,
-                    id: i
+                    id: i + 1
                 }
             sessionStorage.setItem('numberincart', JSON.stringify(numberincart))
             }}
