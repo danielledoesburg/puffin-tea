@@ -2,22 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class OrderController extends Controller
+class CheckoutController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the checkout page.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('user.orders', [
-            'orders' => Order::where('user_id', Auth::user()->id)->with('orderDetails')->get()->sortByDesc('created_at')
-        ]);
+        return view('checkout');
     }
 
     /**

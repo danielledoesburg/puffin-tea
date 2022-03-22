@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Address;
 use App\Models\NewsletterSubscription;
+use App\Models\Order;
 use App\Models\User;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,17 +14,8 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    protected function getUser($withAddress = true) 
-    {
-        if ($withAddress) {
-            return User::with('shippingAddress', 'billingAddress')->find(Auth::id());
-        }
-
-        return Auth::user();
-    }
-
     /**
-     * Display a listing of the resource.
+     * Display a listing of the user information.
      *
      * @return \Illuminate\Http\Response
      */
@@ -34,6 +25,35 @@ class UserController extends Controller
             'user' => $this->getUser()
         ]);
     }
+
+
+    /**
+     * Display a listing of the user's orders.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function orders()
+    {
+        return view('user.orders', [
+            'orders' => Order::where('user_id', Auth::user()->id)->with('orderDetails')->get()->sortByDesc('created_at')
+        ]);
+    }
+
+    
+    /**
+     * Display a listing of the user's orders.
+     *
+     * @return mixed
+     */
+    protected function getUser($withAddress = true) 
+    {
+        if ($withAddress) {
+            return User::with('shippingAddress', 'billingAddress')->find(Auth::id());
+        }
+
+        return Auth::user();
+    }
+
 
     /**
      * Show the form for editing logged in user.
@@ -46,20 +66,6 @@ class UserController extends Controller
             'user' => $this->getUser()
         ]);
     }
-
-    /**
-     * Show the form for editing the password of the logged in user.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function password()
-    {
-        return view('user.password', [
-            'user' => $this->getUser(false)
-        ]);
-    }
-
 
     /**
      * Get a validator for an incoming account update request.
@@ -120,6 +126,20 @@ class UserController extends Controller
        }
 
         return redirect('account')->with('success', 'Your changes have been saved.');   
+    }
+
+
+    /**
+     * Show the form for editing the password of the logged in user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password()
+    {
+        return view('user.password', [
+            'user' => $this->getUser(false)
+        ]);
     }
 
 
