@@ -76,31 +76,31 @@
                                         </div>
                                         <div class="col-md-6 mb-4 pb-2">
                                             <div class="form-outline">
-                                            <h5>Shipping Adress</h5>
+                                            <h5>Delivery Adress</h5>
                                             <input 
-                                                name="shipping_address"
+                                                name="delivery_address"
                                                 type="text" 
-                                                id="shipping_address" 
-                                                value="{{ old('shipping_address') ?? $user->shippingAddress->address }}"
+                                                id="delivery_address" 
+                                                value="{{ old('delivery_address') ?? $user->deliveryAddress->address }}"
                                                 class="form-control form-control-lg"
                                                 required />
-                                            <label class="form-label" for="shipping_address">address</label>
+                                            <label class="form-label" for="delivery_address">address</label>
                                             <input 
-                                                name="shipping_zipcode"
+                                                name="delivery_zipcode"
                                                 type="text" 
-                                                id="shipping_zipcode" 
-                                                value="{{ old('shipping_zipcode') ?? $user->shippingAddress->zipcode }}"
+                                                id="delivery_zipcode" 
+                                                value="{{ old('delivery_zipcode') ?? $user->deliveryAddress->zipcode }}"
                                                 class="form-control form-control-lg"
                                                 required />
-                                            <label class="form-label" for="shipping_zipcode">zipcode</label>
+                                            <label class="form-label" for="delivery_zipcode">zipcode</label>
                                             <input 
-                                                name="shipping_city"
+                                                name="delivery_city"
                                                 type="text" 
-                                                id="shipping_city" 
-                                                value="{{ old('shipping_city') ?? $user->shippingAddress->city }}"
+                                                id="delivery_city" 
+                                                value="{{ old('delivery_city') ?? $user->deliveryAddress->city }}"
                                                 class="form-control form-control-lg"
                                                 required />
-                                            <label class="form-label" for="shipping_city">city</label>
+                                            <label class="form-label" for="delivery_city">city</label>
 
 
                                         </div>

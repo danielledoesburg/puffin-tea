@@ -25,12 +25,12 @@ class OrdersTableSeeder extends Seeder
         {
             $user = $users->random();
             
-            $deliveryAddress = $user->shippingAddress;
+            $deliveryAddress = $user->deliveryAddress;
             $billingAddress = $user->billingAddress;
             
             $order = Order::create([
                 'ordernr' => time() . $user->id,
-                'shipping_costs' => 4.95, 
+                'shipping_rate' => 4.95, 
                 'total' => 1,
                 'user_id' => $user->id,
                 'first_name' => $user->first_name,

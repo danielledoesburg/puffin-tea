@@ -16,7 +16,7 @@
     <div id="order{{$order->id}}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <li><span class="boldorder">total:</span>  {{ $order->total }} 	&#8364;</li>
-        <li><span class="boldorder">shippingcosts:</span> {{ $order->shipping_costs }} 	&#8364;</li>
+        <li><span class="boldorder">shippingcosts:</span> {{ $order->shipping_rate }} 	&#8364;</li>
         <span class="boldorder">delivery address:</span><br>
         {{ $order->delivery_address }} <br>
         {{ $order->delivery_zipcode }} {{ $order->delivery_city }}<br>

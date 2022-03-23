@@ -99,7 +99,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $shippingAddress = Address::create([
+        $deliveryAddress = Address::create([
             'user_id' => $user->id,
             'address_type_id' => 1, 
             'address' => $data['address'],
@@ -107,7 +107,7 @@ class RegisterController extends Controller
             'city' => $data['city'],
         ]);
 
-        $billingAddress = $shippingAddress->replicate();
+        $billingAddress = $deliveryAddress->replicate();
         $billingAddress->address_type_id = 2;
         $billingAddress->save();
 

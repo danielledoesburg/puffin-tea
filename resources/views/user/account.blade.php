@@ -46,9 +46,9 @@
                                         </div>
                                         <div class="col-md-6 mb-4 pb-2">
                                             <div class="form-outline">
-                                            <h5>Shipping Adress</h5>
-                                            <p>{{ $user->shippingAddress->address}}</br>
-                                            {{ $user->shippingAddress->zipcode}} {{ $user->shippingAddress->city}}</p>
+                                            <h5>Delivery Adress</h5>
+                                            <p>{{ $user->deliveryAddress->address}}</br>
+                                            {{ $user->deliveryAddress->zipcode}} {{ $user->deliveryAddress->city}}</p>
                                             
                                             <p> subscribed to newsletter: 
                                                 @if ($user->newsletterSubscription()->exists()) Yes

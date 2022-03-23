@@ -39,7 +39,10 @@ Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']
 Route::get('/products/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
 
 Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->name('checkout')->middleware('auth');
+Route::post('/checkout', [App\Http\Controllers\CheckoutController::class, 'store'])->name('checkout')->middleware('auth');
 Route::get('/checkout/calculate', [App\Http\Controllers\CheckoutController::class, 'calculate'])->name('checkout.calculate');
+Route::get('/checkout/success', [App\Http\Controllers\CheckoutController::class, 'success'])->name('checkout.success')->middleware('auth');
+
 
 
 Route::get('/help',[App\Http\Controllers\HelpController::class, 'index'])->name('help');

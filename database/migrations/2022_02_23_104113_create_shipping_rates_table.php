@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shipping_costs', function (Blueprint $table) {
+        Schema::create('shipping_rates', function (Blueprint $table) {
             $table->id();
-            $table->unsignedDecimal('shipping_costs');
+            $table->unsignedDecimal('shipping_rate');
             $table->unsignedDecimal('free_shipping_threshold')->nullable();
             $table->date('date_from');
             $table->date('date_till')->nullable();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping_costs');
+        Schema::dropIfExists('shipping_rates');
     }
 };
