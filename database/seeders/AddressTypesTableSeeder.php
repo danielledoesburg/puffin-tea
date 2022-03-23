@@ -20,7 +20,7 @@ class AddressTypesTableSeeder extends Seeder
         AddressType::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        $data = ['shipping address', 'billing address'];
+        $data = ['delivery address', 'billing address'];
 
         foreach ($data as $name) {
             AddressType::create([

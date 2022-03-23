@@ -22,7 +22,7 @@ class UserController extends Controller
     public function index() 
     { 
         return view('user.account', [
-            'user' => $this->getUser()
+            'user' => $this->getCurrentUser()
         ]);
     }
 
@@ -41,14 +41,14 @@ class UserController extends Controller
 
     
     /**
-     * Display a listing of the user's orders.
+     * get logged in user.
      *
      * @return mixed
      */
-    protected function getUser($withAddress = true) 
+    public static function getCurrentUser($withAddress = true) 
     {
         if ($withAddress) {
-            return User::with('shippingAddress', 'billingAddress')->find(Auth::id());
+            return User::with('deliveryAddress', 'billingAddress')->find(Auth::id());
         }
 
         return Auth::user();
@@ -63,7 +63,7 @@ class UserController extends Controller
     public function edit()
     {
         return view('user.edit', [
-            'user' => $this->getUser()
+            'user' => $this->getCurrentUser()
         ]);
     }
 
@@ -79,9 +79,9 @@ class UserController extends Controller
             'first_name' => ['required', 'string', 'min:1', 'max:255'],
             'last_name' => ['required', 'string', 'min:1', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)->whereNull('deleted_at')],
-            'shipping_address' => ['required', 'string', 'min:5'],
-            'shipping_zipcode' => ['required', 'string', 'min:4'],
-            'shipping_city' => ['required', 'string', 'min:2'],
+            'delivery_address' => ['required', 'string', 'min:5'],
+            'delivery_zipcode' => ['required', 'string', 'min:4'],
+            'delivery_city' => ['required', 'string', 'min:2'],
             'billing_address' => ['required', 'string', 'min:5'],
             'billing_zipcode' => ['required', 'string', 'min:4'],
             'billing_city' => ['required', 'string', 'min:2'],
@@ -97,7 +97,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     { 
-        $user = $this->getUser();
+        $user = $this->getCurrentUser();
 
         $this->userValidator($request->all(), $user)->validate();
 
@@ -105,15 +105,15 @@ class UserController extends Controller
         $user->last_name = $request->last_name;
         $user->email = $request->email;
         $user->phonenr = $request->phonenr;
-        $user->shippingAddress->address = $request->shipping_address;
-        $user->shippingAddress->zipcode = $request->shipping_zipcode;
-        $user->shippingAddress->city = $request->shipping_city;
-        $user->billingAddress->address = $request->billing_address;
-        $user->billingAddress->zipcode = $request->billing_zipcode;
-        $user->billingAddress->city = $request->billing_city;
+        $user->deliveryAddress->address = $request->delivery_address;
+        $user->deliveryAddress->zipcode = $request->delivery_zipcode;
+        $user->deliveryAddress->city = $request->delivery_city;
+        $user->billingAddress->address = $request->delivery_address;
+        $user->billingAddress->zipcode = $request->delivery_zipcode;
+        $user->billingAddress->city = $request->delivery_city;
 
         if ($user->isDirty()) $user->save();
-        if ($user->shippingAddress->isDirty()) $user->shippingAddress->save();
+        if ($user->deliveryAddress->isDirty()) $user->deliveryAddress->save();
         if ($user->billingAddress->isDirty()) $user->billingAddress->save();
 
        if ($user->newsletterSubscription()->exists() !== ($request->newsletter ?? false)) {
@@ -138,7 +138,7 @@ class UserController extends Controller
     public function password()
     {
         return view('user.password', [
-            'user' => $this->getUser(false)
+            'user' => $this->getCurrentUser(false)
         ]);
     }
 
@@ -187,9 +187,9 @@ class UserController extends Controller
      */
     public function destroy()
     {
-        $user = $this->getUser();
+        $user = $this->getCurrentUser();
 
-        Address::whereIn('id', array($user->billingAddress->id, $user->shippingAddress->id))->delete();
+        Address::whereIn('id', array($user->billingAddress->id, $user->deliveryAddress->id))->delete();
 
         if ($user->newsletterSubscription()->exists()) {
             NewsletterSubscription::where('id',$user->id)->update(['user_id' => 1]);

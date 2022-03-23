@@ -4,7 +4,7 @@
 @section('content')
 <hr>
 
-        <checkout></checkout>
+       <p>Order successfully submitted!</p>
 
 
 @endsection

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -48,7 +49,7 @@ class User extends Authenticatable
         return $this->hasOne(NewsletterSubscription::class);
     }
 
-    public function shippingAddress() 
+    public function deliveryAddress() 
     {
         return $this->hasOne(Address::class)->ofMany([
             'created_at' => 'max'
@@ -79,5 +80,10 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+    public function scopeCurrentUser($query)
+    {
+        $query->find(Auth::id());
     }
 }

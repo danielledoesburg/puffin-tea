@@ -2,12 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\ShippingCost;
+use App\Models\ShippingRate;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ShippingCostsTableSeeder extends Seeder
+class ShippingRatesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,24 +17,24 @@ class ShippingCostsTableSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        ShippingCost::truncate();
+        ShippingRate::truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $data = [
             [
-                'shipping_costs' => 6.95,
+                'shipping_rate' => 6.95,
                 'free_shipping_threshold' => 100,
                 'date_from' => date('Y-m-d', strtotime(now() . '- 1 month')),
                 'date_till' => date('Y-m-d', strtotime(now() . '- 2 weeks'))
             ],
             [
-                'shipping_costs' => 5.95,
+                'shipping_rate' => 5.95,
                 'free_shipping_threshold' => 75,
                 'date_from' => date('Y-m-d', strtotime(now() . '- 13 days')),
                 'date_till' => now()
             ],
             [
-                'shipping_costs' => 4.95,
+                'shipping_rate' => 4.95,
                 'free_shipping_threshold' => 50,
                 'date_from' => date('Y-m-d', strtotime(now() . '+ 1 day')),
                 'date_till' => null
@@ -43,8 +43,8 @@ class ShippingCostsTableSeeder extends Seeder
 
         foreach ($data as $array)
         {
-            ShippingCost::create([
-                'shipping_costs' => $array['shipping_costs'],
+            ShippingRate::create([
+                'shipping_rate' => $array['shipping_rate'],
                 'free_shipping_threshold' => $array['free_shipping_threshold'],
                 'date_from' => $array['date_from'],
                 'date_till' => $array['date_till']
