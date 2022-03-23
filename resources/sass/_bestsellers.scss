@@ -1,16 +1,11 @@
 .grid-wrapper{
-    display: grid;
-    grid-gap:70px;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
-    display: grid;
-
-    margin-left: 18%;
-    margin-right: 18%;
-
+    display: flex;
+    justify-content: center;
     
 }
 .grid-object {
-    width:350px;
+    width:400px;
+    margin:20px;
     p{
         text-align: center;
         margin-top:10px;
@@ -19,13 +14,13 @@
     }
 }
 .resize-image{
-    height:320px;
-    width:280px;
+    height:500px;
+    width:400px;
     object-fit: cover;
     transition: all .2s ease-in-out;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+   
 }
 
 .resize-image:hover{
@@ -50,4 +45,60 @@
 }
 #description-padding{
     padding-top:15px;
+}
+@media only screen and (max-width: 1394px){
+    
+    
+    .resize-image{
+        height:420px;
+        width:350px;
+    }
+    .grid-object {
+            width:350px;
+    }
+
+}
+@media only screen and (max-width: 1158px){
+    .resize-image{
+        height:360px;
+        width:300px;
+    }
+    .grid-object {
+            width:300px;
+            margin:10px;
+    }
+}
+@media only screen and (max-width: 1000px){
+    .resize-image{
+        height:250px;
+        width:200px;
+    }
+    .grid-object {
+            width:200px;
+            margin:10px;
+    }
+}
+@media only screen and (max-width: 658px){
+    .resize-image{
+        height:500px;
+        width: 400px;
+    }
+    .grid-wrapper {
+            display: grid;
+    }
+    .grid-object {
+        width:400px;
+        margin:10px;
+}
+}
+@media only screen and (max-width: 420px){
+    .resize-image{
+        height:400px;
+        width: 300px;
+    }
+
+    .grid-object {
+        width:300px;
+        margin:10px;
+}
 }

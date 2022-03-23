@@ -1,6 +1,21 @@
 <template>
 <div>
+            <div class= " navbar-brand display-in-row">
+        <div class= "example spacing link-right">
+            <a v-if="logged_in === false" class="nav-link hover hover-1" href="/login">Log in</a><a href="/login">
+            <svg v-if="logged_in === true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+</svg></a>
+        </div>
+        <div class="link-right" @click="isActive=!isActive">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-handbag link-right position-the-bag" viewBox="0 0 16 16">
+  <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z"/>
+</svg>
+        </div>
+    </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img id="logo" src="https://i.ibb.co/jDN8ddD/puffin-tea-logo.png">
@@ -19,20 +34,7 @@
             </div>
         </div>
     </div>
-    <div class= " navbar-brand display-in-row">
-        <div class= "example spacing link-right">
-            <a v-if="logged_in === false" class="nav-link hover hover-1" href="/login">Log in</a><a href="/login">
-            <svg v-if="logged_in === true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-</svg></a>
-        </div>
-        <div class="link-right" @click="isActive=!isActive">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-handbag link-right position-the-bag" viewBox="0 0 16 16">
-  <path d="M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z"/>
-</svg>
-        </div>
-    </div>
+
 </nav>
 <div class="position-right-flex">
     <div class="cart" :class="{toggleCart:!isActive}">

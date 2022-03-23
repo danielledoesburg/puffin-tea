@@ -11426,7 +11426,6 @@ textarea.form-control-lg {
 
 .slick-prev:before,
 .slick-next:before {
-  font-family: "slick";
   font-size: 20px;
   line-height: 1;
   opacity: 0.75;
@@ -11445,11 +11444,11 @@ textarea.form-control-lg {
 }
 
 .slick-prev:before {
-  content: "←";
+  content: "<";
 }
 
 [dir=rtl] .slick-prev:before {
-  content: "→";
+  content: ">";
 }
 
 .slick-next {
@@ -11462,11 +11461,11 @@ textarea.form-control-lg {
 }
 
 .slick-next:before {
-  content: "→";
+  content: ">";
 }
 
 [dir=rtl] .slick-next:before {
-  content: "←";
+  content: "<";
 }
 
 /* Dots */
@@ -11496,7 +11495,7 @@ textarea.form-control-lg {
 }
 
 .slick-dots li button {
-  font-size: 0;
+  font-size: 10px;
   line-height: 0;
   display: block;
   width: 20px;
@@ -11520,9 +11519,8 @@ textarea.form-control-lg {
 }
 
 .slick-dots li button:before {
-  font-family: "slick";
-  font-size: 6px;
-  line-height: 20px;
+  font-size: 60px;
+  line-height: 10px;
   position: absolute;
   top: 0;
   left: 0;
@@ -11543,8 +11541,12 @@ textarea.form-control-lg {
 
 .small-image {
   width: 200px;
-  margin-left: 16%;
-  margin-right: 16%;
+  height: 300px;
+  width: 240px;
+  margin-right: 15%;
+  margin-left: 15%;
+  -o-object-fit: cover;
+     object-fit: cover;
   transition: all 0.2s ease-in-out;
 }
 
@@ -11556,16 +11558,10 @@ textarea.form-control-lg {
 .responsive {
   width: 70%;
 }
-.responsive div {
-  justify-content: center;
-}
 
 .product-in-carousel p {
   text-align: center;
   padding-top: 20px;
-  width: 240px;
-  margin-left: 16%;
-  margin-right: 16%;
 }
 
 .to-center {
@@ -11590,6 +11586,50 @@ textarea.form-control-lg {
   font-size: 48px !important;
 }
 
+@media only screen and (max-width: 1469px) {
+  .responsive {
+    width: 75%;
+  }
+
+  .small-image {
+    margin-left: 20px;
+    margin-right: 0;
+    width: 200px;
+    height: 220px;
+  }
+}
+@media only screen and (max-width: 1198px) {
+  .small-image {
+    width: 170px;
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 764px) {
+  .small-image {
+    width: 140px;
+    height: 170px;
+  }
+}
+@media only screen and (max-width: 648px) {
+  .small-image {
+    width: 120px;
+    height: 160px;
+  }
+}
+@media only screen and (max-width: 599px) {
+  .small-image {
+    width: 170px;
+    height: 200px;
+  }
+}
+@media only screen and (max-width: 479px) {
+  .small-image {
+    width: 220px;
+    height: 250px;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
 .carousel-item {
   width: 100%;
   height: 75vh;
@@ -11634,10 +11674,18 @@ textarea.form-control-lg {
   .carousel-item {
     height: 50vh;
   }
+
+  .carousel-caption h3, .carousel-caption .h3 {
+    font-size: 21px;
+  }
 }
 @media only screen and (max-width: 810px) {
   .carousel-item {
     height: 35vh;
+  }
+
+  .carousel-caption h3, .carousel-caption .h3 {
+    padding-right: 120px;
   }
 }
 @media only screen and (max-width: 580px) {
@@ -11648,6 +11696,10 @@ textarea.form-control-lg {
 @media only screen and (max-width: 420px) {
   .carousel-item {
     height: 20vh;
+  }
+
+  .carousel-caption h3, .carousel-caption .h3 {
+    font-size: 18px;
   }
 }
 .example {
@@ -11752,8 +11804,9 @@ textarea.form-control-lg {
 
 .display-in-row {
   position: absolute;
-  top: 20;
+  margin-top: 15px;
   right: 0;
+  z-index: 1;
 }
 
 @media only screen and (max-width: 993px) {
@@ -11761,12 +11814,6 @@ textarea.form-control-lg {
     position: relative;
     justify-content: left !important;
     width: 100%;
-  }
-
-  .display-in-row {
-    position: absolute !important;
-    top: 30px;
-    right: 0;
   }
 
   .navbar-toggler {
@@ -11788,11 +11835,15 @@ textarea.form-control-lg {
   }
 
   .display-in-row {
-    top: 20px;
+    margin-top: 5px;
   }
 
+  .link-right {
+    margin-right: 5px;
+  }
   .link-right a {
     font-size: 14px !important;
+    margin: 0;
   }
 }
 .position-circle {
@@ -11825,16 +11876,13 @@ footer p {
 }
 
 .grid-wrapper {
-  display: grid;
-  grid-gap: 70px;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 350px));
-  display: grid;
-  margin-left: 18%;
-  margin-right: 18%;
+  display: flex;
+  justify-content: center;
 }
 
 .grid-object {
-  width: 350px;
+  width: 400px;
+  margin: 20px;
 }
 .grid-object p {
   text-align: center;
@@ -11844,14 +11892,12 @@ footer p {
 }
 
 .resize-image {
-  height: 320px;
-  width: 280px;
+  height: 500px;
+  width: 400px;
   -o-object-fit: cover;
      object-fit: cover;
   transition: all 0.2s ease-in-out;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .resize-image:hover {
@@ -11882,6 +11928,64 @@ footer p {
   padding-top: 15px;
 }
 
+@media only screen and (max-width: 1394px) {
+  .resize-image {
+    height: 420px;
+    width: 350px;
+  }
+
+  .grid-object {
+    width: 350px;
+  }
+}
+@media only screen and (max-width: 1158px) {
+  .resize-image {
+    height: 360px;
+    width: 300px;
+  }
+
+  .grid-object {
+    width: 300px;
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .resize-image {
+    height: 250px;
+    width: 200px;
+  }
+
+  .grid-object {
+    width: 200px;
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 658px) {
+  .resize-image {
+    height: 500px;
+    width: 400px;
+  }
+
+  .grid-wrapper {
+    display: grid;
+  }
+
+  .grid-object {
+    width: 400px;
+    margin: 10px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .resize-image {
+    height: 400px;
+    width: 300px;
+  }
+
+  .grid-object {
+    width: 300px;
+    margin: 10px;
+  }
+}
 hr {
   height: 1px;
   background-color: black;

@@ -41,11 +41,17 @@
     .carousel-item{
         height:50vh;
     }
+    .carousel-caption h3{
+        font-size:21px;
+    }
 
 }
 @media only screen and (max-width: 810px){
     .carousel-item{
         height:35vh;
+    }
+    .carousel-caption h3{
+        padding-right: 120px;
     }
 
 }
@@ -57,5 +63,8 @@
 @media only screen and (max-width: 420px){
     .carousel-item{
         height:20vh;
+    }
+    .carousel-caption h3{
+        font-size:18px;
     }
 }
