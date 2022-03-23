@@ -9,7 +9,7 @@
       <div class="to-center">
         <div class="responsive">
             <div v-for="product in products" class="product-in-carousel"> 
-                  <img class= "small-image products-image" :src="imagePath + product.main_image.filename">
+                  <img class= "small-image" :src="imagePath + product.main_image.filename">
                   <p>{{ product.name }}</p>
             </div>
         </div>

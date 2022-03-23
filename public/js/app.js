@@ -5595,6 +5595,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5943,6 +5945,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -42799,7 +42803,7 @@ var render = function () {
         _vm._l(_vm.products, function (product) {
           return _c("div", { staticClass: "product-in-carousel" }, [
             _c("img", {
-              staticClass: "small-image products-image",
+              staticClass: "small-image",
               attrs: { src: _vm.imagePath + product.main_image.filename },
             }),
             _vm._v(" "),
@@ -43042,70 +43046,24 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c("div", { staticClass: " navbar-brand display-in-row" }, [
-          _c("div", { staticClass: "example spacing link-right" }, [
-            _vm.logged_in === false
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "nav-link hover hover-1",
-                    attrs: { href: "/login" },
-                  },
-                  [_vm._v("Log in")]
-                )
-              : _vm._e(),
-            _c("a", { attrs: { href: "/login" } }, [
-              _vm.logged_in === true
-                ? _c(
-                    "svg",
-                    {
-                      staticClass: "bi bi-person-circle",
-                      attrs: {
-                        xmlns: "http://www.w3.org/2000/svg",
-                        width: "30",
-                        height: "30",
-                        fill: "currentColor",
-                        viewBox: "0 0 16 16",
-                      },
-                    },
-                    [
-                      _c("path", {
-                        attrs: { d: "M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" },
-                      }),
-                      _vm._v(" "),
-                      _c("path", {
-                        attrs: {
-                          "fill-rule": "evenodd",
-                          d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z",
-                        },
-                      }),
-                    ]
-                  )
-                : _vm._e(),
-            ]),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "link-right",
-              on: {
-                click: function ($event) {
-                  _vm.isActive = !_vm.isActive
-                },
+    _c("div", { staticClass: " navbar-brand display-in-row" }, [
+      _c("div", { staticClass: "example spacing link-right" }, [
+        _vm.logged_in === false
+          ? _c(
+              "a",
+              {
+                staticClass: "nav-link hover hover-1",
+                attrs: { href: "/login" },
               },
-            },
-            [
-              _c(
+              [_vm._v("Log in")]
+            )
+          : _vm._e(),
+        _c("a", { attrs: { href: "/login" } }, [
+          _vm.logged_in === true
+            ? _c(
                 "svg",
                 {
-                  staticClass: "bi bi-handbag link-right position-the-bag",
+                  staticClass: "bi bi-person-circle",
                   attrs: {
                     xmlns: "http://www.w3.org/2000/svg",
                     width: "30",
@@ -43116,17 +43074,57 @@ var render = function () {
                 },
                 [
                   _c("path", {
+                    attrs: { d: "M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" },
+                  }),
+                  _vm._v(" "),
+                  _c("path", {
                     attrs: {
-                      d: "M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z",
+                      "fill-rule": "evenodd",
+                      d: "M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z",
                     },
                   }),
                 ]
-              ),
+              )
+            : _vm._e(),
+        ]),
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "link-right",
+          on: {
+            click: function ($event) {
+              _vm.isActive = !_vm.isActive
+            },
+          },
+        },
+        [
+          _c(
+            "svg",
+            {
+              staticClass: "bi bi-handbag link-right position-the-bag",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "30",
+                height: "30",
+                fill: "currentColor",
+                viewBox: "0 0 16 16",
+              },
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d: "M8 1a2 2 0 0 1 2 2v2H6V3a2 2 0 0 1 2-2zm3 4V3a3 3 0 1 0-6 0v2H3.36a1.5 1.5 0 0 0-1.483 1.277L.85 13.13A2.5 2.5 0 0 0 3.322 16h9.355a2.5 2.5 0 0 0 2.473-2.87l-1.028-6.853A1.5 1.5 0 0 0 12.64 5H11zm-1 1v1.5a.5.5 0 0 0 1 0V6h1.639a.5.5 0 0 1 .494.426l1.028 6.851A1.5 1.5 0 0 1 12.678 15H3.322a1.5 1.5 0 0 1-1.483-1.723l1.028-6.851A.5.5 0 0 1 3.36 6H5v1.5a.5.5 0 1 0 1 0V6h4z",
+                },
+              }),
             ]
           ),
-        ]),
-      ]
-    ),
+        ]
+      ),
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "position-right-flex" }, [
       _c(
@@ -43260,62 +43258,71 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container-fluid" }, [
-      _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
-        _c("img", {
-          attrs: {
-            id: "logo",
-            src: "https://i.ibb.co/jDN8ddD/puffin-tea-logo.png",
-          },
-        }),
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "navbar-toggler",
-          attrs: {
-            type: "button",
-            "data-bs-toggle": "collapse",
-            "data-bs-target": "#navbarNavAltMarkup",
-            "aria-controls": "navbarNavAltMarkup",
-            "aria-expanded": "false",
-            "aria-label": "Toggle navigation",
-          },
-        },
-        [_c("span", { staticClass: "navbar-toggler-icon" })]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "collapse navbar-collapse",
-          attrs: { id: "navbarNavAltMarkup" },
-        },
-        [
-          _c("div", { staticClass: "navbar-nav" }, [
-            _c("div", { staticClass: "example spacing" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "nav-link hover hover-1 first-link",
-                  attrs: { "aria-current": "page", href: "/products" },
-                },
-                [_vm._v("All Teas")]
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "example spacing" }, [
-              _c(
-                "a",
-                { staticClass: "nav-link hover hover-1", attrs: { href: "#" } },
-                [_vm._v("Help Center")]
-              ),
-            ]),
+    return _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
+      [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("a", { staticClass: "navbar-brand", attrs: { href: "/" } }, [
+            _c("img", {
+              attrs: {
+                id: "logo",
+                src: "https://i.ibb.co/jDN8ddD/puffin-tea-logo.png",
+              },
+            }),
           ]),
-        ]
-      ),
-    ])
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "navbar-toggler",
+              attrs: {
+                type: "button",
+                "data-bs-toggle": "collapse",
+                "data-bs-target": "#navbarNavAltMarkup",
+                "aria-controls": "navbarNavAltMarkup",
+                "aria-expanded": "false",
+                "aria-label": "Toggle navigation",
+              },
+            },
+            [_c("span", { staticClass: "navbar-toggler-icon" })]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "collapse navbar-collapse",
+              attrs: { id: "navbarNavAltMarkup" },
+            },
+            [
+              _c("div", { staticClass: "navbar-nav" }, [
+                _c("div", { staticClass: "example spacing" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link hover hover-1 first-link",
+                      attrs: { "aria-current": "page", href: "/products" },
+                    },
+                    [_vm._v("All Teas")]
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "example spacing" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "nav-link hover hover-1",
+                      attrs: { href: "#" },
+                    },
+                    [_vm._v("Help Center")]
+                  ),
+                ]),
+              ]),
+            ]
+          ),
+        ]),
+      ]
+    )
   },
   function () {
     var _vm = this

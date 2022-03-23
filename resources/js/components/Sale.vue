@@ -1,4 +1,5 @@
 <template>
+
 <div class="grid-wrapper">
     <div v-for="product in onSaleShorten" class="grid-object">
         <img class= "resize-image" :src="imagePath + product.main_image.filename">
@@ -11,6 +12,7 @@
         </div>
     </div>
 </div>
+
 </template>
 
 <script>

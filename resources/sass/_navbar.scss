@@ -45,8 +45,9 @@
 }
 .display-in-row{
     position: absolute;
-    top:20;
+    margin-top: 15px;
     right:0;
+    z-index: 1;
  }
 @media only screen and (max-width: 993px){
     .container-fluid{
@@ -55,12 +56,7 @@
         width:100%
         
     }
-    .display-in-row{
-       position: absolute !important;
-       top:30px;
-       right:0;
-       
-    }
+
     .navbar-toggler{
         float:left;
     }
@@ -77,10 +73,15 @@
         width:25px;
     }
     .display-in-row{
-        top:20px
+        margin-top:5px
     }
-    .link-right a{
+    
+    .link-right{ 
+        margin-right:5px;
+        a{
         font-size: 14px !important;
+        margin:0;
+        }
     }
     
 }
