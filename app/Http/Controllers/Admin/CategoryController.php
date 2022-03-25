@@ -1,15 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Faq;
-use App\Models\Message;
-use App\Models\User;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
-class HelpController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +14,7 @@ class HelpController extends Controller
      */
     public function index()
     {
-        return view('help', [
-            'faq' => Faq::all()->sortBy('order_sequence')
-        ]);
+        return view('admin.categories.index');
     }
 
     /**
@@ -30,42 +24,18 @@ class HelpController extends Controller
      */
     public function create()
     {
-        //
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'min:1', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
-            'message_text' => ['required', 'string', 'min:10', 'max:1000'] 
-        ]);
+        return view('admin.categories.create');
     }
 
     /**
-     * Store a newly created message in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
-
-        $user = User::where('email', $request->email)->first();
-    
-        $message = Message::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'message' => $request->message_text,
-            'user_id' => $user->id ?? null
-        ]);
-
-        if (Auth::user()->email === $request->email) {
-            $message->update(['user_id'=> Auth::id()]);
-        }
-
-        return redirect()->back()->with('success', 'your message has been sent. We will get back to you as soon as we can');
+        //
     }
 
     /**
@@ -76,7 +46,7 @@ class HelpController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.categories.show');
     }
 
     /**
@@ -87,7 +57,7 @@ class HelpController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.categories.edit');
     }
 
     /**

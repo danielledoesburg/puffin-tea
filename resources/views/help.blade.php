@@ -60,7 +60,7 @@
     @error('email')
         <p>{{$message}}</p>
     @enderror
-    <textarea name="message_text" cols="40" rows="5" class="form-control form-control-lg" value="{{ old('message_text') }}"></textarea>
+    <textarea name="message_text" cols="40" rows="5" class="form-control form-control-lg">{{ old('message_text') }}</textarea>
     @error('message_text')
         <p>{{$message}}</p>
     @enderror

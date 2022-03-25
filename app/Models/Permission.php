@@ -1,5 +1,7 @@
 <?php
 
+//standard spatie/permissions model from https://github.com/spatie/laravel-permission
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
