@@ -25,7 +25,6 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('shopping-card', require('./components/ShoppingCard.vue').default);
 Vue.component('bestsellers', require('./components/BestSellers.vue').default);
 Vue.component('sale', require('./components/Sale.vue').default);
 Vue.component('header-carousel', require('./components/HeaderCarousel.vue').default);

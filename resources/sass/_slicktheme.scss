@@ -76,11 +76,11 @@
 }
 .slick-prev:before
 {
-    content: '<';
+    content: '';
 }
 [dir='rtl'] .slick-prev:before
 {
-    content: '>';
+    content: '';
 }
 
 .slick-next
@@ -94,11 +94,11 @@
 }
 .slick-next:before
 {
-    content: '>';
+    content: '';
 }
 [dir='rtl'] .slick-next:before
 {
-    content: '<';
+    content: '';
 }
 
 /* Dots */

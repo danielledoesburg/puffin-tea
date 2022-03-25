@@ -1,32 +1,38 @@
-body{
+body {
     font-family: $main-font;
-    background-color:$background-color;
+    background-color: $background-color;
 }
 
 .container-fluid {
-    background-color:$background-color;
-  
+    background-color: $background-color;
+
 
 }
-.bg-light{
+
+.bg-light {
     background-color: $background-color !important;
 }
-h1{
+
+h1 {
     text-align: center;
-    padding-bottom:30px;
+    padding-bottom: 30px;
     font-weight: bolder;
 }
-.py-4{
-    padding:0 !important;
+
+.py-4 {
+    padding: 0 !important;
 }
-.font-size-big{
+
+.font-size-big {
     font-size: 28px !important;
-    margin-bottom:50px !important;
-    margin-top:25px !important;
+    margin-bottom: 50px !important;
+    margin-top: 25px !important;
 }
-.no-padding{
-    padding:0 !important;
+
+.no-padding {
+    padding: 0 !important;
 }
+
 .custom-shape-divider-top-1646675233 {
     position: absolute;
     top: 0;
@@ -62,9 +68,11 @@ h1{
     width: calc(100% + 1.3px);
     height: 132px;
 }
+
 .shape-fill1 {
     fill: #F7F0EA;
 }
-#break{
-    height:50px;
+
+#break {
+    height: 50px;
 }

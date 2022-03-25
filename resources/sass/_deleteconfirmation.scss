@@ -1,30 +1,34 @@
-.delete-modal-box{
-    position:fixed;
-    z-index:1000;
-    left:0;
-    top:0;
-    height:100%;
+.delete-modal-box {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    height: 100%;
     width: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
-    display:flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
     justify-content: center;
-   
+
 }
-.displaymodalbox{
+
+.displaymodalbox {
     display: none;
 }
-.box-area{
-    width:50vh;
+
+.box-area {
+    width: 50vh;
     background-color: white;
     height: fit-content;
-    padding:50px;
-    margin-top:30vh;
+    padding: 50px;
+    margin-top: 30vh;
 }
-.btn-modal{
-    margin-right:20px;
-    margin-left:20px;
+
+.btn-modal {
+    margin-right: 20px;
+    margin-left: 20px;
 }
-.btn-modal:hover{
-    background-color: $primary-2 ;
+
+.btn-modal:hover {
+    background-color: $primary-2;
 }

@@ -1,92 +1,106 @@
-#logo{
-    width:150px;
+#logo {
+    width: 150px;
 }
 
 
-#basket-size{
-    width:30px; 
+#basket-size {
+    width: 30px;
     z-index: 9999;
 }
-#basket-size:hover{
-    color:$primary-3;
+
+#basket-size:hover {
+    color: $primary-3;
 }
 
-.spacing{
-    padding-left:50px;
+.spacing {
+    padding-left: 50px;
     display: flex;
-    a.nav-link.hover.hover-1.first-link{ 
+
+    a.nav-link.hover.hover-1.first-link {
         font-weight: bolder;
-        color:black;
+        color: black;
     }
 }
-.navbar-links-position{
+
+.navbar-links-position {
     float: right;
     display: flex;
 }
-.display-in-row{
+
+.display-in-row {
     display: flex;
 }
-.link-right{
-    margin-right:50px;
-    a{
-        color:black;
+
+.link-right {
+    margin-right: 50px;
+
+    a {
+        color: black;
         font-family: $main-font;
         font-weight: bolder;
-        
+
     }
-    a:hover{
-        color:black;
+
+    a:hover {
+        color: black;
     }
 }
 
-.container-fluid{
-    display:flex;
+.container-fluid {
+    display: flex;
     justify-content: left;
 }
-.display-in-row{
+
+.display-in-row {
     position: absolute;
     margin-top: 15px;
-    right:0;
+    right: 0;
     z-index: 1;
- }
-@media only screen and (max-width: 993px){
-    .container-fluid{
-        position:relative;
-        justify-content: left !important; 
-        width:100%
-        
+}
+
+@media only screen and (max-width: 993px) {
+    .container-fluid {
+        position: relative;
+        justify-content: left !important;
+        width: 100%
     }
 
-    .navbar-toggler{
-        float:left;
+    .navbar-toggler {
+        float: left;
     }
 }
-@media only screen and (max-width: 515px){
-    #logo{
-        width:100px
+
+@media only screen and (max-width: 515px) {
+    #logo {
+        width: 100px
     }
-    .navbar-toggler{
-        width:40px;
+
+    .navbar-toggler {
+        width: 40px;
         padding: 4px 6px
     }
-    span.navbar-toggler-icon{
-        width:25px;
+
+    span.navbar-toggler-icon {
+        width: 25px;
     }
-    .display-in-row{
-        margin-top:5px
+
+    .display-in-row {
+        margin-top: 5px
     }
-    
-    .link-right{ 
-        margin-right:5px;
-        a{
-        font-size: 14px !important;
-        margin:0;
+
+    .link-right {
+        margin-right: 5px;
+
+        a {
+            font-size: 14px !important;
+            margin: 0;
         }
     }
-    
+
 }
-.position-circle{
-    position:absolute;
-    right:30px;
-    bottom:-16px;
+
+.position-circle {
+    position: absolute;
+    right: 30px;
+    bottom: -16px;
 }

@@ -24,15 +24,12 @@
               <div class="form-check">
                   <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                  <label class="form-check-label" for="remember">
+                  <label class="remember-me" for="remember">
                       {{ __('Remember Me') }}
                   </label>
               </div>
           </div>
       </div>
-
-
-
 
         <div class="message">Not registered? <a href="register">Create an account</a></div>
         <div id="button-to-the-right">

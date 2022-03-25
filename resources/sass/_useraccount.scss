@@ -1,80 +1,94 @@
-.user-cart{
+.user-cart {
     background-color: $primary-one;
-    margin-top:150px;
+    margin-top: 150px;
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
-.purple-btn{
+
+.purple-btn {
     background-color: $primary-2;
-    margin-top:20px;
-    
+    margin-top: 20px;
+
 }
-.flex-to-center{
+
+.flex-to-center {
     display: flex;
     justify-content: center;
 }
-.form-outline{
-    p{
-        text-align:center;
-    }
-    h5{
+
+.form-outline {
+    p {
         text-align: center;
     }
-    ul{ 
-        li{
-            text-align:center;
+
+    h5 {
+        text-align: center;
+    }
+
+    ul {
+        li {
+            text-align: center;
             list-style: none;
         }
-        
+
     }
 }
-.user-image{
-    width:200px;
+
+.user-image {
+    width: 200px;
     height: auto;
-    margin-top:-150px;
+    margin-top: -150px;
     z-index: 0;
 }
-#delete-user-account{
-    text-align:right;
-}
-.edit-btn{
-    text-decoration: none;
-    color:black;
-    font-weight:bolder;
-}
 
-.flex-to-left{
-    display: flex;
-    justify-content:left;
-    margin-top:-60px;
-    margin-bottom:50px;
-}
-.edit-padding{
-    margin-left:-50px;
-}
-.edit-btn:hover{
-    color:black;
-}
-#delete-account{
+#delete-user-account {
     text-align: right;
 }
-#delete-account:hover{
-    cursor:pointer;
+
+.edit-btn {
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
 }
 
-.smaler-font{
+.flex-to-left {
+    display: flex;
+    justify-content: left;
+    margin-top: -60px;
+    margin-bottom: 50px;
+}
+
+.edit-padding {
+    margin-left: -50px;
+}
+
+.edit-btn:hover {
+    color: black;
+}
+
+#delete-account {
+    text-align: right;
+}
+
+#delete-account:hover {
+    cursor: pointer;
+}
+
+.smaler-font {
     font-size: 14px !important;
 }
-#move-the-footer{
+
+#move-the-footer {
     margin-bottom: 6vh;
 }
 
 @media only screen and (max-width: 1714px) {
-.flex-to-left{
-    justify-content: center;
-    margin-top:20px;
+    .flex-to-left {
+        justify-content: center;
+        margin-top: 20px;
 
+    }
 }
-}
-.color-checkbox-purple{
+
+.color-checkbox-purple {
     background-color: $primary-2;
 }
