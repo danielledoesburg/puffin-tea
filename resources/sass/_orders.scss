@@ -1,26 +1,31 @@
-.accordion-button{
-    li{
+.accordion-button {
+    li {
         list-style: none;
         margin-right: 20px;
     }
 }
-.boldorder{
-        font-weight: bolder;
+
+.boldorder {
+    font-weight: bolder;
 }
-.accordion-button:not(.collapsed){
+
+.accordion-button:not(.collapsed) {
     background-color: white;
-    color:black;
+    color: black;
 }
+
 .accordion-button:focus {
     border-color: none;
     box-shadow: none;
 }
-.accordion{
+
+.accordion {
     position: relative;
     min-height: 68vh;
 }
-.accordion-body{
-    li{
+
+.accordion-body {
+    li {
         list-style: none;
     }
 }

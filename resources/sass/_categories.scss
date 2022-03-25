@@ -1,117 +1,199 @@
-hr{
+hr {
     height: 1px;
     background-color: black;
     border: none;
     opacity: 100%;
     margin-top: 0px;
 }
-.position-categories{
+
+.position-categories {
     display: flex;
-    h4{
-        margin-left:30px;
+
+    h4 {
+        margin-left: 30px;
         font-size: 18px;
         padding-top: 50px;
-        padding-bottom:20px;
+        padding-bottom: 20px;
         font-weight: bolder;
     }
-    ul{
+
+    ul {
         width: 200px;
         padding-top: 20px;
-        margin-left:20px;
+        margin-left: 20px;
         line-height: 2.5;
         font-size: 12px;
         list-style: none;
         background-color: white;
-        padding-bottom:20px;
+        padding-bottom: 20px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
-    hr{
-        margin-left:20px;
+
+    hr {
+        margin-left: 20px;
         height: 1px;
         background-color: black;
         border: none;
         opacity: 100%;
-        margin-top:0;
+        margin-top: 0;
     }
 
 }
-.form-check-input{
-    margin-top:7px;
+
+.form-check-input {
+    margin-top: 7px;
 }
-.products-image{
+
+.products-image {
     height: 300px;
-    width:240px;
-    z-index:-1 !important;
+    width: 240px;
+    z-index: -1 !important;
     object-fit: cover;
     transition: all .2s ease-in-out;
 }
-.bi{
-    margin:15px;
+
+.bi {
+    margin: 15px;
     color: $primary-one;
     transition: all .2s ease-in-out;
 }
-.bi:hover{
+
+.bi:hover {
     transform: scale(1.2);
     color: $primary-2;
     cursor: pointer;
 }
-.products-card{
-    p{
-        text-align:center;
-        margin:0;
+
+.products-card {
+    p {
+        text-align: center;
+        margin: 0;
         padding-top: 5px;
-       
+
     }
-    p.price{
-        width:240px;
-        background-color:white;
-        padding:10px;
-        text-align:center;
+
+    p.price {
+        width: 240px;
+        background-color: white;
+        padding: 10px;
+        text-align: center;
         font-weight: bolder;
-        
+
     }
 }
-.products-image:hover{
-    z-index:-1 !important;
+
+.products-image:hover {
+    z-index: -1 !important;
     transform: scale(1.02);
     box-shadow: rgba(211, 174, 174, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     cursor: pointer;
 }
-.right-side{
-    width:100%;
-    h5{
+
+.right-side {
+    width: 100%;
+
+    h5 {
         text-align: center;
         font-weight: bolder;
-        margin-top:30px;
+        margin-top: 30px;
     }
-    
+
 }
-.products-grid{
+
+.products-grid {
     width: 100%;
     display: grid;
-    grid-gap:30px;
+    grid-gap: 30px;
     grid-template-columns: repeat(auto-fill, minmax(230px, 250px));
     justify-content: center;
-    padding:50px;
+    padding: 50px;
     border-top-color: black;
 }
-.form-check-input{
+
+.form-check-input {
     background-color: $primary-one;
     border: none;
-    
+
 }
+
 .form-check-input:checked {
-    background-color:$primary-3;
+    background-color: $primary-3;
     border-color: $primary-3;
 }
-.form-check-input:hover{
+
+.form-check-input:hover {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-.form-check-input[type=checkbox]{
-    border-radius:0;
+
+.form-check-input[type=checkbox] {
+    border-radius: 0;
 }
-.form-check-input:focus{
+
+.form-check-input:focus {
     outline: 0 !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
+}
+
+@media only screen and (max-width: 857px) {
+
+    .position-categories {
+        display: block;
+        padding: 0;
+
+        ul {
+
+
+            width: 90%;
+            text-align: center;
+            overflow: hidden;
+            margin: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: auto;
+            margin-right: auto;
+
+            li {
+                display: inline-block;
+                margin-left: 10px;
+            }
+
+        }
+
+        hr {
+            opacity: 0;
+        }
+
+        h4 {
+            padding-bottom: 20px;
+            padding-top: 20px;
+            margin: 0;
+        }
+    }
+
+    .products-grid {
+        padding: 20px;
+
+        .products-image {
+            height: 240px;
+            width: 190px;
+
+        }
+
+        .products-card {
+            p {
+                font-size: 14px;
+            }
+
+            p.price {
+                width: 190px;
+                font-size: 16px;
+
+            }
+        }
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 190px));
+    }
 }

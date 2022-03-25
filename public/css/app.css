@@ -11444,11 +11444,11 @@ textarea.form-control-lg {
 }
 
 .slick-prev:before {
-  content: "<";
+  content: "";
 }
 
 [dir=rtl] .slick-prev:before {
-  content: ">";
+  content: "";
 }
 
 .slick-next {
@@ -11461,11 +11461,11 @@ textarea.form-control-lg {
 }
 
 .slick-next:before {
-  content: ">";
+  content: "";
 }
 
 [dir=rtl] .slick-next:before {
-  content: "<";
+  content: "";
 }
 
 /* Dots */
@@ -11562,6 +11562,8 @@ textarea.form-control-lg {
 .product-in-carousel p {
   text-align: center;
   padding-top: 20px;
+  margin-right: 15%;
+  margin-left: 15%;
 }
 
 .to-center {
@@ -11592,8 +11594,6 @@ textarea.form-control-lg {
   }
 
   .small-image {
-    margin-left: 20px;
-    margin-right: 0;
     width: 200px;
     height: 220px;
   }
@@ -11626,8 +11626,6 @@ textarea.form-control-lg {
   .small-image {
     width: 220px;
     height: 250px;
-    margin-left: 20%;
-    margin-right: 20%;
   }
 }
 .carousel-item {
@@ -12111,6 +12109,53 @@ hr {
   box-shadow: none !important;
 }
 
+@media only screen and (max-width: 857px) {
+  .position-categories {
+    display: block;
+    padding: 0;
+  }
+  .position-categories ul {
+    width: 90%;
+    text-align: center;
+    overflow: hidden;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .position-categories ul li {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  .position-categories hr {
+    opacity: 0;
+  }
+  .position-categories h4, .position-categories .h4 {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin: 0;
+  }
+
+  .products-grid {
+    padding: 20px;
+  }
+  .products-grid .products-image {
+    height: 240px;
+    width: 190px;
+  }
+  .products-grid .products-card p {
+    font-size: 14px;
+  }
+  .products-grid .products-card p.price {
+    width: 190px;
+    font-size: 16px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 190px));
+  }
+}
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;
@@ -12341,13 +12386,17 @@ h6, .h6 {
 
 .form-login {
   width: 400px;
+}
+.form-login form {
   background-color: #b2a4e2;
-  padding: 40px;
-  margin-top: 8vh;
+  padding: 35px;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 .form-login p {
-  font-size: 18px;
+  text-align: center;
+}
+.form-login p {
+  font-size: 24px;
   font-weight: bold;
   color: black;
 }
@@ -12355,10 +12404,9 @@ h6, .h6 {
 .login-page {
   display: flex;
   justify-content: center;
-}
-
-#full-page {
-  height: 67vh;
+  margin-top: 100px;
+  position: relative;
+  min-height: 58vh;
 }
 
 #button-to-the-right {
@@ -12373,6 +12421,10 @@ h6, .h6 {
 }
 .message a {
   color: white;
+}
+
+.remember-me {
+  width: 200px;
 }
 
 body {
