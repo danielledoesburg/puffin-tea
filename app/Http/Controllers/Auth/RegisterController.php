@@ -47,7 +47,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
-    public function register(Request $request) //could propably be done better? function copied from RegistersUsers trait and changed to flash data
+    public function register(Request $request) //could propably be done better? function copied from RegistersUsers trait and changed to add flash data
     {
         $this->validator($request->all())->validate();
 
