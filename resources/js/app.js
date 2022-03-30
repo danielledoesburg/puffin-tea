@@ -31,6 +31,7 @@ Vue.component('header-carousel', require('./components/HeaderCarousel.vue').defa
 Vue.component('products', require('./components/Products.vue').default);
 Vue.component('navbar-and-cart', require('./components/NavbarAndCart.vue').default);
 Vue.component('checkout', require('./components/Checkout.vue').default);
+Vue.component('product-details', require('./components/ProductsDetails.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

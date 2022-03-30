@@ -16,7 +16,7 @@
         <input type="password" class="form-control form-control-lg" name="password" placeholder=""/>
         <label class="form-label" for="password">password</label>
         @error('email')
-            <p>{{$message}}</p>
+            <p id="smaller-font-login">{{$message}}</p>
         @enderror
         
         <div class="row mb-3">

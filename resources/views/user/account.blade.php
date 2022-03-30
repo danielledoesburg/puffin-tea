@@ -36,21 +36,21 @@
 
 
             <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
+                <div class="col-md-6 mb-4 pb-2 ">
+                    <div class="form-outline ">
                         <h5>Information</h5>
-                        <p>name: {{ $user->first_name }} {{ $user->last_name }}</br>
+                        <p class="user-info">name: {{ $user->first_name }} {{ $user->last_name }}</br>
                             email: {{ $user->email }}</br>
                             phone number: {{ $user->phonenr }}</p>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
+                <div class="col-md-6 mb-4 pb-2 ">
+                    <div class="form-outline ">
                         <h5>Delivery Adress</h5>
-                        <p>{{ $user->deliveryAddress->address }}</br>
+                        <p class="user-info">{{ $user->deliveryAddress->address }}</br>
                             {{ $user->deliveryAddress->zipcode }} {{ $user->deliveryAddress->city }}</p>
 
-                        <p> subscribed to newsletter:
+                        <p class="user-info"> subscribed to newsletter:
                             @if($user->newsletterSubscription()->exists()) Yes
                             @elseNo
                             @endif
@@ -60,10 +60,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
+                <div class="col-md-6 mb-4 pb-2 user-info">
+                    <div class="form-outline ">
                         <h5>Billing Adress</h5>
-                        <p>{{ $user->billingAddress->address }}</br>
+                        <p class="user-info">{{ $user->billingAddress->address }}</br>
                             {{ $user->billingAddress->zipcode }} {{ $user->billingAddress->city }}</p>
                     </div>
                 </div>
