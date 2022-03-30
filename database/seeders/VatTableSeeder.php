@@ -22,11 +22,11 @@ class VatTableSeeder extends Seeder
 
         $data = [
             [
-                'name' => 'hoog',
+                'name' => 'high',
                 'percentage' => 21
             ],
             [
-                'name' => 'laag',
+                'name' => 'low',
                 'percentage' => 9
             ],
         ];

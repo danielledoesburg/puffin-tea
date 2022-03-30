@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Validator;
 class MessageController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the messages.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     { 
-        $paginateNr = 10;
+        $paginateNr = 15;
 
         if ($request->search) {            
             $messages = Message::search($request->search, $request->exact)->paginate($paginateNr);
@@ -31,7 +31,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new message.
      *
      * @return \Illuminate\Http\Response
      */
@@ -41,18 +41,7 @@ class MessageController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
+     * Display the specified message.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -60,12 +49,12 @@ class MessageController extends Controller
     public function show($id)
     {
         return view('admin.messages.show', [
-            'message' => Message::find($id)
+            'message' => Message::findOrFail($id)
         ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified message.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -73,12 +62,12 @@ class MessageController extends Controller
     public function edit($id)
     {
         return view('admin.messages.edit', [
-            'message' => Message::find($id)
+            'message' => Message::findOrFail($id)
         ]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified message in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -88,7 +77,14 @@ class MessageController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        Message::find($id)
+        $message = Message::find($id);
+        $message->name = $request->name;
+        $message->email = $request->email;
+        $message->message = $request->message;
+
+        if ($message->isDirty()) $message->save();
+
+        return redirect('/admin/messages/'.$id)->with('success', 'changes saved');
     }
 
 
@@ -108,13 +104,15 @@ class MessageController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified message from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        Message::find($id)->delete();
+
+        return redirect('/admin/messages')->with('success', 'message has been deleted.'); 
     }
 }

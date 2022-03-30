@@ -8,7 +8,7 @@
     </div>
 @endif
 
-<h2 id="fav-faq">The most asked questions:</h2>
+<h2 id="fav-faq">Frequently asked questions:</h2>
 <div class="accordion-flex">
 
 <div>
@@ -18,7 +18,7 @@
 <div class="accordion-item questions-accordion width-accordion-button">
     <h2 class="accordion-header width-accordion-button " id="headingOne">
       <button class="accordion-button  width-accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#question{{$q->id}}" aria-expanded="true" aria-controls="collapseOne">
-    <li>{{ $q->question }}?</li>
+    <li>{{ rtrim($q->question, '.') }}?</li>
       </button>
     </h2>
     <div id="question{{$q->id}}" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -34,14 +34,14 @@
 </div>
 
 <div class="help-form">
-<h2>Sent us a message!</h2>
+<h2>Send us a message!</h2>
 <form action="/help" method="POST">
     @csrf
     
     <input 
             name="name"
             type="text" 
-            value="{{ old('name') ?? Auth::user()->name }}"
+            value="{{ old('name') ?? Auth::user()->name ?? '' }}"
             class="form-control form-control-lg name-help"
             required />
     <label class="form-label" for="name">name</label>
@@ -51,12 +51,12 @@
     
     
     <input 
-            name="e-mail"
+            name="email"
             type="text" 
-            value="{{ old('email') ?? Auth::user()->email }}"
+            value="{{ old('email') ?? Auth::user()->email ?? '' }}"
             class="form-control form-control-lg email-help"
             required />
-    <label class="form-label" for="name">e-mail</label>
+    <label class="form-label" for="email">e-mail</label>
     @error('email')
         <p>{{$message}}</p>
     @enderror

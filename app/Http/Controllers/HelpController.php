@@ -61,7 +61,7 @@ class HelpController extends Controller
             'user_id' => $user->id ?? null
         ]);
 
-        if (Auth::user()->email === $request->email) {
+        if (Auth::check() && Auth::user()->email === $request->email) {
             $message->update(['user_id'=> Auth::id()]);
         }
 
