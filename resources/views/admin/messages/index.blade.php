@@ -1,3 +1,9 @@
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
+
 <a href="/admin/messages"><h1>Messages </h1></a>
 
 <form action="#" method="GET">
@@ -9,7 +15,8 @@
 
 @if ($messages->total())
     @foreach ($messages as $message)
-        <div class="border">
+        <hr>
+        <div>
             <ul>
                 <li>
                     from:
@@ -22,8 +29,8 @@
                 <li>email: {{ $message->email }}</li>
             </ul>
             <p>{{ $message->message}}</p>
-            <a href="/admin/messages/{{ $message->id }}">show</a>
-            <a href="/admin/messages/{{ $message->id }}/edit">edit</a>
+            <a href="/admin/messages/{{ $message->id }}"><button>Show</button></a>
+            <a href="/admin/messages/{{ $message->id }}/edit"><button>Edit</button></a>
         </div>
     @endforeach
     <div>{{ $messages->links()}}</div>

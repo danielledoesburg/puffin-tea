@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Searchable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, Searchable;
 
     protected $guarded = [
         'id',
@@ -19,6 +20,10 @@ class Product extends Model
     protected $hidden = ['created_at', 'created_by', 'updated_at', 'updated_by', 'deleted_at', 'deleted_by'];
 
     protected $with = ['mainImage', 'onSale'];
+
+    protected $searchableColumns = ['name', 'description', 'slug', 'type'];
+
+    public static $typeEnum = ['Loose leaf', 'Tea bags', 'Inapplicable'];
 
     public function category()
     {
@@ -38,6 +43,15 @@ class Product extends Model
                         ->orWhere('date_till', '>=', date('Y-m-d'));
                 });
         });
+    }
+
+    public function pendingOnSales()
+    {
+        return $this->hasMany(OnSale::class)
+            ->where(function ($query) {
+                $query->whereNull('date_till')
+                    ->orWhere('date_till', '>=', date('Y-m-d'));
+            });
     }
 
     public function vat()
