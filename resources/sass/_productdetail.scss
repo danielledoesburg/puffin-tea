@@ -1,0 +1,38 @@
+.product-detail-container{
+    min-height:68vh;
+}
+.product-detail-main-image{
+    width: 95%;
+    object-fit: cover;
+    padding:40px;
+    max-height:620px;
+    
+
+}
+.tiny-image-products{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+   padding:20px;
+}
+.button-detail-page{
+    margin-top: 25px;
+
+    
+}
+.detail-images{
+    background-color: $primary-one;
+}
+.detail-desciption{
+    padding:40px;
+}
+.detail-title{
+    padding:40px;
+    padding-bottom:0;
+    text-align: center;
+}
+#detail-price{
+    font-size: 24px;
+    text-align: center;
+    margin-top: 25px;;
+}
