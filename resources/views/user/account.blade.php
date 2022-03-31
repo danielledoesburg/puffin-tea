@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @include('navbar')
 @section('content')
+@if (session()->has('success'))
+    <div>
+        <p class="succsess-message">{{session()->get('success')}}</p>
+    </div>
+@endif
 <div class="delete-modal-box" :class="{displaymodalbox: isActive}">
     <div class="box-area">
         <p>Are you sure that you want to delete your account?</p>
@@ -14,6 +19,7 @@
         </div>
     </div>
 </div>
+<div class="full-page-account">
 <div class="flex-to-center">
     <div class="col-lg-6" id="move-the-footer">
         <div class="p-5 user-cart">
@@ -50,11 +56,6 @@
                         <p class="user-info">{{ $user->deliveryAddress->address }}</br>
                             {{ $user->deliveryAddress->zipcode }} {{ $user->deliveryAddress->city }}</p>
 
-                        <p class="user-info"> subscribed to newsletter:
-                            @if($user->newsletterSubscription()->exists()) Yes
-                            @elseNo
-                            @endif
-                        </p>
                     </div>
 
                 </div>
@@ -68,7 +69,13 @@
                     </div>
                 </div>
                 <div class="col-md-6 mb-4 pb-2">
+                <p class="user-info newsletter-info"> subscribed to newsletter:
+                            @if($user->newsletterSubscription()->exists()) Yes
+                            @else No
+                            @endif
+                    </p>
                     <div class="form-outline flex-to-center">
+
                         <form method="POST" action="/logout">
                             @csrf
                             <button class="btn btn-light btn-lg purple-btn" type="submit">Log out</button>
@@ -81,6 +88,7 @@
         <p id="delete-account" v-on:click="isActive=!isActive">Delete Account</p>
 
     </div>
+</div>
 </div>
 
 

@@ -24,12 +24,12 @@
                                    </div>
                                    
                                 </div>
-                                <ul>
-
-                                </ul> <p id="detail-price">Price:<span> {{product.price}}&#8364;</span></p>
+                                     
+                                            <p id="detail-price" v-if="product.on_sale" >Price:<span class="cross-out-sale"> &euro;{{product.price}}</span><span class="detail-price-weight">&euro;{{product.on_sale.price}}</span> </p>
+                                            <p id="detail-price"  v-else>Price:<span class="detail-price-weight"> &euro;{{product.price}}</span></p>
                                      <div class= "flex-to-center button-detail-page">
                                          
-                                    <button  class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Buy</button>
+                                    <button  v-on:click="addToCart(product.id)" class="btn btn-light btn-lg" data-mdb-ripple-color="dark">Buy</button>
                                     </div>
                                     
                                     <div class="row">
@@ -65,6 +65,10 @@
                 type:Object,
                 required:true,
             }
+        },
+        methods:{
+                addToCart(id) {
+                 this.$emit("add-to-cart", id);},
         }
     }
 </script>

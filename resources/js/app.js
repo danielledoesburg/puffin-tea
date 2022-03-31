@@ -124,6 +124,11 @@ const app = new Vue({
             }
             sessionStorage.setItem("numberincart",JSON.stringify(this.products_for_cart))
         },
+        onSubmit(){
+            window.location.reload();
+          
+
+        }
         
 
 

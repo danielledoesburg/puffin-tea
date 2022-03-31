@@ -2,11 +2,7 @@
     <div class="flex-to-center take-full-page-checkout">
         <div class="checkout-content" v-if="cart && cart.products.length">
             <h4>Check-out</h4>
-            <ul id="total">
-            <li>subtotal: {{ cart.subTotal }}&#8364;</li>
-            <li>shipping costs: {{ cart.shippingRate }}&#8364;</li>  
-            <li>total: {{ cart.total }}&#8364;</li>
-            </ul>
+
             <div class="row">
             <div class="col">
             <h3>user info: </h3>
@@ -14,19 +10,21 @@
             <ul><span class="boldorder">First and last name:</span>
                 <li>{{cart.user.first_name}} {{cart.user.last_name}}</li>
                 <span class="boldorder">Delivery adress:</span>
-                <li>{{ cart.user.delivery_address.address }}</li>
-                <span class="boldorder">City:</span>
-                <li>{{ cart.user.delivery_address.address }}</li>
+                <li><span>Street: </span>{{ cart.user.delivery_address.address }}</li>
+                <li><span>City: </span>{{ cart.user.delivery_address.city }}</li>
+                <span class="boldorder">Billing adress:</span>
+                <li><span>Street: </span>{{ cart.user.billing_address.address }}</li>
+                <li><span>City: </span>{{ cart.user.billing_address.city }}</li>
                 <span class="boldorder">Contact:</span>
                 <li><span>phone number: </span>{{ cart.user.phonenr }} </li>
                 <li><span>e-mail: {{ cart.user.email }}</span></li>
             </ul>
             <div class="example no-padding check-out">
-            <a  class="hover hover-1 first-link no-decoration smaller-font" href="
+            <a  class="hover hover-1 first-link no-decoration smaller-font" href="account/edit
             " >Edit your user info  </a>
             </div>
             </div>
-            <div class="col">
+            <div class="col your-purchases">
             <h3 >Your purchases:</h3>
             <div v-for="product in cart.products" class="row">
                 <div class="col-md-auto flex-to-center">
@@ -40,6 +38,11 @@
                 </ul>
                 </div>
             </div>
+            <ul class= "total-info-order" >
+            <li><span class="boldorder">subtotal: </span>{{ cart.subTotal }}&#8364;</li>
+            <li><span class="boldorder">shipping costs:</span> {{ cart.shippingRate }}&#8364;</li>  
+            <li><span class="boldorder">total:</span> {{ cart.total }}&#8364;</li>
+            </ul>
             <div class="flex-to-center ">
             <button class="btn btn-light btn-lg btn-modal btn-checkout" @click="checkout">submit order</button>
             </div>

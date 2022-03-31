@@ -5,6 +5,7 @@
 @section('content')
     <product-details
     :product="{{ $product }}"
+    @add-to-cart="updateCart"
     >
     </product-details>
 

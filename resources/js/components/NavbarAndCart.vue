@@ -145,13 +145,13 @@
 export default {
   data() {
     return {
-      imagePath: "images/",
+      imagePath: "/images/",
       isActive: false,
     };
   },
   props: {
     products: {
-      required: true,
+  
       type: Array,
     },
     cart_no_repetition: {

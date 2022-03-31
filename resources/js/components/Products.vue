@@ -209,8 +209,10 @@
             :src="imagePath + product.main_image.filename"
           />
           </a>
-          <p class="price">{{ product.price }} &euro;</p>
-          <p>{{ product.name }}</p>
+         
+          <p v-if="product.on_sale"  class="price"><span class="cross-out-sale">&euro;{{product.price}}</span>&euro;{{ product.on_sale.price}} </p>
+          <p class="price" v-else>&euro;{{product.price}}</p>
+          <p >{{ product.name }}</p>
         </div>
       </div>
       <div
@@ -242,7 +244,8 @@
             :src="imagePath + item.main_image.filename"
           />
           </a>
-          <p class="price">{{ item.price }} &euro;</p>
+          <p v-if="item.on_sale"  class="price"><span class="cross-out-sale">&euro;{{item.price}}</span>&euro;{{item.on_sale.price}} </p>
+          <p class="price" v-else>&euro;{{item.price}}</p>
           <p>{{ item.name }}</p>
         </div>
       </div>
@@ -292,7 +295,8 @@
             class="products-image"
             :src="imagePath + item.main_image.filename"
           />
-          <p class="price">{{ item.price }} &euro;</p>
+          <p v-if="item.on_sale"  class="price"><span class="cross-out-sale">&euro;{{item.price}}</span>&euro;{{item.on_sale.price}} </p>
+          <p class="price" v-else>&euro;{{item.price}}</p>
           <p>{{ item.name }}</p>
         </div>
       </div>

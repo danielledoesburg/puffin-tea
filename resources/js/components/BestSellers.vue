@@ -16,10 +16,12 @@
         <div class="to-center">
             <div class="responsive">
                 <div v-for="product in products" class="product-in-carousel">
+                    <a :href="'/products/' + product.slug">
                     <img
                         class="small-image"
-                        :src="imagePath + product.main_image.filename"/>
+                        :src="imagePath + product.main_image.filename"/></a>
                     <p>{{ product.name }}</p>
+                    
                 </div>
             </div>
         </div>
