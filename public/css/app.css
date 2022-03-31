@@ -12156,6 +12156,12 @@ hr {
     grid-template-columns: repeat(auto-fill, minmax(190px, 190px));
   }
 }
+.cross-out-sale {
+  font-weight: lighter;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
   font-size: 1rem;
   line-height: 2.15;
@@ -12626,6 +12632,14 @@ h1, .h1 {
   background-color: #b2a4e2;
 }
 
+.newsletter-info {
+  text-align: center;
+}
+
+.full-page-account {
+  min-height: 68vh;
+}
+
 .delete-modal-box {
   position: fixed;
   z-index: 1000;
@@ -12846,11 +12860,37 @@ h1, .h1 {
   min-height: 66vh;
 }
 
+.your-purchases {
+  background-color: #b2a4e2;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  padding: 20px;
+}
+
+.total-info-order {
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 779px) {
+  .checkout-content ul {
+    font-size: 12px;
+    text-align: center;
+  }
+  .checkout-content h3, .checkout-content .h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+}
 #order-submitted {
   text-align: center;
   padding-top: 25vh;
   min-height: 64vh;
   font-size: 28px;
+}
+
+.succsess-message {
+  font-size: 24px;
+  padding: 40px;
+  text-align: center;
 }
 
 .product-detail-container {
@@ -12892,7 +12932,11 @@ h1, .h1 {
 }
 
 #detail-price {
-  font-size: 24px;
+  font-size: 20px;
   text-align: center;
   margin-top: 25px;
+}
+
+.detail-price-weight {
+  font-weight: bolder;
 }

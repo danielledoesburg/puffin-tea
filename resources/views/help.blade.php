@@ -4,7 +4,7 @@
 
 @if (session()->has('success'))
     <div>
-        <p>{{session()->get('success')}}</p>
+        <p class="succsess-message">{{session()->get('success')}}</p>
     </div>
 @endif
 
