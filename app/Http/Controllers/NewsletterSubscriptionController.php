@@ -6,6 +6,8 @@ use App\Models\NewsletterSubscription;
 use App\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Validator;
 
 class NewsletterSubscriptionController extends Controller

@@ -43,10 +43,10 @@ class ProductController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator ($data, $id)
-    {  dd(gettype($data['sale_date_from']['1']));
+    {   
         return Validator::make($data, [
             'name' => ['required', 'string', 'min:1', 'max:255'],
-            'slug' => ['required', 'string', 'min:1', 'max:255', Rule::unique('products')->ignore($id),],
+            'slug' => ['required', 'string', 'min:1', 'max:255', Rule::unique('products')->ignore($id)],
             'description' => ['required', 'string', 'min:10', 'max:1000'],
             'category' => ['required', 'numeric', 'exists:categories,id'],
             'type' => ['required', Rule::in(Product::$typeEnum)],
@@ -54,9 +54,12 @@ class ProductController extends Controller
             'vat' => ['required', 'numeric', 'exists:vat,id'],
             'unit_amount' => ['required', 'numeric'],
             'unit' => ['required', 'numeric', 'exists:units,id'],
-            'sale_date_from.*' => ['required', 'date'],
-            'sale_date_till.*' => ['nullable', 'date', 'after_or_equal:sale_date_from.*'],
+            'sale_date_from.*' => ['required', 'date_format:Y-m-d'],
+            'sale_date_till.*' => ['nullable', 'date_format:Y-m-d', 'after_or_equal:sale_date_from.*'],
             'sale_price.*' => ['required', 'numeric', 'lt:price']
+        ], [
+            'sale_date_till.*.after_or_equal' => 'Date till must be equal to or later than date from',
+            'sale_price.*.lt' => 'Sale price must be lower than the original product price' 
         ]);
     }
 
@@ -121,18 +124,30 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
-
         $this->validator($request->all(), $id)->validate();
+        
+        $product = Product::find($id);
 
-        // $message = Message::find($id);
-        // $message->name = $request->name;
-        // $message->email = $request->email;
-        // $message->message = $request->message;
+        $product->name = $request->name;
+        $product->slug = $request->slug;
+        $product->description = $request->description;
+        $product->category_id = $request->category;
+        $product->type = $request->type;
+        $product->vat_id = $request->vat;
+        $product->unit_amount = $request->unit_amount;
+        $product->unit_id = $request->unit;
 
-        // if ($message->isDirty()) $message->save();
+        if ($product->isDirty()) $product->save();
 
-        // return redirect('/admin/messages/'.$id)->with('success', 'changes saved');
+        foreach ($product->pendingOnpSales as $sale){
+            $sale->date_from = $request->sale_date_from[$sale->id];
+            $sale->date_till = $request->sale_date_till[$sale->id];
+            $sale->price = $request->sale_price[$sale->id];
+
+            if ($sale->isDirty()) $sale->save();
+        }
+
+        return redirect('admin/products/'.$id)->with('success', 'Changes saved');
     }
 
     /**

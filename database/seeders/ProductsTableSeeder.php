@@ -38,7 +38,7 @@ class ProductsTableSeeder extends Seeder
                 'unit_amount' => 500,
                 'unit_id' => 1,
                 'on_sale' => 12.50,
-                'image_filenames'=> ['biocamille1.jpg', 'biocamille2.jpg', 'biocamille3'],
+                'image_filenames'=> ['biocamille1.jpg', 'biocamille2.jpg', 'biocamille3.jpg'],
             ],
             [
                 'name' => 'Ceremonial Matcha - Hug the tea',
@@ -103,7 +103,7 @@ class ProductsTableSeeder extends Seeder
                 'unit_amount' => 10,
                 'unit_id' => 3,
                 'on_sale' => 5.50,
-                'image_filenames'=> ['qeenberryfruit1.jpg','qeenberryfruit2.jpg'],
+                'image_filenames'=> ['queenberryfruit1.jpg','queenberryfruit2.jpg'],
             ],
             [
                 'name' => 'Or Tea - Dragon Pearl Jasmine (green tea)',

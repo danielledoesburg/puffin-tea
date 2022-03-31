@@ -60,11 +60,11 @@ class CheckoutController extends Controller
             'user' => User::with('deliveryAddress', 'billingAddress')->currentUser()->first(),
             'products' => $products,
             'subTotal' => $total,
-            'subTotalFormat' => number_format($total, 2, ',', '.'),
+            'subTotalFormat' => number_format($total, 2),
             'shippingRate' => $shippingRate,
-            'shippingRateFormat' => number_format($shippingRate, 2, ',', '.'),
+            'shippingRateFormat' => number_format($shippingRate, 2),
             'total' => $total + $shippingRate,
-            'totalFormat' => number_format($total + $shippingRate, 2, ',', '.')
+            'totalFormat' => number_format($total + $shippingRate, 2,)
         ];
     }
 
