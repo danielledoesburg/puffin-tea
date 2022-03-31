@@ -88,28 +88,40 @@
         <p>{{$message}}</p>
     @enderror
 
-    pending on sale prices
+    <h4>pending sale prices</h4>
     <table>
         <tr>
             <th>Date from</th>
             <th>Date till</th>
             <th>Price</th>
         </tr>
-        
         @foreach ($product->pendingOnSales as $sale)
         <tr>
         <td>
-            <input type="date" name="sale_date_from[{{ $sale->id}}]" id="sale_date_from[{{ $sale->id}}]" value="{{ old('sale_date_from') ? old('sale_date_from').$sale->id : date('Y-m-d', strtotime($sale->date_from)) }}">
+            <input type="date" name="sale_date_from[{{ $sale->id}}]" id="sale_date_from[{{ $sale->id}}]" value="{{ old('sale_date_from') ? old('sale_date_from.'.$sale->id) : date('Y-m-d', strtotime($sale->date_from)) }}">
+            @error('sale_date_from.'.$sale->id)
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </td>
         <td>
-            <input type="date" name="sale_date_till[{{ $sale->id}}]" id="sale_date_till[{{ $sale->id}}]" value="{{ old('sale_date_till') ? old('sale_date_till').$sale->id : date('Y-m-d', strtotime($sale->date_till)) }}">
+            <input type="date" name="sale_date_till[{{ $sale->id}}]" id="sale_date_till[{{ $sale->id}}]" value="{{ old('sale_date_till.'.$sale->id) ?? ( $sale->date_till ? date('Y-m-d', strtotime($sale->date_till)) : '')}}">
+            @error('sale_date_till.'.$sale->id)
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </td>
         <td>
-            <input type="text" name="sale_price[{{ $sale->id}}]" id="sale_price[{{ $sale->id}}]" value="{{ old('sale_price') ? old('sale_price').$sale->id : $sale->price }}">
+            <input type="text" name="sale_price[{{ $sale->id}}]" id="sale_price[{{ $sale->id}}]" value="{{ old('sale_price') ? old('sale_price.'.$sale->id) : $sale->price }}">
+            @error('sale_price.'.$sale->id)
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </td>
         </tr>
         @endforeach
     </table>
+
+    <h4>images</h4>
+
+    
 
     <button type="submit">submit changes</button>
 </form>

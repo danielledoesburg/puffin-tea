@@ -1,9 +1,9 @@
 @section('footer')
 <footer>
-    <div class="newsletter ">
+    <div class="newsletter" id="subscribe">
         <p>Sign up to our newsletter! </p>
 
-        <form class="form" action="/newsletter" method="POST">
+        <form class="form" action="/newsletter#subscribe" method="POST">
             @csrf
             Your e-mail: <input class="form-width" type="text" name="newsletter_email">
         </form>
