@@ -108,10 +108,10 @@ class UserController extends Controller
         $user->deliveryAddress->address = $request->delivery_address;
         $user->deliveryAddress->zipcode = $request->delivery_zipcode;
         $user->deliveryAddress->city = $request->delivery_city;
-        $user->billingAddress->address = $request->delivery_address;
-        $user->billingAddress->zipcode = $request->delivery_zipcode;
-        $user->billingAddress->city = $request->delivery_city;
-
+        $user->billingAddress->address = $request->billing_address;
+        $user->billingAddress->zipcode = $request->billing_zipcode;
+        $user->billingAddress->city = $request->billing_city;
+        
         if ($user->isDirty()) $user->save();
         if ($user->deliveryAddress->isDirty()) $user->deliveryAddress->save();
         if ($user->billingAddress->isDirty()) $user->billingAddress->save();
